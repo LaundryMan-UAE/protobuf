@@ -112,3 +112,6 @@ conformance/Conformance.pbobjc.m
 conformance/conformance.rb
 conformance/javac_middleman
 conformance/protoc_middleman
+javanano/protobuf-javanano.iml
+javanano/.idea
+javanano/.gradle
