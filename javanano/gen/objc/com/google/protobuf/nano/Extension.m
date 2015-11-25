@@ -49,18 +49,20 @@ __attribute__((unused)) static id ComGoogleProtobufNanoExtension_getRepeatedValu
 
 __attribute__((unused)) static id ComGoogleProtobufNanoExtension_getSingularValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields);
 
-/**
+/*!
  @brief Represents an extension of a primitive (including enum) type.
- If there is no primitive extensions, this subclass will be removable by ProGuard.
+ If there is no primitive
+ extensions, this subclass will be removable by ProGuard.
  */
 @interface ComGoogleProtobufNanoExtension_PrimitiveExtension : ComGoogleProtobufNanoExtension {
  @public
-  /**
+  /*!
    @brief Tag of a piece of non-packed data from the wire compatible with this extension.
    */
   jint nonPackedTag_;
-  /**
-   @brief Tag of a piece of packed data from the wire compatible with this extension. 0 if the type of this extension is not packable.
+  /*!
+   @brief Tag of a piece of packed data from the wire compatible with this extension.
+ 0 if the type of this extension is not packable.
    */
   jint packedTag_;
 }
@@ -331,10 +333,10 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
     { "TYPE_SFIXED64", "TYPE_SFIXED64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SFIXED64 },
     { "TYPE_SINT32", "TYPE_SINT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SINT32 },
     { "TYPE_SINT64", "TYPE_SINT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SINT64 },
-    { "type_", NULL, 0x14, "I", NULL, NULL,  },
-    { "clazz_", NULL, 0x14, "Ljava.lang.Class;", NULL, "Ljava/lang/Class<TT;>;",  },
-    { "tag_", NULL, 0x11, "I", NULL, NULL,  },
-    { "repeated_", NULL, 0x14, "Z", NULL, NULL,  },
+    { "type_", NULL, 0x14, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "clazz_", NULL, 0x14, "Ljava.lang.Class;", NULL, "Ljava/lang/Class<TT;>;", .constantValue.asLong = 0 },
+    { "tag_", NULL, 0x11, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "repeated_", NULL, 0x14, "Z", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lcom.google.protobuf.nano.Extension$PrimitiveExtension;"};
   static const J2ObjcClassInfo _ComGoogleProtobufNanoExtension = { 2, "Extension", "com.google.protobuf.nano", NULL, 0x1, 17, methods, 22, fields, 0, NULL, 1, inner_classes, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>Ljava/lang/Object;" };
@@ -345,33 +347,33 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createMessageTypedWithInt_withIOSClass_withInt_(jint type, IOSClass *clazz, jint tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, tag, NO) autorelease];
+  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, tag, false) autorelease];
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createMessageTypedWithInt_withIOSClass_withLong_(jint type, IOSClass *clazz, jlong tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, NO) autorelease];
+  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, false) autorelease];
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createRepeatedMessageTypedWithInt_withIOSClass_withLong_(jint type, IOSClass *clazz, jlong tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, YES) autorelease];
+  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, true) autorelease];
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createPrimitiveTypedWithInt_withIOSClass_withLong_(jint type, IOSClass *clazz, jlong tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, NO, 0, 0) autorelease];
+  return [new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, false, 0, 0) autorelease];
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createRepeatedPrimitiveTypedWithInt_withIOSClass_withLong_withLong_withLong_(jint type, IOSClass *clazz, jlong tag, jlong nonPackedTag, jlong packedTag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, YES, (jint) nonPackedTag, (jint) packedTag) autorelease];
+  return [new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, true, (jint) nonPackedTag, (jint) packedTag) autorelease];
 }
 
 void ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(ComGoogleProtobufNanoExtension *self, jint type, IOSClass *clazz, jint tag, jboolean repeated) {
   NSObject_init(self);
   self->type_ = type;
-  ComGoogleProtobufNanoExtension_set_clazz_(self, clazz);
+  JreStrongAssign(&self->clazz_, clazz);
   self->tag_ = tag;
   self->repeated_ = repeated;
 }
@@ -748,8 +750,8 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
     { "computeSingularSerializedSizeWithId:", "computeSingularSerializedSize", "I", 0x14, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "nonPackedTag_", NULL, 0x12, "I", NULL, NULL,  },
-    { "packedTag_", NULL, 0x12, "I", NULL, NULL,  },
+    { "nonPackedTag_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "packedTag_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const char *superclass_type_args[] = {"TM;", "TT;"};
   static const J2ObjcClassInfo _ComGoogleProtobufNanoExtension_PrimitiveExtension = { 2, "PrimitiveExtension", "com.google.protobuf.nano", "Extension", 0xa, 8, methods, 2, fields, 2, superclass_type_args, 0, NULL, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>Lcom/google/protobuf/nano/Extension<TM;TT;>;" };

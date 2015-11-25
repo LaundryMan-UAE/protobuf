@@ -24,9 +24,9 @@
  @public
   ComGoogleProtobufNanoExtension *cachedExtension_;
   id value_;
-  /**
+  /*!
    @brief The serialised values for this object.
-   Will be cleared if getValue is called
+   Will be cleared if getValue is called 
    */
   id<JavaUtilList> unknownFieldData_;
 }
@@ -49,10 +49,12 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
   return self;
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoFieldData_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (void)addUnknownFieldWithComGoogleProtobufNanoUnknownFieldData:(ComGoogleProtobufNanoUnknownFieldData *)unknownField {
   [((id<JavaUtilList>) nil_chk(unknownFieldData_)) addWithId:unknownField];
@@ -82,18 +84,18 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
     }
   }
   else {
-    ComGoogleProtobufNanoFieldData_set_cachedExtension_(self, extension);
-    ComGoogleProtobufNanoFieldData_set_value_(self, [((ComGoogleProtobufNanoExtension *) nil_chk(extension)) getValueFromWithJavaUtilList:unknownFieldData_]);
-    ComGoogleProtobufNanoFieldData_set_unknownFieldData_(self, nil);
+    JreStrongAssign(&cachedExtension_, extension);
+    JreStrongAssign(&value_, [((ComGoogleProtobufNanoExtension *) nil_chk(extension)) getValueFromWithJavaUtilList:unknownFieldData_]);
+    JreStrongAssign(&unknownFieldData_, nil);
   }
   return (id) value_;
 }
 
 - (void)setValueWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension
                                             withId:(id)newValue {
-  ComGoogleProtobufNanoFieldData_set_cachedExtension_(self, extension);
-  ComGoogleProtobufNanoFieldData_set_value_(self, newValue);
-  ComGoogleProtobufNanoFieldData_set_unknownFieldData_(self, nil);
+  JreStrongAssign(&cachedExtension_, extension);
+  JreStrongAssign(&value_, newValue);
+  JreStrongAssign(&unknownFieldData_, nil);
 }
 
 - (jint)computeSerializedSize {
@@ -122,15 +124,15 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
 
 - (jboolean)isEqual:(id)o {
   if (o == self) {
-    return YES;
+    return true;
   }
   if (!([o isKindOfClass:[ComGoogleProtobufNanoFieldData class]])) {
-    return NO;
+    return false;
   }
   ComGoogleProtobufNanoFieldData *other = (ComGoogleProtobufNanoFieldData *) check_class_cast(o, [ComGoogleProtobufNanoFieldData class]);
   if (value_ != nil && ((ComGoogleProtobufNanoFieldData *) nil_chk(other))->value_ != nil) {
     if (cachedExtension_ != other->cachedExtension_) {
-      return NO;
+      return false;
     }
     if (![((IOSClass *) nil_chk(((ComGoogleProtobufNanoExtension *) nil_chk(cachedExtension_))->clazz_)) isArray]) {
       return [value_ isEqual:other->value_];
@@ -186,9 +188,9 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
 - (ComGoogleProtobufNanoFieldData *)clone {
   ComGoogleProtobufNanoFieldData *clone = [new_ComGoogleProtobufNanoFieldData_init() autorelease];
   @try {
-    ComGoogleProtobufNanoFieldData_set_cachedExtension_(clone, cachedExtension_);
+    JreStrongAssign(&clone->cachedExtension_, cachedExtension_);
     if (unknownFieldData_ == nil) {
-      ComGoogleProtobufNanoFieldData_set_unknownFieldData_(clone, nil);
+      JreStrongAssign(&clone->unknownFieldData_, nil);
     }
     else {
       [clone->unknownFieldData_ addAllWithJavaUtilCollection:unknownFieldData_];
@@ -196,38 +198,38 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
     if (value_ == nil) {
     }
     else if ([value_ isKindOfClass:[ComGoogleProtobufNanoMessageNano class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((ComGoogleProtobufNanoMessageNano *) check_class_cast(value_, [ComGoogleProtobufNanoMessageNano class])) clone]);
+      JreStrongAssign(&clone->value_, [((ComGoogleProtobufNanoMessageNano *) check_class_cast(value_, [ComGoogleProtobufNanoMessageNano class])) clone]);
     }
     else if ([value_ isKindOfClass:[IOSByteArray class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((IOSByteArray *) check_class_cast(value_, [IOSByteArray class])) clone]);
+      JreStrongAssign(&clone->value_, [((IOSByteArray *) check_class_cast(value_, [IOSByteArray class])) clone]);
     }
     else if ([IOSClass_byteArray(2) isInstance:value_]) {
       IOSObjectArray *valueArray = (IOSObjectArray *) check_class_cast(value_, [IOSObjectArray class]);
       IOSObjectArray *cloneArray = [IOSObjectArray arrayWithLength:valueArray->size_ type:IOSClass_byteArray(1)];
-      ComGoogleProtobufNanoFieldData_set_value_(clone, cloneArray);
+      JreStrongAssign(&clone->value_, cloneArray);
       for (jint i = 0; i < valueArray->size_; i++) {
         IOSObjectArray_Set(cloneArray, i, [((IOSByteArray *) nil_chk(IOSObjectArray_Get(valueArray, i))) clone]);
       }
     }
     else if ([value_ isKindOfClass:[IOSBooleanArray class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((IOSBooleanArray *) check_class_cast(value_, [IOSBooleanArray class])) clone]);
+      JreStrongAssign(&clone->value_, [((IOSBooleanArray *) check_class_cast(value_, [IOSBooleanArray class])) clone]);
     }
     else if ([value_ isKindOfClass:[IOSIntArray class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((IOSIntArray *) check_class_cast(value_, [IOSIntArray class])) clone]);
+      JreStrongAssign(&clone->value_, [((IOSIntArray *) check_class_cast(value_, [IOSIntArray class])) clone]);
     }
     else if ([value_ isKindOfClass:[IOSLongArray class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((IOSLongArray *) check_class_cast(value_, [IOSLongArray class])) clone]);
+      JreStrongAssign(&clone->value_, [((IOSLongArray *) check_class_cast(value_, [IOSLongArray class])) clone]);
     }
     else if ([value_ isKindOfClass:[IOSFloatArray class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((IOSFloatArray *) check_class_cast(value_, [IOSFloatArray class])) clone]);
+      JreStrongAssign(&clone->value_, [((IOSFloatArray *) check_class_cast(value_, [IOSFloatArray class])) clone]);
     }
     else if ([value_ isKindOfClass:[IOSDoubleArray class]]) {
-      ComGoogleProtobufNanoFieldData_set_value_(clone, [((IOSDoubleArray *) check_class_cast(value_, [IOSDoubleArray class])) clone]);
+      JreStrongAssign(&clone->value_, [((IOSDoubleArray *) check_class_cast(value_, [IOSDoubleArray class])) clone]);
     }
     else if ([IOSClass_arrayType(ComGoogleProtobufNanoMessageNano_class_(), 1) isInstance:value_]) {
       IOSObjectArray *valueArray = (IOSObjectArray *) check_class_cast(value_, [IOSObjectArray class]);
       IOSObjectArray *cloneArray = [IOSObjectArray arrayWithLength:valueArray->size_ type:ComGoogleProtobufNanoMessageNano_class_()];
-      ComGoogleProtobufNanoFieldData_set_value_(clone, cloneArray);
+      JreStrongAssign(&clone->value_, cloneArray);
       for (jint i = 0; i < valueArray->size_; i++) {
         IOSObjectArray_Set(cloneArray, i, [((ComGoogleProtobufNanoMessageNano *) nil_chk(IOSObjectArray_Get(valueArray, i))) clone]);
       }
@@ -241,7 +243,7 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
 
 - (void)dealloc {
   RELEASE_(cachedExtension_);
-  if (value_ != self) RELEASE_(value_);
+  RELEASE_(value_);
   RELEASE_(unknownFieldData_);
   [super dealloc];
 }
@@ -267,9 +269,9 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
     { "clone", NULL, "Lcom.google.protobuf.nano.FieldData;", 0x11, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "cachedExtension_", NULL, 0x2, "Lcom.google.protobuf.nano.Extension;", NULL, "Lcom/google/protobuf/nano/Extension<**>;",  },
-    { "value_", NULL, 0x2, "Ljava.lang.Object;", NULL, NULL,  },
-    { "unknownFieldData_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;",  },
+    { "cachedExtension_", NULL, 0x2, "Lcom.google.protobuf.nano.Extension;", NULL, "Lcom/google/protobuf/nano/Extension<**>;", .constantValue.asLong = 0 },
+    { "value_", NULL, 0x2, "Ljava.lang.Object;", NULL, NULL, .constantValue.asLong = 0 },
+    { "unknownFieldData_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;", .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoFieldData = { 2, "FieldData", "com.google.protobuf.nano", NULL, 0x0, 13, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleProtobufNanoFieldData;
@@ -279,8 +281,8 @@ __attribute__((unused)) static IOSByteArray *ComGoogleProtobufNanoFieldData_toBy
 
 void ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(ComGoogleProtobufNanoFieldData *self, ComGoogleProtobufNanoExtension *extension, id newValue) {
   NSObject_init(self);
-  ComGoogleProtobufNanoFieldData_set_cachedExtension_(self, extension);
-  ComGoogleProtobufNanoFieldData_set_value_(self, newValue);
+  JreStrongAssign(&self->cachedExtension_, extension);
+  JreStrongAssign(&self->value_, newValue);
 }
 
 ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(ComGoogleProtobufNanoExtension *extension, id newValue) {
@@ -291,7 +293,7 @@ ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_initWithComGo
 
 void ComGoogleProtobufNanoFieldData_init(ComGoogleProtobufNanoFieldData *self) {
   NSObject_init(self);
-  ComGoogleProtobufNanoFieldData_setAndConsume_unknownFieldData_(self, new_JavaUtilArrayList_init());
+  JreStrongAssignAndConsume(&self->unknownFieldData_, new_JavaUtilArrayList_init());
 }
 
 ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_init() {

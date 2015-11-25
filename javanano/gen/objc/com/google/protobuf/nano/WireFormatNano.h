@@ -26,18 +26,26 @@
 #define ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS 3
 #define ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_MASK 7
 
-/**
- @brief This class is used internally by the Protocol Buffer library and generated message implementations.
- It is public only because those generated messages do not reside in the <code>protobuf</code> package.  Others should not use this class directly. This class contains constants and helper functions useful for dealing with the Protocol Buffer wire format.
+/*!
+ @brief This class is used internally by the Protocol Buffer library and generated
+ message implementations.
+ It is public only because those generated messages
+ do not reside in the <code>protobuf</code> package.  Others should not use this
+ class directly.
+ This class contains constants and helper functions useful for dealing with
+ the Protocol Buffer wire format.
  @author kenton@@google.com Kenton Varda
  */
 @interface ComGoogleProtobufNanoWireFormatNano : NSObject
 
 #pragma mark Public
 
-/**
+/*!
  @brief Computes the array length of a repeated field.
- We assume that in the common case repeated fields are contiguously serialized but we still correctly handle interspersed values of a repeated field (but with extra allocations). Rewinds to current input position before returning.
+ We assume that in the common case repeated
+ fields are contiguously serialized but we still correctly handle interspersed values of a
+ repeated field (but with extra allocations).
+ Rewinds to current input position before returning.
  @param input stream input, pointing to the byte after the first tag
  @param tag repeated field tag just read
  @return length of array
@@ -46,14 +54,16 @@
 + (jint)getRepeatedFieldArrayLengthWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input
                                                                              withInt:(jint)tag;
 
-/**
+/*!
  @brief Given a tag value, determines the field number (the upper 29 bits).
  */
 + (jint)getTagFieldNumberWithInt:(jint)tag;
 
-/**
+/*!
  @brief Parses an unknown field.
- This implementation skips the field. <p>Generated messages will call this for unknown fields if the store_unknown_fields option is off.
+ This implementation skips the field.
+ <p>Generated messages will call this for unknown fields if the store_unknown_fields
+ option is off.
  @return true unless the tag is an end-group tag.
  */
 + (jboolean)parseUnknownFieldWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input
@@ -61,12 +71,12 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Given a tag value, determines the wire type (the lower 3 bits).
  */
 + (jint)getTagWireTypeWithInt:(jint)tag;
 
-/**
+/*!
  @brief Makes a tag value given a field number and wire type.
  */
 + (jint)makeTagWithInt:(jint)fieldNumber

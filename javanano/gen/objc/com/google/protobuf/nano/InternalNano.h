@@ -41,18 +41,25 @@
 #define ComGoogleProtobufNanoInternalNano_TYPE_SINT32 17
 #define ComGoogleProtobufNanoInternalNano_TYPE_SINT64 18
 
-/**
- @brief The classes contained within are used internally by the Protocol Buffer library and generated message implementations.
- They are public only because those generated messages do not reside in the <code>protobuf</code> package. Others should not use this class directly.
+/*!
+ @brief The classes contained within are used internally by the Protocol Buffer
+ library and generated message implementations.
+ They are public only because
+ those generated messages do not reside in the <code>protobuf</code> package.
+ Others should not use this class directly.
  @author kenton@@google.com (Kenton Varda)
  */
 @interface ComGoogleProtobufNanoInternalNano : NSObject
 
 #pragma mark Public
 
-/**
- @brief Helper called by generated code to construct default values for bytes fields.
- <p> This is a lot like #stringDefaultValue , but for bytes fields. In this case we only need the second of the two hacks -- allowing us to embed raw bytes as a string literal with ISO-8859-1 encoding.
+/*!
+ @brief Helper called by generated code to construct default values for bytes
+ fields.
+ <p>
+ This is a lot like <code>stringDefaultValue</code>, but for bytes fields.
+ In this case we only need the second of the two hacks -- allowing us to
+ embed raw bytes as a string literal with ISO-8859-1 encoding.
  */
 + (IOSByteArray *)bytesDefaultValueWithNSString:(NSString *)bytes;
 
@@ -64,114 +71,141 @@
                                    withInt:(jint)keyType
                                    withInt:(jint)valueType;
 
-/**
- @brief Helper function to convert a string into UTF-8 while turning the UnsupportedEncodingException to a RuntimeException.
+/*!
+ @brief Helper function to convert a string into UTF-8 while turning the
+ UnsupportedEncodingException to a RuntimeException.
  */
 + (IOSByteArray *)copyFromUtf8WithNSString:(NSString *)text OBJC_METHOD_FAMILY_NONE;
 
-/**
- @brief Checks repeated boolean field equality; null-value and 0-length fields are considered equal.
+/*!
+ @brief Checks repeated boolean field equality; null-value and 0-length fields are
+ considered equal.
  */
 + (jboolean)equalsWithBooleanArray:(IOSBooleanArray *)field1
                   withBooleanArray:(IOSBooleanArray *)field2;
 
-/**
+/*!
  @brief Checks repeated bytes field equality.
- Only non-null elements are tested. Returns true if the two fields have the same sequence of non-null elements. Null-value fields and fields of any length with only null elements are considered equal.
+ Only non-null elements are tested.
+ Returns true if the two fields have the same sequence of non-null
+ elements. Null-value fields and fields of any length with only null
+ elements are considered equal.
  */
 + (jboolean)equalsWithByteArray2:(IOSObjectArray *)field1
                   withByteArray2:(IOSObjectArray *)field2;
 
-/**
- @brief Checks repeated double field equality; null-value and 0-length fields are considered equal.
+/*!
+ @brief Checks repeated double field equality; null-value and 0-length fields are
+ considered equal.
  */
 + (jboolean)equalsWithDoubleArray:(IOSDoubleArray *)field1
                   withDoubleArray:(IOSDoubleArray *)field2;
 
-/**
- @brief Checks repeated float field equality; null-value and 0-length fields are considered equal.
+/*!
+ @brief Checks repeated float field equality; null-value and 0-length fields are
+ considered equal.
  */
 + (jboolean)equalsWithFloatArray:(IOSFloatArray *)field1
                   withFloatArray:(IOSFloatArray *)field2;
 
-/**
- @brief Checks repeated int field equality; null-value and 0-length fields are considered equal.
+/*!
+ @brief Checks repeated int field equality; null-value and 0-length fields are
+ considered equal.
  */
 + (jboolean)equalsWithIntArray:(IOSIntArray *)field1
                   withIntArray:(IOSIntArray *)field2;
 
-/**
- @brief Checks repeated long field equality; null-value and 0-length fields are considered equal.
+/*!
+ @brief Checks repeated long field equality; null-value and 0-length fields are
+ considered equal.
  */
 + (jboolean)equalsWithLongArray:(IOSLongArray *)field1
                   withLongArray:(IOSLongArray *)field2;
 
-/**
- @brief Checks whether two Map are equal.
- We don't use the default equals method of Map because it compares by identity not by content for byte arrays.
+/*!
+ @brief Checks whether two <code>Map</code> are equal.
+ We don't use the default equals
+ method of <code>Map</code> because it compares by identity not by content for
+ byte arrays.
  */
 + (jboolean)equalsWithJavaUtilMap:(id<JavaUtilMap>)a
                   withJavaUtilMap:(id<JavaUtilMap>)b;
 
-/**
+/*!
  @brief Checks repeated string/message field equality.
- Only non-null elements are tested. Returns true if the two fields have the same sequence of non-null elements. Null-value fields and fields of any length with only null elements are considered equal.
+ Only non-null elements are
+ tested. Returns true if the two fields have the same sequence of non-null
+ elements. Null-value fields and fields of any length with only null
+ elements are considered equal.
  */
 + (jboolean)equalsWithNSObjectArray:(IOSObjectArray *)field1
                   withNSObjectArray:(IOSObjectArray *)field2;
 
-/**
+/*!
  @brief Computes the hash code of a repeated boolean field.
- Null-value and 0-length fields have the same hash code.
+ Null-value and 0-length
+ fields have the same hash code.
  */
 + (jint)hashCodeWithBooleanArray:(IOSBooleanArray *)field;
 
-/**
+/*!
  @brief Computes the hash code of a repeated bytes field.
- Only the sequence of all non-null elements are used in the computation. Null-value fields and fields of any length with only null elements have the same hash code.
+ Only the sequence of all
+ non-null elements are used in the computation. Null-value fields and fields
+ of any length with only null elements have the same hash code.
  */
 + (jint)hashCodeWithByteArray2:(IOSObjectArray *)field;
 
-/**
+/*!
  @brief Computes the hash code of a repeated double field.
- Null-value and 0-length fields have the same hash code.
+ Null-value and 0-length
+ fields have the same hash code.
  */
 + (jint)hashCodeWithDoubleArray:(IOSDoubleArray *)field;
 
-/**
+/*!
  @brief Computes the hash code of a repeated float field.
- Null-value and 0-length fields have the same hash code.
+ Null-value and 0-length
+ fields have the same hash code.
  */
 + (jint)hashCodeWithFloatArray:(IOSFloatArray *)field;
 
-/**
+/*!
  @brief Computes the hash code of a repeated int field.
- Null-value and 0-length fields have the same hash code.
+ Null-value and 0-length
+ fields have the same hash code.
  */
 + (jint)hashCodeWithIntArray:(IOSIntArray *)field;
 
-/**
+/*!
  @brief Computes the hash code of a repeated long field.
- Null-value and 0-length fields have the same hash code.
+ Null-value and 0-length
+ fields have the same hash code.
  */
 + (jint)hashCodeWithLongArray:(IOSLongArray *)field;
 
 + (jint)hashCodeWithJavaUtilMap:(id<JavaUtilMap>)map;
 
-/**
+/*!
  @brief Computes the hash code of a repeated string/message field.
- Only the sequence of all non-null elements are used in the computation. Null-value fields and fields of any length with only null elements have the same hash code.
+ Only the
+ sequence of all non-null elements are used in the computation. Null-value
+ fields and fields of any length with only null elements have the same hash
+ code.
  */
 + (jint)hashCodeWithNSObjectArray:(IOSObjectArray *)field;
 
-/**
+/*!
  @brief Merges the map entry into the map field.
- Note this is only supposed to be called by generated messages.
- @param map the map field; may be null, in which case a map will be instantiated using the MapFactories.MapFactory
+ Note this is only supposed to
+ be called by generated messages.
+ @param map the map field; may be null, in which case a map will be
+ instantiated using the <code>MapFactories.MapFactory</code>
  @param input the input byte buffer
  @param keyType key type, as defined in InternalNano.TYPE_
  @param valueType value type, as defined in InternalNano.TYPE_
- @param value an new instance of the value, if the value is a TYPE_MESSAGE; otherwise this parameter can be null and will be ignored.
+ @param value an new instance of the value, if the value is a TYPE_MESSAGE;
+ otherwise this parameter can be null and will be ignored.
  @param keyTag wire tag for the key
  @param valueTag wire tag for the value
  @return the map field
@@ -192,9 +226,33 @@
                                                                     withInt:(jint)keyType
                                                                     withInt:(jint)valueType;
 
-/**
- @brief Helper called by generated code to construct default values for string fields.
- <p> The protocol compiler does not actually contain a UTF-8 decoder -- it just pushes UTF-8-encoded text around without touching it.  The one place where this presents a problem is when generating Java string literals. Unicode characters in the string literal would normally need to be encoded using a Unicode escape sequence, which would require decoding them. To get around this, protoc instead embeds the UTF-8 bytes into the generated code and leaves it to the runtime library to decode them. <p> It gets worse, though.  If protoc just generated a byte array, like: new byte[] {0x12, 0x34, 0x56, 0x78} Java actually generates *code* which allocates an array and then fills in each value.  This is much less efficient than just embedding the bytes directly into the bytecode.  To get around this, we need another work-around.  String literals are embedded directly, so protoc actually generates a string literal corresponding to the bytes.  The easiest way to do this is to use the ISO-8859-1 character set, which corresponds to the first 256 characters of the Unicode range.  Protoc can then use good old CEscape to generate the string. <p> So we have a string literal which represents a set of bytes which represents another string.  This function -- stringDefaultValue -- converts from the generated string to the string we actually want.  The generated code calls this automatically.
+/*!
+ @brief Helper called by generated code to construct default values for string
+ fields.
+ <p>
+ The protocol compiler does not actually contain a UTF-8 decoder -- it
+ just pushes UTF-8-encoded text around without touching it.  The one place
+ where this presents a problem is when generating Java string literals.
+ Unicode characters in the string literal would normally need to be encoded
+ using a Unicode escape sequence, which would require decoding them.
+ To get around this, protoc instead embeds the UTF-8 bytes into the
+ generated code and leaves it to the runtime library to decode them.
+ <p>
+ It gets worse, though.  If protoc just generated a byte array, like:
+ new byte[] {0x12, 0x34, 0x56, 0x78}
+ Java actually generates *code* which allocates an array and then fills
+ in each value.  This is much less efficient than just embedding the bytes
+ directly into the bytecode.  To get around this, we need another
+ work-around.  String literals are embedded directly, so protoc actually
+ generates a string literal corresponding to the bytes.  The easiest way
+ to do this is to use the ISO-8859-1 character set, which corresponds to
+ the first 256 characters of the Unicode range.  Protoc can then use
+ good old CEscape to generate the string.
+ <p>
+ So we have a string literal which represents a set of bytes which
+ represents another string.  This function -- stringDefaultValue --
+ converts from the generated string to the string we actually want.  The
+ generated code calls this automatically.
  */
 + (NSString *)stringDefaultValueWithNSString:(NSString *)bytes;
 

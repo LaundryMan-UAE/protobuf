@@ -11,7 +11,7 @@
 @protocol ComGoogleProtobufNanoMapFactories_MapFactory;
 @protocol JavaUtilMap;
 
-/**
+/*!
  @brief Utility class for maps support.
  */
 @interface ComGoogleProtobufNanoMapFactories : NSObject

@@ -41,21 +41,32 @@
 
 - (instancetype)initWithJavaNioByteBuffer:(JavaNioByteBuffer *)buffer;
 
-/**
- @brief Returns the number of bytes in the UTF-8-encoded form of <code>sequence</code> .
- For a string, this method is equivalent to <code>string.getBytes(UTF_8).length</code> , but is more efficient in both time and space.
- @throws IllegalArgumentException if <code>sequence</code> contains ill-formed UTF-16 (unpaired surrogates)
+/*!
+ @brief Returns the number of bytes in the UTF-8-encoded form of <code>sequence</code>.
+ For a string,
+ this method is equivalent to <code>string.getBytes(UTF_8).length</code>, but is more efficient in
+ both time and space.
+ @throws IllegalArgumentException if <code>sequence</code> contains ill-formed UTF-16 (unpaired
+ surrogates)
  */
 + (jint)encodedLengthWithJavaLangCharSequence:(id<JavaLangCharSequence>)sequence;
 
 + (jint)encodedLengthGeneralWithJavaLangCharSequence:(id<JavaLangCharSequence>)sequence
                                              withInt:(jint)start;
 
-/**
- @brief Encodes <code>sequence</code> into UTF-8, in <code>byteBuffer</code> .
- For a string, this method is equivalent to <code>buffer.put(string.getBytes(UTF_8))</code> , but is more efficient in both time and space. Bytes are written starting at the current position. This method requires paired surrogates, and therefore does not support chunking. <p>To ensure sufficient space in the output buffer, either call #encodedLength to compute the exact amount needed, or leave room for <code>3 * sequence.length()</code> , which is the largest possible number of bytes that any input can be encoded to.
- @throws IllegalArgumentException if <code>sequence</code> contains ill-formed UTF-16 (unpaired surrogates)
- @throws BufferOverflowException if <code>sequence</code> encoded in UTF-8 does not fit in <code>byteBuffer</code> 's remaining space.
+/*!
+ @brief Encodes <code>sequence</code> into UTF-8, in <code>byteBuffer</code>.
+ For a string, this method is
+ equivalent to <code>buffer.put(string.getBytes(UTF_8))</code>, but is more efficient in both time
+ and space. Bytes are written starting at the current position. This method requires paired
+ surrogates, and therefore does not support chunking.
+ <p>To ensure sufficient space in the output buffer, either call <code>encodedLength</code> to
+ compute the exact amount needed, or leave room for <code>3 * sequence.length()</code>, which is the
+ largest possible number of bytes that any input can be encoded to.
+ @throws IllegalArgumentException if <code>sequence</code> contains ill-formed UTF-16 (unpaired
+ surrogates)
+ @throws BufferOverflowException if <code>sequence</code> encoded in UTF-8 does not fit in
+ <code>byteBuffer</code>'s remaining space.
  @throws ReadOnlyBufferException if <code>byteBuffer</code> is a read-only buffer.
  */
 + (void)encodeWithJavaLangCharSequence:(id<JavaLangCharSequence>)sequence
@@ -575,14 +586,14 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
 }
 
 - (void)writeRawVarint32WithInt:(jint)value {
-  while (YES) {
+  while (true) {
     if ((value & ~(jint) 0x7F) == 0) {
       [self writeRawByteWithInt:value];
       return;
     }
     else {
       [self writeRawByteWithInt:(value & (jint) 0x7F) | (jint) 0x80];
-      URShiftAssignInt(&value, 7);
+      JreURShiftAssignInt(&value, 7);
     }
   }
 }
@@ -592,14 +603,14 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
 }
 
 - (void)writeRawVarint64WithLong:(jlong)value {
-  while (YES) {
+  while (true) {
     if ((value & ~(jlong) 0x7FLL) == 0) {
       [self writeRawByteWithInt:(jint) value];
       return;
     }
     else {
       [self writeRawByteWithInt:((jint) value & (jint) 0x7F) | (jint) 0x80];
-      URShiftAssignLong(&value, 7);
+      JreURShiftAssignLong(&value, 7);
     }
   }
 }
@@ -848,7 +859,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
   };
   static const J2ObjcFieldInfo fields[] = {
     { "MAX_UTF8_EXPANSION", "MAX_UTF8_EXPANSION", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_MAX_UTF8_EXPANSION },
-    { "buffer_", NULL, 0x12, "Ljava.nio.ByteBuffer;", NULL, NULL,  },
+    { "buffer_", NULL, 0x12, "Ljava.nio.ByteBuffer;", NULL, NULL, .constantValue.asLong = 0 },
     { "LITTLE_ENDIAN_32_SIZE", "LITTLE_ENDIAN_32_SIZE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_LITTLE_ENDIAN_32_SIZE },
     { "LITTLE_ENDIAN_64_SIZE", "LITTLE_ENDIAN_64_SIZE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_LITTLE_ENDIAN_64_SIZE },
   };
@@ -871,8 +882,8 @@ ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOu
 
 void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(ComGoogleProtobufNanoCodedOutputByteBufferNano *self, JavaNioByteBuffer *buffer) {
   NSObject_init(self);
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_set_buffer_(self, buffer);
-  [((JavaNioByteBuffer *) nil_chk(self->buffer_)) orderWithJavaNioByteOrder:JavaNioByteOrder_get_LITTLE_ENDIAN__()];
+  JreStrongAssign(&self->buffer_, buffer);
+  [((JavaNioByteBuffer *) nil_chk(self->buffer_)) orderWithJavaNioByteOrder:JreLoadStatic(JavaNioByteOrder, LITTLE_ENDIAN__)];
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer) {
@@ -902,7 +913,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthWithJavaLangCha
   for (; i < utf16Length; i++) {
     jchar c = [sequence charAtWithInt:i];
     if (c < (jint) 0x800) {
-      utf8Length += (URShift32(((jint) 0x7f - c), 31));
+      utf8Length += (JreURShift32(((jint) 0x7f - c), 31));
     }
     else {
       utf8Length += ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthGeneralWithJavaLangCharSequence_withInt_(sequence, i);
@@ -910,7 +921,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthWithJavaLangCha
     }
   }
   if (utf8Length < utf16Length) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$J", @"UTF-8 length does not fit in int: ", (utf8Length + (LShift64(1LL, 32))))) autorelease];
+    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$J", @"UTF-8 length does not fit in int: ", (utf8Length + (JreLShift64(1LL, 32))))) autorelease];
   }
   return utf8Length;
 }
@@ -922,7 +933,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthGeneralWithJava
   for (jint i = start; i < utf16Length; i++) {
     jchar c = [sequence charAtWithInt:i];
     if (c < (jint) 0x800) {
-      utf8Length += URShift32(((jint) 0x7f - c), 31);
+      utf8Length += JreURShift32(((jint) 0x7f - c), 31);
     }
     else {
       utf8Length += 2;
@@ -968,12 +979,12 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeDirectWithJavaLangChar
       [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) c];
     }
     else if (c < (jint) 0x800) {
-      [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((LShift32((jint) 0xF, 6)) | (URShift32(c, 6)))];
+      [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((JreLShift32((jint) 0xF, 6)) | (JreURShift32(c, 6)))];
       [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & c))];
     }
     else if (c < JavaLangCharacter_MIN_SURROGATE || JavaLangCharacter_MAX_SURROGATE < c) {
-      [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((LShift32((jint) 0xF, 5)) | (URShift32(c, 12)))];
-      [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & (URShift32(c, 6))))];
+      [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((JreLShift32((jint) 0xF, 5)) | (JreURShift32(c, 12)))];
+      [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & (JreURShift32(c, 6))))];
       [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & c))];
     }
     else {
@@ -982,9 +993,9 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeDirectWithJavaLangChar
         @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", (i - 1))) autorelease];
       }
       jint codePoint = JavaLangCharacter_toCodePointWithChar_withChar_(c, low);
-      [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((LShift32((jint) 0xF, 4)) | (URShift32(codePoint, 18)))];
-      [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & (URShift32(codePoint, 12))))];
-      [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & (URShift32(codePoint, 6))))];
+      [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((JreLShift32((jint) 0xF, 4)) | (JreURShift32(codePoint, 18)))];
+      [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & (JreURShift32(codePoint, 12))))];
+      [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & (JreURShift32(codePoint, 6))))];
       [byteBuffer putWithByte:(jbyte) ((jint) 0x80 | ((jint) 0x3F & codePoint))];
     }
   }
@@ -1009,12 +1020,12 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequen
       *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) c;
     }
     else if (c < (jint) 0x800 && j <= limit - 2) {
-      *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((LShift32((jint) 0xF, 6)) | (URShift32(c, 6)));
+      *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((JreLShift32((jint) 0xF, 6)) | (JreURShift32(c, 6)));
       *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & c));
     }
     else if ((c < JavaLangCharacter_MIN_SURROGATE || JavaLangCharacter_MAX_SURROGATE < c) && j <= limit - 3) {
-      *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((LShift32((jint) 0xF, 5)) | (URShift32(c, 12)));
-      *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & (URShift32(c, 6))));
+      *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((JreLShift32((jint) 0xF, 5)) | (JreURShift32(c, 12)));
+      *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & (JreURShift32(c, 6))));
       *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & c));
     }
     else if (j <= limit - 4) {
@@ -1023,9 +1034,9 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequen
         @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", (i - 1))) autorelease];
       }
       jint codePoint = JavaLangCharacter_toCodePointWithChar_withChar_(c, low);
-      *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((LShift32((jint) 0xF, 4)) | (URShift32(codePoint, 18)));
-      *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & (URShift32(codePoint, 12))));
-      *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & (URShift32(codePoint, 6))));
+      *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((JreLShift32((jint) 0xF, 4)) | (JreURShift32(codePoint, 18)));
+      *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & (JreURShift32(codePoint, 12))));
+      *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & (JreURShift32(codePoint, 6))));
       *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & codePoint));
     }
     else {
@@ -1229,35 +1240,35 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_computeTagSizeWithInt_(jint 
 
 jint ComGoogleProtobufNanoCodedOutputByteBufferNano_computeRawVarint32SizeWithInt_(jint value) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initialize();
-  if ((value & (LShift32((jint) 0xffffffff, 7))) == 0) return 1;
-  if ((value & (LShift32((jint) 0xffffffff, 14))) == 0) return 2;
-  if ((value & (LShift32((jint) 0xffffffff, 21))) == 0) return 3;
-  if ((value & (LShift32((jint) 0xffffffff, 28))) == 0) return 4;
+  if ((value & (JreLShift32((jint) 0xffffffff, 7))) == 0) return 1;
+  if ((value & (JreLShift32((jint) 0xffffffff, 14))) == 0) return 2;
+  if ((value & (JreLShift32((jint) 0xffffffff, 21))) == 0) return 3;
+  if ((value & (JreLShift32((jint) 0xffffffff, 28))) == 0) return 4;
   return 5;
 }
 
 jint ComGoogleProtobufNanoCodedOutputByteBufferNano_computeRawVarint64SizeWithLong_(jlong value) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initialize();
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 7))) == 0) return 1;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 14))) == 0) return 2;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 21))) == 0) return 3;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 28))) == 0) return 4;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 35))) == 0) return 5;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 42))) == 0) return 6;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 49))) == 0) return 7;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 56))) == 0) return 8;
-  if ((value & (LShift64((jlong) 0xffffffffffffffffLL, 63))) == 0) return 9;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 7))) == 0) return 1;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 14))) == 0) return 2;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 21))) == 0) return 3;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 28))) == 0) return 4;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 35))) == 0) return 5;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 42))) == 0) return 6;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 49))) == 0) return 7;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 56))) == 0) return 8;
+  if ((value & (JreLShift64((jlong) 0xffffffffffffffffLL, 63))) == 0) return 9;
   return 10;
 }
 
 jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeZigZag32WithInt_(jint n) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initialize();
-  return (LShift32(n, 1)) ^ (RShift32(n, 31));
+  return (JreLShift32(n, 1)) ^ (JreRShift32(n, 31));
 }
 
 jlong ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeZigZag64WithLong_(jlong n) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initialize();
-  return (LShift64(n, 1)) ^ (RShift64(n, 63));
+  return (JreLShift64(n, 1)) ^ (JreRShift64(n, 63));
 }
 
 jint ComGoogleProtobufNanoCodedOutputByteBufferNano_computeFieldSizeWithInt_withInt_withId_(jint number, jint type, id object) {

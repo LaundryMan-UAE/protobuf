@@ -12,9 +12,10 @@
 @class ComGoogleProtobufNanoExtension;
 @class ComGoogleProtobufNanoUnknownFieldData;
 
-/**
+/*!
  @brief Stores unknown fields.
- These might be extensions or fields that the generated API doesn't know about yet.
+ These might be extensions or fields that the generated API doesn't
+ know about yet.
  */
 @interface ComGoogleProtobufNanoFieldData : NSObject < NSCopying >
 

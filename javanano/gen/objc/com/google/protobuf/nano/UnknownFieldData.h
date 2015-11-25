@@ -11,16 +11,18 @@
 @class ComGoogleProtobufNanoCodedOutputByteBufferNano;
 @class IOSByteArray;
 
-/**
+/*!
  @brief Stores unknown fields.
- These might be extensions or fields that the generated API doesn't know about yet.
+ These might be extensions or fields that the generated
+ API doesn't know about yet.
  @author bduff@@google.com (Brian Duff)
  */
 @interface ComGoogleProtobufNanoUnknownFieldData : NSObject {
  @public
   jint tag_;
-  /**
-   @brief Important: this should be treated as immutable, even though it's possible to change the array values.
+  /*!
+   @brief Important: this should be treated as immutable, even though it's possible
+ to change the array values.
    */
   IOSByteArray *bytes_;
 }

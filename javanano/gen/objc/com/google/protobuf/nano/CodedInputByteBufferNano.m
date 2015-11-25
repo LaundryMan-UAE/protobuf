@@ -19,7 +19,6 @@
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
 #include "java/lang/System.h"
-#include "java/nio/charset/Charset.h"
 
 #define ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_RECURSION_LIMIT 64
 #define ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_SIZE_LIMIT 67108864
@@ -32,16 +31,16 @@
   jint bufferSizeAfterLimit_;
   jint bufferPos_;
   jint lastTag_;
-  /**
+  /*!
    @brief The absolute position of the end of the current message.
    */
   jint currentLimit_;
-  /**
+  /*!
    @brief See setRecursionLimit()
    */
   jint recursionDepth_;
   jint recursionLimit_;
-  /**
+  /*!
    @brief See setSizeLimit()
    */
   jint sizeLimit_;
@@ -101,29 +100,29 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
   switch (ComGoogleProtobufNanoWireFormatNano_getTagWireTypeWithInt_(tag)) {
     case ComGoogleProtobufNanoWireFormatNano_WIRETYPE_VARINT:
     [self readInt32];
-    return YES;
+    return true;
     case ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED64:
     [self readRawLittleEndian64];
-    return YES;
+    return true;
     case ComGoogleProtobufNanoWireFormatNano_WIRETYPE_LENGTH_DELIMITED:
     [self skipRawBytesWithInt:[self readRawVarint32]];
-    return YES;
+    return true;
     case ComGoogleProtobufNanoWireFormatNano_WIRETYPE_START_GROUP:
     [self skipMessage];
     [self checkLastTagWasWithInt:ComGoogleProtobufNanoWireFormatNano_makeTagWithInt_withInt_(ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(tag), ComGoogleProtobufNanoWireFormatNano_WIRETYPE_END_GROUP)];
-    return YES;
+    return true;
     case ComGoogleProtobufNanoWireFormatNano_WIRETYPE_END_GROUP:
-    return NO;
+    return false;
     case ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED32:
     [self readRawLittleEndian32];
-    return YES;
+    return true;
     default:
     @throw ComGoogleProtobufNanoInvalidProtocolBufferNanoException_invalidWireType();
   }
 }
 
 - (void)skipMessage {
-  while (YES) {
+  while (true) {
     jint tag = [self readTag];
     if (tag == 0 || ![self skipFieldWithInt:tag]) {
       return;
@@ -166,12 +165,12 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 - (NSString *)readString {
   jint size = [self readRawVarint32];
   if (size <= (bufferSize_ - bufferPos_) && size > 0) {
-    NSString *result = [NSString stringWithBytes:buffer_ offset:bufferPos_ length:size charset:ComGoogleProtobufNanoInternalNano_get_UTF_8_()];
+    NSString *result = [NSString stringWithBytes:buffer_ offset:bufferPos_ length:size charset:JreLoadStatic(ComGoogleProtobufNanoInternalNano, UTF_8_)];
     bufferPos_ += size;
     return result;
   }
   else {
-    return [NSString stringWithBytes:[self readRawBytesWithInt:size] charset:ComGoogleProtobufNanoInternalNano_get_UTF_8_()];
+    return [NSString stringWithBytes:[self readRawBytesWithInt:size] charset:JreLoadStatic(ComGoogleProtobufNanoInternalNano, UTF_8_)];
   }
 }
 
@@ -208,7 +207,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
     return result;
   }
   else if (size == 0) {
-    return ComGoogleProtobufNanoWireFormatNano_get_EMPTY_BYTES_();
+    return JreLoadStatic(ComGoogleProtobufNanoWireFormatNano, EMPTY_BYTES_);
   }
   else {
     return [self readRawBytesWithInt:size];
@@ -246,21 +245,21 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
   }
   jint result = tmp & (jint) 0x7f;
   if ((tmp = [self readRawByte]) >= 0) {
-    result |= LShift32(tmp, 7);
+    result |= JreLShift32(tmp, 7);
   }
   else {
-    result |= LShift32((tmp & (jint) 0x7f), 7);
+    result |= JreLShift32((tmp & (jint) 0x7f), 7);
     if ((tmp = [self readRawByte]) >= 0) {
-      result |= LShift32(tmp, 14);
+      result |= JreLShift32(tmp, 14);
     }
     else {
-      result |= LShift32((tmp & (jint) 0x7f), 14);
+      result |= JreLShift32((tmp & (jint) 0x7f), 14);
       if ((tmp = [self readRawByte]) >= 0) {
-        result |= LShift32(tmp, 21);
+        result |= JreLShift32(tmp, 21);
       }
       else {
-        result |= LShift32((tmp & (jint) 0x7f), 21);
-        result |= LShift32((tmp = [self readRawByte]), 28);
+        result |= JreLShift32((tmp & (jint) 0x7f), 21);
+        result |= JreLShift32((tmp = [self readRawByte]), 28);
         if (tmp < 0) {
           for (jint i = 0; i < 5; i++) {
             if ([self readRawByte] >= 0) {
@@ -280,7 +279,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
   jlong result = 0;
   while (shift < 64) {
     jbyte b = [self readRawByte];
-    result |= LShift64((jlong) (b & (jint) 0x7F), shift);
+    result |= JreLShift64((jlong) (b & (jint) 0x7F), shift);
     if ((b & (jint) 0x80) == 0) {
       return result;
     }
@@ -294,7 +293,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
   jbyte b2 = [self readRawByte];
   jbyte b3 = [self readRawByte];
   jbyte b4 = [self readRawByte];
-  return ((b1 & (jint) 0xff)) | (LShift32((b2 & (jint) 0xff), 8)) | (LShift32((b3 & (jint) 0xff), 16)) | (LShift32((b4 & (jint) 0xff), 24));
+  return ((b1 & (jint) 0xff)) | (JreLShift32((b2 & (jint) 0xff), 8)) | (JreLShift32((b3 & (jint) 0xff), 16)) | (JreLShift32((b4 & (jint) 0xff), 24));
 }
 
 - (jlong)readRawLittleEndian64 {
@@ -306,7 +305,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
   jbyte b6 = [self readRawByte];
   jbyte b7 = [self readRawByte];
   jbyte b8 = [self readRawByte];
-  return (((jlong) b1 & (jint) 0xff)) | (LShift64(((jlong) b2 & (jint) 0xff), 8)) | (LShift64(((jlong) b3 & (jint) 0xff), 16)) | (LShift64(((jlong) b4 & (jint) 0xff), 24)) | (LShift64(((jlong) b5 & (jint) 0xff), 32)) | (LShift64(((jlong) b6 & (jint) 0xff), 40)) | (LShift64(((jlong) b7 & (jint) 0xff), 48)) | (LShift64(((jlong) b8 & (jint) 0xff), 56));
+  return (((jlong) b1 & (jint) 0xff)) | (JreLShift64(((jlong) b2 & (jint) 0xff), 8)) | (JreLShift64(((jlong) b3 & (jint) 0xff), 16)) | (JreLShift64(((jlong) b4 & (jint) 0xff), 24)) | (JreLShift64(((jlong) b5 & (jint) 0xff), 32)) | (JreLShift64(((jlong) b6 & (jint) 0xff), 40)) | (JreLShift64(((jlong) b7 & (jint) 0xff), 48)) | (JreLShift64(((jlong) b8 & (jint) 0xff), 56));
 }
 
 + (jint)decodeZigZag32WithInt:(jint)n {
@@ -387,7 +386,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 - (IOSByteArray *)getDataWithInt:(jint)offset
                          withInt:(jint)length {
   if (length == 0) {
-    return ComGoogleProtobufNanoWireFormatNano_get_EMPTY_BYTES_();
+    return JreLoadStatic(ComGoogleProtobufNanoWireFormatNano, EMPTY_BYTES_);
   }
   IOSByteArray *copy_ = [IOSByteArray arrayWithLength:length];
   jint start = bufferStart_ + offset;
@@ -541,16 +540,16 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
     { "readPrimitiveFieldWithInt:", "readPrimitiveField", "Ljava.lang.Object;", 0x0, "Ljava.io.IOException;", NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "buffer_", NULL, 0x12, "[B", NULL, NULL,  },
-    { "bufferStart_", NULL, 0x2, "I", NULL, NULL,  },
-    { "bufferSize_", NULL, 0x2, "I", NULL, NULL,  },
-    { "bufferSizeAfterLimit_", NULL, 0x2, "I", NULL, NULL,  },
-    { "bufferPos_", NULL, 0x2, "I", NULL, NULL,  },
-    { "lastTag_", NULL, 0x2, "I", NULL, NULL,  },
-    { "currentLimit_", NULL, 0x2, "I", NULL, NULL,  },
-    { "recursionDepth_", NULL, 0x2, "I", NULL, NULL,  },
-    { "recursionLimit_", NULL, 0x2, "I", NULL, NULL,  },
-    { "sizeLimit_", NULL, 0x2, "I", NULL, NULL,  },
+    { "buffer_", NULL, 0x12, "[B", NULL, NULL, .constantValue.asLong = 0 },
+    { "bufferStart_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "bufferSize_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "bufferSizeAfterLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "bufferPos_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "lastTag_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "currentLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "recursionDepth_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "recursionLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "sizeLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
     { "DEFAULT_RECURSION_LIMIT", "DEFAULT_RECURSION_LIMIT", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_RECURSION_LIMIT },
     { "DEFAULT_SIZE_LIMIT", "DEFAULT_SIZE_LIMIT", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_SIZE_LIMIT },
   };
@@ -572,12 +571,12 @@ ComGoogleProtobufNanoCodedInputByteBufferNano *ComGoogleProtobufNanoCodedInputBy
 
 jint ComGoogleProtobufNanoCodedInputByteBufferNano_decodeZigZag32WithInt_(jint n) {
   ComGoogleProtobufNanoCodedInputByteBufferNano_initialize();
-  return (URShift32(n, 1)) ^ -(n & 1);
+  return (JreURShift32(n, 1)) ^ -(n & 1);
 }
 
 jlong ComGoogleProtobufNanoCodedInputByteBufferNano_decodeZigZag64WithLong_(jlong n) {
   ComGoogleProtobufNanoCodedInputByteBufferNano_initialize();
-  return (URShift64(n, 1)) ^ -(n & 1);
+  return (JreURShift64(n, 1)) ^ -(n & 1);
 }
 
 void ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(ComGoogleProtobufNanoCodedInputByteBufferNano *self, IOSByteArray *buffer, jint off, jint len) {
@@ -585,7 +584,7 @@ void ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_wit
   self->currentLimit_ = JavaLangInteger_MAX_VALUE;
   self->recursionLimit_ = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_RECURSION_LIMIT;
   self->sizeLimit_ = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_SIZE_LIMIT;
-  ComGoogleProtobufNanoCodedInputByteBufferNano_set_buffer_(self, buffer);
+  JreStrongAssign(&self->buffer_, buffer);
   self->bufferStart_ = off;
   self->bufferSize_ = off + len;
   self->bufferPos_ = off;

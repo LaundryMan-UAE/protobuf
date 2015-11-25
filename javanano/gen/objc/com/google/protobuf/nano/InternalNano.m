@@ -59,10 +59,12 @@ id ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_;
 
 @implementation ComGoogleProtobufNanoInternalNano
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoInternalNano_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (NSString *)stringDefaultValueWithNSString:(NSString *)bytes {
   return ComGoogleProtobufNanoInternalNano_stringDefaultValueWithNSString_(bytes);
@@ -194,9 +196,9 @@ id ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_;
 
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoInternalNano class]) {
-    JreStrongAssign(&ComGoogleProtobufNanoInternalNano_UTF_8_, nil, JavaNioCharsetCharset_forNameWithNSString_(@"UTF-8"));
-    JreStrongAssign(&ComGoogleProtobufNanoInternalNano_ISO_8859_1_, nil, JavaNioCharsetCharset_forNameWithNSString_(@"ISO-8859-1"));
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_, nil, new_NSObject_init());
+    JreStrongAssign(&ComGoogleProtobufNanoInternalNano_UTF_8_, JavaNioCharsetCharset_forNameWithNSString_(@"UTF-8"));
+    JreStrongAssign(&ComGoogleProtobufNanoInternalNano_ISO_8859_1_, JavaNioCharsetCharset_forNameWithNSString_(@"ISO-8859-1"));
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_, new_NSObject_init());
     J2OBJC_SET_INITIALIZED(ComGoogleProtobufNanoInternalNano)
   }
 }
@@ -250,9 +252,9 @@ id ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_;
     { "TYPE_SFIXED64", "TYPE_SFIXED64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SFIXED64 },
     { "TYPE_SINT32", "TYPE_SINT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SINT32 },
     { "TYPE_SINT64", "TYPE_SINT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SINT64 },
-    { "UTF_8_", NULL, 0x1c, "Ljava.nio.charset.Charset;", &ComGoogleProtobufNanoInternalNano_UTF_8_, NULL,  },
-    { "ISO_8859_1_", NULL, 0x1c, "Ljava.nio.charset.Charset;", &ComGoogleProtobufNanoInternalNano_ISO_8859_1_, NULL,  },
-    { "LAZY_INIT_LOCK_", NULL, 0x19, "Ljava.lang.Object;", &ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_, NULL,  },
+    { "UTF_8_", NULL, 0x1c, "Ljava.nio.charset.Charset;", &ComGoogleProtobufNanoInternalNano_UTF_8_, NULL, .constantValue.asLong = 0 },
+    { "ISO_8859_1_", NULL, 0x1c, "Ljava.nio.charset.Charset;", &ComGoogleProtobufNanoInternalNano_ISO_8859_1_, NULL, .constantValue.asLong = 0 },
+    { "LAZY_INIT_LOCK_", NULL, 0x19, "Ljava.lang.Object;", &ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoInternalNano = { 2, "InternalNano", "com.google.protobuf.nano", NULL, 0x11, 27, methods, 21, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleProtobufNanoInternalNano;
@@ -341,7 +343,7 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithByteArray2_withByteArray2_(
   jint length1 = field1 == nil ? 0 : field1->size_;
   jint index2 = 0;
   jint length2 = field2 == nil ? 0 : field2->size_;
-  while (YES) {
+  while (true) {
     while (index1 < length1 && IOSObjectArray_Get(nil_chk(field1), index1) == nil) {
       index1++;
     }
@@ -351,13 +353,13 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithByteArray2_withByteArray2_(
     jboolean atEndOf1 = index1 >= length1;
     jboolean atEndOf2 = index2 >= length2;
     if (atEndOf1 && atEndOf2) {
-      return YES;
+      return true;
     }
     else if (atEndOf1 != atEndOf2) {
-      return NO;
+      return false;
     }
     else if (!JavaUtilArrays_equalsWithByteArray_withByteArray_(IOSObjectArray_Get(nil_chk(field1), index1), IOSObjectArray_Get(nil_chk(field2), index2))) {
-      return NO;
+      return false;
     }
     index1++;
     index2++;
@@ -370,7 +372,7 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithNSObjectArray_withNSObjectA
   jint length1 = field1 == nil ? 0 : field1->size_;
   jint index2 = 0;
   jint length2 = field2 == nil ? 0 : field2->size_;
-  while (YES) {
+  while (true) {
     while (index1 < length1 && IOSObjectArray_Get(nil_chk(field1), index1) == nil) {
       index1++;
     }
@@ -380,13 +382,13 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithNSObjectArray_withNSObjectA
     jboolean atEndOf1 = index1 >= length1;
     jboolean atEndOf2 = index2 >= length2;
     if (atEndOf1 && atEndOf2) {
-      return YES;
+      return true;
     }
     else if (atEndOf1 != atEndOf2) {
-      return NO;
+      return false;
     }
     else if (![nil_chk(IOSObjectArray_Get(nil_chk(field1), index1)) isEqual:IOSObjectArray_Get(nil_chk(field2), index2)]) {
-      return NO;
+      return false;
     }
     index1++;
     index2++;
@@ -446,9 +448,9 @@ id ComGoogleProtobufNanoInternalNano_primitiveDefaultValueWithInt_(jint type) {
   ComGoogleProtobufNanoInternalNano_initialize();
   switch (type) {
     case ComGoogleProtobufNanoInternalNano_TYPE_BOOL:
-    return JavaLangBoolean_get_FALSE__();
+    return JreLoadStatic(JavaLangBoolean, FALSE__);
     case ComGoogleProtobufNanoInternalNano_TYPE_BYTES:
-    return ComGoogleProtobufNanoWireFormatNano_get_EMPTY_BYTES_();
+    return JreLoadStatic(ComGoogleProtobufNanoWireFormatNano, EMPTY_BYTES_);
     case ComGoogleProtobufNanoInternalNano_TYPE_STRING:
     return @"";
     case ComGoogleProtobufNanoInternalNano_TYPE_FLOAT:
@@ -481,7 +483,7 @@ id<JavaUtilMap> ComGoogleProtobufNanoInternalNano_mergeMapEntryWithComGoogleProt
   jint length = [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readRawVarint32];
   jint oldLimit = [input pushLimitWithInt:length];
   id key = nil;
-  while (YES) {
+  while (true) {
     jint tag = [input readTag];
     if (tag == 0) {
       break;
@@ -550,7 +552,7 @@ jint ComGoogleProtobufNanoInternalNano_computeMapFieldSizeWithJavaUtilMap_withIn
 jboolean ComGoogleProtobufNanoInternalNano_equalsWithJavaUtilMap_withJavaUtilMap_(id<JavaUtilMap> a, id<JavaUtilMap> b) {
   ComGoogleProtobufNanoInternalNano_initialize();
   if (a == b) {
-    return YES;
+    return true;
   }
   if (a == nil) {
     return [((id<JavaUtilMap>) nil_chk(b)) size] == 0;
@@ -559,17 +561,17 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithJavaUtilMap_withJavaUtilMap
     return [((id<JavaUtilMap>) nil_chk(a)) size] == 0;
   }
   if ([((id<JavaUtilMap>) nil_chk(a)) size] != [((id<JavaUtilMap>) nil_chk(b)) size]) {
-    return NO;
+    return false;
   }
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([a entrySet])) {
     if (![b containsKeyWithId:[((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]]) {
-      return NO;
+      return false;
     }
     if (!ComGoogleProtobufNanoInternalNano_equalsMapValueWithId_withId_([entry_ getValue], [b getWithId:[entry_ getKey]])) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 jboolean ComGoogleProtobufNanoInternalNano_equalsMapValueWithId_withId_(id a, id b) {
@@ -606,7 +608,7 @@ jint ComGoogleProtobufNanoInternalNano_hashCodeForMapWithId_(id o) {
 void ComGoogleProtobufNanoInternalNano_cloneUnknownFieldDataWithComGoogleProtobufNanoExtendableMessageNano_withComGoogleProtobufNanoExtendableMessageNano_(ComGoogleProtobufNanoExtendableMessageNano *original, ComGoogleProtobufNanoExtendableMessageNano *cloned) {
   ComGoogleProtobufNanoInternalNano_initialize();
   if (((ComGoogleProtobufNanoExtendableMessageNano *) nil_chk(original))->unknownFieldData_ != nil) {
-    ComGoogleProtobufNanoExtendableMessageNano_set_unknownFieldData_(nil_chk(cloned), [original->unknownFieldData_ clone]);
+    JreStrongAssign(&((ComGoogleProtobufNanoExtendableMessageNano *) nil_chk(cloned))->unknownFieldData_, [original->unknownFieldData_ clone]);
   }
 }
 

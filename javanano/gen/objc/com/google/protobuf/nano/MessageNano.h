@@ -12,95 +12,112 @@
 @class ComGoogleProtobufNanoCodedOutputByteBufferNano;
 @class IOSByteArray;
 
-/**
+/*!
  @brief Abstract interface implemented by Protocol Message objects.
  @author wink@@google.com Wink Saville
  */
 @interface ComGoogleProtobufNanoMessageNano : NSObject {
  @public
-  jint cachedSize_;
+  volatile_jint cachedSize_;
 }
 
 #pragma mark Public
 
 - (instancetype)init;
 
-/**
+/*!
  @brief Provides support for cloning.
  This only works if you specify the generate_clone method.
  */
 - (ComGoogleProtobufNanoMessageNano *)clone;
 
-/**
+/*!
  @brief Get the number of bytes required to encode this message.
- Returns the cached size or calls getSerializedSize which sets the cached size. This is used internally when serializing so the size is only computed once. If a member is modified then this could be stale call getSerializedSize if in doubt.
+ Returns the cached size or calls getSerializedSize which
+ sets the cached size. This is used internally when serializing
+ so the size is only computed once. If a member is modified
+ then this could be stale call getSerializedSize if in doubt.
  */
 - (jint)getCachedSize;
 
-/**
+/*!
  @brief Computes the number of bytes required to encode this message.
- The size is cached and the cached result can be retrieved using getCachedSize().
+ The size is cached and the cached result can be retrieved
+ using getCachedSize().
  */
 - (jint)getSerializedSize;
 
-/**
- @brief Parse <code>input</code> as a message of this type and merge it with the message being built.
+/*!
+ @brief Parse <code>input</code> as a message of this type and merge it with the
+ message being built.
  */
 - (ComGoogleProtobufNanoMessageNano *)mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input;
 
-/**
- @brief Parse <code>data</code> as a message of this type and merge it with the message being built.
+/*!
+ @brief Parse <code>data</code> as a message of this type and merge it with the
+ message being built.
  */
 + (id)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
                                       withByteArray:(IOSByteArray *)data;
 
-/**
- @brief Parse <code>data</code> as a message of this type and merge it with the message being built.
+/*!
+ @brief Parse <code>data</code> as a message of this type and merge it with the
+ message being built.
  */
 + (id)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
                                       withByteArray:(IOSByteArray *)data
                                             withInt:(jint)off
                                             withInt:(jint)len;
 
-/**
- @brief Compares two <code>MessageNano</code> s and returns true if the message's are the same class and have serialized form equality (i.e. all of the field values are the same).
+/*!
+ @brief Compares two <code>MessageNano</code>s and returns true if the message's are the same class and
+ have serialized form equality (i.e. all of the field values are the same).
  */
 + (jboolean)messageNanoEqualsWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)a
                              withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)b;
 
-/**
+/*!
  @brief Serialize to a byte array.
  @return byte array with the serialized data.
  */
 + (IOSByteArray *)toByteArrayWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg;
 
-/**
+/*!
  @brief Serialize to a byte array starting at offset through length.
- The method getSerializedSize must have been called prior to calling this method so the proper length is know.  If an attempt to write more than length bytes OutOfSpaceException will be thrown and if length bytes are not written then IllegalStateException is thrown.
+ The
+ method getSerializedSize must have been called prior to calling
+ this method so the proper length is know.  If an attempt to
+ write more than length bytes OutOfSpaceException will be thrown
+ and if length bytes are not written then IllegalStateException
+ is thrown.
  */
 + (void)toByteArrayWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
                                           withByteArray:(IOSByteArray *)data
                                                 withInt:(jint)offset
                                                 withInt:(jint)length;
 
-/**
+/*!
  @brief Returns a string that is (mostly) compatible with ProtoBuffer's TextFormat.
- Note that groups (which are deprecated) are not serialized with the correct field name. <p>This is implemented using reflection, so it is not especially fast nor is it guaranteed to find all fields if you have method removal turned on for proguard.
+ Note that groups
+ (which are deprecated) are not serialized with the correct field name.
+ <p>This is implemented using reflection, so it is not especially fast nor is it guaranteed
+ to find all fields if you have method removal turned on for proguard.
  */
 - (NSString *)description;
 
-/**
- @brief Serializes the message and writes it to <code>output</code> .
+/*!
+ @brief Serializes the message and writes it to <code>output</code>.
  @param output the output to receive the serialized form.
- @throws IOException if an error occurred writing to <code>output</code> .
+ @throws IOException if an error occurred writing to <code>output</code>.
  */
 - (void)writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOutputByteBufferNano *)output;
 
 #pragma mark Protected
 
-/**
+/*!
  @brief Computes the number of bytes required to encode this message.
- This does not update the cached size.
+ This does not update the
+ cached size.
  */
 - (jint)computeSerializedSize;
 

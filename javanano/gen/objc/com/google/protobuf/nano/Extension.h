@@ -33,30 +33,32 @@
 #define ComGoogleProtobufNanoExtension_TYPE_SINT32 17
 #define ComGoogleProtobufNanoExtension_TYPE_SINT64 18
 
-/**
+/*!
  @brief Represents an extension.
  @author bduff@@google.com (Brian Duff)
  @author maxtroy@@google.com (Max Cai)
- @param < M > the type of the extendable message this extension is for.
- @param < T > the Java type of the extension; see #clazz .
  */
 @interface ComGoogleProtobufNanoExtension : NSObject {
  @public
-  /**
+  /*!
    @brief Protocol Buffer type of this extension; one of the <code>TYPE_</code> constants.
    */
   jint type_;
-  /**
+  /*!
    @brief Java type of this extension.
-   For a singular extension, this is the boxed Java type for the Protocol Buffer #type ; for a repeated extension, this is an array type whose component type is the unboxed Java type for #type . For example, for a singular <code>int32</code> / #TYPE_INT32 extension, this equals <code>Integer.class</code> ; for a repeated <code>int32</code> extension, this equals <code>int[].class</code> .
+   For a singular extension, this is the boxed Java type for the
+ Protocol Buffer <code>type</code>; for a repeated extension, this is an array type whose
+ component type is the unboxed Java type for <code>type</code>. For example, for a singular
+ <code>int32</code>/<code>TYPE_INT32</code> extension, this equals <code>Integer.class</code>; for a
+ repeated <code>int32</code> extension, this equals <code>int[].class</code>.
    */
   IOSClass *clazz_;
-  /**
+  /*!
    @brief Tag number of this extension.
    The data should be viewed as an unsigned 32-bit value.
    */
   jint tag_;
-  /**
+  /*!
    @brief Whether this extension is repeated.
    */
   jboolean repeated_;
@@ -64,47 +66,47 @@
 
 #pragma mark Public
 
-/**
+/*!
  @brief Creates an <code>Extension</code> of the given message type and tag number.
  Should be used by the generated code only.
- @param type  #TYPE_MESSAGE or #TYPE_GROUP
+ @param type <code>TYPE_MESSAGE</code> or <code>TYPE_GROUP</code>
  */
 + (ComGoogleProtobufNanoExtension *)createMessageTypedWithInt:(jint)type
                                                  withIOSClass:(IOSClass *)clazz
                                                       withInt:(jint)tag;
 
-/**
+/*!
  @brief Creates an <code>Extension</code> of the given message type and tag number.
  Should be used by the generated code only.
- @param type  #TYPE_MESSAGE or #TYPE_GROUP
+ @param type <code>TYPE_MESSAGE</code> or <code>TYPE_GROUP</code>
  */
 + (ComGoogleProtobufNanoExtension *)createMessageTypedWithInt:(jint)type
                                                  withIOSClass:(IOSClass *)clazz
                                                      withLong:(jlong)tag;
 
-/**
+/*!
  @brief Creates an <code>Extension</code> of the given primitive type and tag number.
  Should be used by the generated code only.
- @param type one of <code>TYPE_*</code> , except #TYPE_MESSAGE and #TYPE_GROUP
+ @param type one of <code>TYPE_*</code>, except <code>TYPE_MESSAGE</code> and <code>TYPE_GROUP</code>
  @param clazz the boxed Java type of this extension
  */
 + (ComGoogleProtobufNanoExtension *)createPrimitiveTypedWithInt:(jint)type
                                                    withIOSClass:(IOSClass *)clazz
                                                        withLong:(jlong)tag;
 
-/**
+/*!
  @brief Creates a repeated <code>Extension</code> of the given message type and tag number.
  Should be used by the generated code only.
- @param type  #TYPE_MESSAGE or #TYPE_GROUP
+ @param type <code>TYPE_MESSAGE</code> or <code>TYPE_GROUP</code>
  */
 + (ComGoogleProtobufNanoExtension *)createRepeatedMessageTypedWithInt:(jint)type
                                                          withIOSClass:(IOSClass *)clazz
                                                              withLong:(jlong)tag;
 
-/**
+/*!
  @brief Creates a repeated <code>Extension</code> of the given primitive type and tag number.
  Should be used by the generated code only.
- @param type one of <code>TYPE_*</code> , except #TYPE_MESSAGE and #TYPE_GROUP
+ @param type one of <code>TYPE_*</code>, except <code>TYPE_MESSAGE</code> and <code>TYPE_GROUP</code>
  @param clazz the Java array type of this extension, with an unboxed component type
  */
 + (ComGoogleProtobufNanoExtension *)createRepeatedPrimitiveTypedWithInt:(jint)type
@@ -134,9 +136,11 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
 
 - (jint)computeSerializedSizeWithId:(id)value;
 
-/**
- @brief Returns the value of this extension stored in the given list of unknown fields, or <code>null</code> if no unknown fields matches this extension.
- @param unknownFields a list of UnknownFieldData . All of the elements must have a tag that matches this Extension's tag.
+/*!
+ @brief Returns the value of this extension stored in the given list of unknown fields, or
+ <code>null</code> if no unknown fields matches this extension.
+ @param unknownFields a list of <code>UnknownFieldData</code>. All of the elements must have a tag
+ that matches this Extension's tag.
  */
 - (id)getValueFromWithJavaUtilList:(id<JavaUtilList>)unknownFields;
 

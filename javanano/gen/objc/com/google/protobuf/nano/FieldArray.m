@@ -59,10 +59,12 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleProtobufNanoFieldArray)
 
 @implementation ComGoogleProtobufNanoFieldArray
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoFieldArray_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 - (instancetype)initWithInt:(jint)initialCapacity {
   ComGoogleProtobufNanoFieldArray_initWithInt_(self, initialCapacity);
@@ -83,7 +85,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleProtobufNanoFieldArray)
   jint i = ComGoogleProtobufNanoFieldArray_binarySearchWithInt_(self, fieldNumber);
   if (i >= 0 && IOSObjectArray_Get(nil_chk(mData_), i) != ComGoogleProtobufNanoFieldArray_DELETED_) {
     IOSObjectArray_Set(mData_, i, ComGoogleProtobufNanoFieldArray_DELETED_);
-    mGarbage_ = YES;
+    mGarbage_ = true;
   }
 }
 
@@ -114,8 +116,8 @@ withComGoogleProtobufNanoFieldData:(ComGoogleProtobufNanoFieldData *)data {
       IOSObjectArray *nvalues = [IOSObjectArray arrayWithLength:n type:ComGoogleProtobufNanoFieldData_class_()];
       JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(mFieldNumbers_, 0, nkeys, 0, mFieldNumbers_->size_);
       JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(mData_, 0, nvalues, 0, ((IOSObjectArray *) nil_chk(mData_))->size_);
-      ComGoogleProtobufNanoFieldArray_set_mFieldNumbers_(self, nkeys);
-      ComGoogleProtobufNanoFieldArray_set_mData_(self, nvalues);
+      JreStrongAssign(&mFieldNumbers_, nkeys);
+      JreStrongAssign(&mData_, nvalues);
     }
     if (mSize_ - i != 0) {
       JavaLangSystem_arraycopyWithId_withInt_withId_withInt_withInt_(mFieldNumbers_, i, mFieldNumbers_, i + 1, mSize_ - i);
@@ -147,14 +149,14 @@ withComGoogleProtobufNanoFieldData:(ComGoogleProtobufNanoFieldData *)data {
 
 - (jboolean)isEqual:(id)o {
   if (o == self) {
-    return YES;
+    return true;
   }
   if (!([o isKindOfClass:[ComGoogleProtobufNanoFieldArray class]])) {
-    return NO;
+    return false;
   }
   ComGoogleProtobufNanoFieldArray *other = (ComGoogleProtobufNanoFieldArray *) check_class_cast(o, [ComGoogleProtobufNanoFieldArray class]);
   if ([self size] != [((ComGoogleProtobufNanoFieldArray *) nil_chk(other)) size]) {
-    return NO;
+    return false;
   }
   return ComGoogleProtobufNanoFieldArray_arrayEqualsWithIntArray_withIntArray_withInt_(self, mFieldNumbers_, other->mFieldNumbers_, mSize_) && ComGoogleProtobufNanoFieldArray_arrayEqualsWithComGoogleProtobufNanoFieldDataArray_withComGoogleProtobufNanoFieldDataArray_withInt_(self, mData_, other->mData_, mSize_);
 }
@@ -220,7 +222,7 @@ withComGoogleProtobufNanoFieldData:(ComGoogleProtobufNanoFieldData *)data {
 
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoFieldArray class]) {
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoFieldArray_DELETED_, nil, new_ComGoogleProtobufNanoFieldData_init());
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoFieldArray_DELETED_, new_ComGoogleProtobufNanoFieldData_init());
     J2OBJC_SET_INITIALIZED(ComGoogleProtobufNanoFieldArray)
   }
 }
@@ -246,11 +248,11 @@ withComGoogleProtobufNanoFieldData:(ComGoogleProtobufNanoFieldData *)data {
     { "clone", NULL, "Lcom.google.protobuf.nano.FieldArray;", 0x11, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "DELETED_", NULL, 0x1a, "Lcom.google.protobuf.nano.FieldData;", &ComGoogleProtobufNanoFieldArray_DELETED_, NULL,  },
-    { "mGarbage_", NULL, 0x2, "Z", NULL, NULL,  },
-    { "mFieldNumbers_", NULL, 0x2, "[I", NULL, NULL,  },
-    { "mData_", NULL, 0x2, "[Lcom.google.protobuf.nano.FieldData;", NULL, NULL,  },
-    { "mSize_", NULL, 0x2, "I", NULL, NULL,  },
+    { "DELETED_", NULL, 0x1a, "Lcom.google.protobuf.nano.FieldData;", &ComGoogleProtobufNanoFieldArray_DELETED_, NULL, .constantValue.asLong = 0 },
+    { "mGarbage_", NULL, 0x2, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "mFieldNumbers_", NULL, 0x2, "[I", NULL, NULL, .constantValue.asLong = 0 },
+    { "mData_", NULL, 0x2, "[Lcom.google.protobuf.nano.FieldData;", NULL, NULL, .constantValue.asLong = 0 },
+    { "mSize_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoFieldArray = { 2, "FieldArray", "com.google.protobuf.nano", NULL, 0x11, 17, methods, 5, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleProtobufNanoFieldArray;
@@ -270,10 +272,10 @@ ComGoogleProtobufNanoFieldArray *new_ComGoogleProtobufNanoFieldArray_init() {
 
 void ComGoogleProtobufNanoFieldArray_initWithInt_(ComGoogleProtobufNanoFieldArray *self, jint initialCapacity) {
   NSObject_init(self);
-  self->mGarbage_ = NO;
+  self->mGarbage_ = false;
   initialCapacity = ComGoogleProtobufNanoFieldArray_idealIntArraySizeWithInt_(self, initialCapacity);
-  ComGoogleProtobufNanoFieldArray_setAndConsume_mFieldNumbers_(self, [IOSIntArray newArrayWithLength:initialCapacity]);
-  ComGoogleProtobufNanoFieldArray_setAndConsume_mData_(self, [IOSObjectArray newArrayWithLength:initialCapacity type:ComGoogleProtobufNanoFieldData_class_()]);
+  JreStrongAssignAndConsume(&self->mFieldNumbers_, [IOSIntArray newArrayWithLength:initialCapacity]);
+  JreStrongAssignAndConsume(&self->mData_, [IOSObjectArray newArrayWithLength:initialCapacity type:ComGoogleProtobufNanoFieldData_class_()]);
   self->mSize_ = 0;
 }
 
@@ -299,7 +301,7 @@ void ComGoogleProtobufNanoFieldArray_gc(ComGoogleProtobufNanoFieldArray *self) {
       o++;
     }
   }
-  self->mGarbage_ = NO;
+  self->mGarbage_ = false;
   self->mSize_ = o;
 }
 
@@ -308,7 +310,7 @@ jint ComGoogleProtobufNanoFieldArray_idealIntArraySizeWithInt_(ComGoogleProtobuf
 }
 
 jint ComGoogleProtobufNanoFieldArray_idealByteArraySizeWithInt_(ComGoogleProtobufNanoFieldArray *self, jint need) {
-  for (jint i = 4; i < 32; i++) if (need <= (LShift32(1, i)) - 12) return (LShift32(1, i)) - 12;
+  for (jint i = 4; i < 32; i++) if (need <= (JreLShift32(1, i)) - 12) return (JreLShift32(1, i)) - 12;
   return need;
 }
 
@@ -316,7 +318,7 @@ jint ComGoogleProtobufNanoFieldArray_binarySearchWithInt_(ComGoogleProtobufNanoF
   jint lo = 0;
   jint hi = self->mSize_ - 1;
   while (lo <= hi) {
-    jint mid = URShift32((lo + hi), 1);
+    jint mid = JreURShift32((lo + hi), 1);
     jint midVal = IOSIntArray_Get(nil_chk(self->mFieldNumbers_), mid);
     if (midVal < value) {
       lo = mid + 1;
@@ -334,19 +336,19 @@ jint ComGoogleProtobufNanoFieldArray_binarySearchWithInt_(ComGoogleProtobufNanoF
 jboolean ComGoogleProtobufNanoFieldArray_arrayEqualsWithIntArray_withIntArray_withInt_(ComGoogleProtobufNanoFieldArray *self, IOSIntArray *a, IOSIntArray *b, jint size) {
   for (jint i = 0; i < size; i++) {
     if (IOSIntArray_Get(nil_chk(a), i) != IOSIntArray_Get(nil_chk(b), i)) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 jboolean ComGoogleProtobufNanoFieldArray_arrayEqualsWithComGoogleProtobufNanoFieldDataArray_withComGoogleProtobufNanoFieldDataArray_withInt_(ComGoogleProtobufNanoFieldArray *self, IOSObjectArray *a, IOSObjectArray *b, jint size) {
   for (jint i = 0; i < size; i++) {
     if (![((ComGoogleProtobufNanoFieldData *) nil_chk(IOSObjectArray_Get(nil_chk(a), i))) isEqual:IOSObjectArray_Get(nil_chk(b), i)]) {
-      return NO;
+      return false;
     }
   }
-  return YES;
+  return true;
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoFieldArray)

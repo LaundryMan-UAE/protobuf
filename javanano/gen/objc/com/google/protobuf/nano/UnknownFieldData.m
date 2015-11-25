@@ -33,10 +33,10 @@
 
 - (jboolean)isEqual:(id)o {
   if (o == self) {
-    return YES;
+    return true;
   }
   if (!([o isKindOfClass:[ComGoogleProtobufNanoUnknownFieldData class]])) {
-    return NO;
+    return false;
   }
   ComGoogleProtobufNanoUnknownFieldData *other = (ComGoogleProtobufNanoUnknownFieldData *) check_class_cast(o, [ComGoogleProtobufNanoUnknownFieldData class]);
   return tag_ == ((ComGoogleProtobufNanoUnknownFieldData *) nil_chk(other))->tag_ && JavaUtilArrays_equalsWithByteArray_withByteArray_(bytes_, other->bytes_);
@@ -63,8 +63,8 @@
     { "hash", "hashCode", "I", 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "tag_", NULL, 0x10, "I", NULL, NULL,  },
-    { "bytes_", NULL, 0x10, "[B", NULL, NULL,  },
+    { "tag_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "bytes_", NULL, 0x10, "[B", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoUnknownFieldData = { 2, "UnknownFieldData", "com.google.protobuf.nano", NULL, 0x10, 5, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleProtobufNanoUnknownFieldData;
@@ -75,7 +75,7 @@
 void ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(ComGoogleProtobufNanoUnknownFieldData *self, jint tag, IOSByteArray *bytes) {
   NSObject_init(self);
   self->tag_ = tag;
-  ComGoogleProtobufNanoUnknownFieldData_set_bytes_(self, bytes);
+  JreStrongAssign(&self->bytes_, bytes);
 }
 
 ComGoogleProtobufNanoUnknownFieldData *new_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(jint tag, IOSByteArray *bytes) {

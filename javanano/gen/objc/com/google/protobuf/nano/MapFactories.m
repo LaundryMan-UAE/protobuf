@@ -3,7 +3,6 @@
 //  source: /Users/marcussmith/HambroPerks/hambroperks_org/protobuf/javanano/src/main/java/com/google/protobuf/nano/MapFactories.java
 //
 
-#include "IOSClass.h"
 #include "J2ObjC_source.h"
 #include "com/google/protobuf/nano/MapFactories.h"
 #include "java/util/HashMap.h"
@@ -15,9 +14,9 @@
 
 @end
 
-static id<ComGoogleProtobufNanoMapFactories_MapFactory> ComGoogleProtobufNanoMapFactories_mapFactory_;
-J2OBJC_STATIC_FIELD_GETTER(ComGoogleProtobufNanoMapFactories, mapFactory_, id<ComGoogleProtobufNanoMapFactories_MapFactory>)
-J2OBJC_STATIC_FIELD_SETTER(ComGoogleProtobufNanoMapFactories, mapFactory_, id<ComGoogleProtobufNanoMapFactories_MapFactory>)
+static volatile_id ComGoogleProtobufNanoMapFactories_mapFactory_;
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_GETTER(ComGoogleProtobufNanoMapFactories, mapFactory_, id<ComGoogleProtobufNanoMapFactories_MapFactory>)
+J2OBJC_STATIC_VOLATILE_OBJ_FIELD_SETTER(ComGoogleProtobufNanoMapFactories, mapFactory_, id<ComGoogleProtobufNanoMapFactories_MapFactory>)
 
 __attribute__((unused)) static void ComGoogleProtobufNanoMapFactories_init(ComGoogleProtobufNanoMapFactories *self);
 
@@ -55,14 +54,16 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleProtobufNanoMapFactories)
   return ComGoogleProtobufNanoMapFactories_getMapFactory();
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoMapFactories_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoMapFactories class]) {
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoMapFactories_mapFactory_, nil, new_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init());
+    JreVolatileStrongAssignAndConsume(&ComGoogleProtobufNanoMapFactories_mapFactory_, new_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init());
     J2OBJC_SET_INITIALIZED(ComGoogleProtobufNanoMapFactories)
   }
 }
@@ -74,7 +75,7 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleProtobufNanoMapFactories)
     { "init", "MapFactories", NULL, 0x2, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "mapFactory_", NULL, 0x4a, "Lcom.google.protobuf.nano.MapFactories$MapFactory;", &ComGoogleProtobufNanoMapFactories_mapFactory_, NULL,  },
+    { "mapFactory_", NULL, 0x4a, "Lcom.google.protobuf.nano.MapFactories$MapFactory;", &ComGoogleProtobufNanoMapFactories_mapFactory_, NULL, .constantValue.asLong = 0 },
   };
   static const char *inner_classes[] = {"Lcom.google.protobuf.nano.MapFactories$MapFactory;", "Lcom.google.protobuf.nano.MapFactories$DefaultMapFactory;"};
   static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories = { 2, "MapFactories", "com.google.protobuf.nano", NULL, 0x11, 3, methods, 1, fields, 0, NULL, 2, inner_classes, NULL, NULL };
@@ -85,12 +86,12 @@ J2OBJC_INITIALIZED_DEFN(ComGoogleProtobufNanoMapFactories)
 
 void ComGoogleProtobufNanoMapFactories_setMapFactoryWithComGoogleProtobufNanoMapFactories_MapFactory_(id<ComGoogleProtobufNanoMapFactories_MapFactory> newMapFactory) {
   ComGoogleProtobufNanoMapFactories_initialize();
-  JreStrongAssign(&ComGoogleProtobufNanoMapFactories_mapFactory_, nil, newMapFactory);
+  JreVolatileStrongAssign(&ComGoogleProtobufNanoMapFactories_mapFactory_, newMapFactory);
 }
 
 id<ComGoogleProtobufNanoMapFactories_MapFactory> ComGoogleProtobufNanoMapFactories_getMapFactory() {
   ComGoogleProtobufNanoMapFactories_initialize();
-  return ComGoogleProtobufNanoMapFactories_mapFactory_;
+  return JreLoadVolatileId(&ComGoogleProtobufNanoMapFactories_mapFactory_);
 }
 
 void ComGoogleProtobufNanoMapFactories_init(ComGoogleProtobufNanoMapFactories *self) {
@@ -128,10 +129,12 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories_MapFactor
   return oldMap;
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {

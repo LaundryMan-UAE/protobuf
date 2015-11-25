@@ -19,15 +19,15 @@
 @implementation ComGoogleProtobufNanoMessageNano
 
 - (jint)getCachedSize {
-  if (cachedSize_ < 0) {
+  if (JreLoadVolatileInt(&cachedSize_) < 0) {
     [self getSerializedSize];
   }
-  return cachedSize_;
+  return JreLoadVolatileInt(&cachedSize_);
 }
 
 - (jint)getSerializedSize {
   jint size = [self computeSerializedSize];
-  cachedSize_ = size;
+  JreAssignVolatileInt(&cachedSize_, size);
   return size;
 }
 
@@ -80,10 +80,12 @@
   return (ComGoogleProtobufNanoMessageNano *) check_class_cast([super clone], [ComGoogleProtobufNanoMessageNano class]);
 }
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoMessageNano_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
   static const J2ObjcMethodInfo methods[] = {
@@ -102,7 +104,7 @@
     { "init", NULL, NULL, 0x1, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "cachedSize_", NULL, 0x44, "I", NULL, NULL,  },
+    { "cachedSize_", NULL, 0x44, "I", NULL, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoMessageNano = { 2, "MessageNano", "com.google.protobuf.nano", NULL, 0x401, 13, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleProtobufNanoMessageNano;
@@ -131,7 +133,7 @@ void ComGoogleProtobufNanoMessageNano_toByteArrayWithComGoogleProtobufNanoMessag
 
 id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data) {
   ComGoogleProtobufNanoMessageNano_initialize();
-  return ((ComGoogleProtobufNanoMessageNano *) ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(msg, data, 0, ((IOSByteArray *) nil_chk(data))->size_));
+  return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(msg, data, 0, ((IOSByteArray *) nil_chk(data))->size_);
 }
 
 id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data, jint off, jint len) {
@@ -153,17 +155,17 @@ id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNan
 jboolean ComGoogleProtobufNanoMessageNano_messageNanoEqualsWithComGoogleProtobufNanoMessageNano_withComGoogleProtobufNanoMessageNano_(ComGoogleProtobufNanoMessageNano *a, ComGoogleProtobufNanoMessageNano *b) {
   ComGoogleProtobufNanoMessageNano_initialize();
   if (a == b) {
-    return YES;
+    return true;
   }
   if (a == nil || b == nil) {
-    return NO;
+    return false;
   }
   if ([((ComGoogleProtobufNanoMessageNano *) nil_chk(a)) getClass] != [((ComGoogleProtobufNanoMessageNano *) nil_chk(b)) getClass]) {
-    return NO;
+    return false;
   }
   jint serializedSize = [a getSerializedSize];
   if ([b getSerializedSize] != serializedSize) {
-    return NO;
+    return false;
   }
   IOSByteArray *aByteArray = [IOSByteArray arrayWithLength:serializedSize];
   IOSByteArray *bByteArray = [IOSByteArray arrayWithLength:serializedSize];
@@ -174,7 +176,7 @@ jboolean ComGoogleProtobufNanoMessageNano_messageNanoEqualsWithComGoogleProtobuf
 
 void ComGoogleProtobufNanoMessageNano_init(ComGoogleProtobufNanoMessageNano *self) {
   NSObject_init(self);
-  self->cachedSize_ = -1;
+  JreAssignVolatileInt(&self->cachedSize_, -1);
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMessageNano)

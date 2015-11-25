@@ -14,14 +14,16 @@
 @class ComGoogleProtobufNanoExtension;
 @class ComGoogleProtobufNanoFieldArray;
 
-/**
- @brief Base class of those Protocol Buffer messages that need to store unknown fields, such as extensions.
+/*!
+ @brief Base class of those Protocol Buffer messages that need to store unknown fields,
+ such as extensions.
  */
 @interface ComGoogleProtobufNanoExtendableMessageNano : ComGoogleProtobufNanoMessageNano {
  @public
-  /**
+  /*!
    @brief A container for fields unknown to the message, including extensions.
-   Extension fields can can be accessed through the #getExtension and #setExtension methods.
+   Extension fields can
+ can be accessed through the <code>getExtension</code> and <code>setExtension</code> methods.
    */
   ComGoogleProtobufNanoFieldArray *unknownFieldData_;
 }
@@ -32,17 +34,18 @@
 
 - (id)clone;
 
-/**
+/*!
  @brief Gets the value stored in the specified extension of this message.
  */
 - (id)getExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension;
 
-/**
- @brief Checks if there is a value stored for the specified extension in this message.
+/*!
+ @brief Checks if there is a value stored for the specified extension in this
+ message.
  */
 - (jboolean)hasExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension;
 
-/**
+/*!
  @brief Sets the value of the specified extension of this message.
  */
 - (id)setExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension
@@ -54,9 +57,12 @@
 
 - (jint)computeSerializedSize;
 
-/**
+/*!
  @brief Stores the binary data of an unknown field.
- <p>Generated messages will call this for unknown fields if the store_unknown_fields option is on. <p>Note that the tag might be a end-group tag (rather than the start of an unknown field) in which case we do not want to add an unknown field entry.
+ <p>Generated messages will call this for unknown fields if the store_unknown_fields
+ option is on.
+ <p>Note that the tag might be a end-group tag (rather than the start of an unknown field) in
+ which case we do not want to add an unknown field entry.
  @param input the input buffer.
  @param tag the tag of the field.
  @return true unless the tag is an end-group tag.

@@ -34,10 +34,12 @@ IOSByteArray *ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_;
 
 @implementation ComGoogleProtobufNanoWireFormatNano
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoWireFormatNano_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (jint)getTagWireTypeWithInt:(jint)tag {
   return ComGoogleProtobufNanoWireFormatNano_getTagWireTypeWithInt_(tag);
@@ -64,14 +66,14 @@ IOSByteArray *ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_;
 
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoWireFormatNano class]) {
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY_, nil, [IOSIntArray newArrayWithInts:(jint[]){  } count:0]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_LONG_ARRAY_, nil, [IOSLongArray newArrayWithLongs:(jlong[]){  } count:0]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_FLOAT_ARRAY_, nil, [IOSFloatArray newArrayWithFloats:(jfloat[]){  } count:0]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_DOUBLE_ARRAY_, nil, [IOSDoubleArray newArrayWithDoubles:(jdouble[]){  } count:0]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_BOOLEAN_ARRAY_, nil, [IOSBooleanArray newArrayWithBooleans:(jboolean[]){  } count:0]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_STRING_ARRAY_, nil, [IOSObjectArray newArrayWithObjects:(id[]){  } count:0 type:NSString_class_()]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_ARRAY_, nil, [IOSObjectArray newArrayWithObjects:(id[]){  } count:0 type:IOSClass_byteArray(1)]);
-    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_, nil, [IOSByteArray newArrayWithBytes:(jbyte[]){  } count:0]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY_, [IOSIntArray newArrayWithInts:(jint[]){  } count:0]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_LONG_ARRAY_, [IOSLongArray newArrayWithLongs:(jlong[]){  } count:0]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_FLOAT_ARRAY_, [IOSFloatArray newArrayWithFloats:(jfloat[]){  } count:0]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_DOUBLE_ARRAY_, [IOSDoubleArray newArrayWithDoubles:(jdouble[]){  } count:0]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_BOOLEAN_ARRAY_, [IOSBooleanArray newArrayWithBooleans:(jboolean[]){  } count:0]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_STRING_ARRAY_, [IOSObjectArray newArrayWithObjects:(id[]){  } count:0 type:NSString_class_()]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_ARRAY_, [IOSObjectArray newArrayWithObjects:(id[]){  } count:0 type:IOSClass_byteArray(1)]);
+    JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_, [IOSByteArray newArrayWithBytes:(jbyte[]){  } count:0]);
     J2OBJC_SET_INITIALIZED(ComGoogleProtobufNanoWireFormatNano)
   }
 }
@@ -94,14 +96,14 @@ IOSByteArray *ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_;
     { "WIRETYPE_FIXED32", "WIRETYPE_FIXED32", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED32 },
     { "TAG_TYPE_BITS", "TAG_TYPE_BITS", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS },
     { "TAG_TYPE_MASK", "TAG_TYPE_MASK", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_MASK },
-    { "EMPTY_INT_ARRAY_", NULL, 0x19, "[I", &ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY_, NULL,  },
-    { "EMPTY_LONG_ARRAY_", NULL, 0x19, "[J", &ComGoogleProtobufNanoWireFormatNano_EMPTY_LONG_ARRAY_, NULL,  },
-    { "EMPTY_FLOAT_ARRAY_", NULL, 0x19, "[F", &ComGoogleProtobufNanoWireFormatNano_EMPTY_FLOAT_ARRAY_, NULL,  },
-    { "EMPTY_DOUBLE_ARRAY_", NULL, 0x19, "[D", &ComGoogleProtobufNanoWireFormatNano_EMPTY_DOUBLE_ARRAY_, NULL,  },
-    { "EMPTY_BOOLEAN_ARRAY_", NULL, 0x19, "[Z", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BOOLEAN_ARRAY_, NULL,  },
-    { "EMPTY_STRING_ARRAY_", NULL, 0x19, "[Ljava.lang.String;", &ComGoogleProtobufNanoWireFormatNano_EMPTY_STRING_ARRAY_, NULL,  },
-    { "EMPTY_BYTES_ARRAY_", NULL, 0x19, "[[B", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_ARRAY_, NULL,  },
-    { "EMPTY_BYTES_", NULL, 0x19, "[B", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_, NULL,  },
+    { "EMPTY_INT_ARRAY_", NULL, 0x19, "[I", &ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_LONG_ARRAY_", NULL, 0x19, "[J", &ComGoogleProtobufNanoWireFormatNano_EMPTY_LONG_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_FLOAT_ARRAY_", NULL, 0x19, "[F", &ComGoogleProtobufNanoWireFormatNano_EMPTY_FLOAT_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_DOUBLE_ARRAY_", NULL, 0x19, "[D", &ComGoogleProtobufNanoWireFormatNano_EMPTY_DOUBLE_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_BOOLEAN_ARRAY_", NULL, 0x19, "[Z", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BOOLEAN_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_STRING_ARRAY_", NULL, 0x19, "[Ljava.lang.String;", &ComGoogleProtobufNanoWireFormatNano_EMPTY_STRING_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_BYTES_ARRAY_", NULL, 0x19, "[[B", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_ARRAY_, NULL, .constantValue.asLong = 0 },
+    { "EMPTY_BYTES_", NULL, 0x19, "[B", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_, NULL, .constantValue.asLong = 0 },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoWireFormatNano = { 2, "WireFormatNano", "com.google.protobuf.nano", NULL, 0x11, 6, methods, 16, fields, 0, NULL, 0, NULL, NULL, NULL };
   return &_ComGoogleProtobufNanoWireFormatNano;
@@ -126,12 +128,12 @@ jint ComGoogleProtobufNanoWireFormatNano_getTagWireTypeWithInt_(jint tag) {
 
 jint ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(jint tag) {
   ComGoogleProtobufNanoWireFormatNano_initialize();
-  return URShift32(tag, ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS);
+  return JreURShift32(tag, ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS);
 }
 
 jint ComGoogleProtobufNanoWireFormatNano_makeTagWithInt_withInt_(jint fieldNumber, jint wireType) {
   ComGoogleProtobufNanoWireFormatNano_initialize();
-  return (LShift32(fieldNumber, ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS)) | wireType;
+  return (JreLShift32(fieldNumber, ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS)) | wireType;
 }
 
 jboolean ComGoogleProtobufNanoWireFormatNano_parseUnknownFieldWithComGoogleProtobufNanoCodedInputByteBufferNano_withInt_(ComGoogleProtobufNanoCodedInputByteBufferNano *input, jint tag) {

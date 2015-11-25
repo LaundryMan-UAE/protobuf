@@ -10,9 +10,12 @@
 
 @class ComGoogleProtobufNanoFieldData;
 
-/**
- @brief A custom version of android.util.SparseArray with the minimal API for storing FieldData objects.
- <p>This class is an internal implementation detail of nano and should not be called directly by clients. Based on android.support.v4.util.SpareArrayCompat .
+/*!
+ @brief A custom version of <code>android.util.SparseArray</code> with the minimal API
+ for storing <code>FieldData</code> objects.
+ <p>This class is an internal implementation detail of nano and should not
+ be called directly by clients.
+ Based on <code>android.support.v4.util.SpareArrayCompat</code>.
  */
 @interface ComGoogleProtobufNanoFieldArray : NSObject < NSCopying >
 
@@ -28,39 +31,46 @@
 
 #pragma mark Package-Private
 
-/**
+/*!
  @brief Creates a new FieldArray containing no fields.
  */
 - (instancetype)init;
 
-/**
- @brief Creates a new FieldArray containing no mappings that will not require any additional memory allocation to store the specified number of mappings.
+/*!
+ @brief Creates a new FieldArray containing no mappings that will not
+ require any additional memory allocation to store the specified
+ number of mappings.
  */
 - (instancetype)initWithInt:(jint)initialCapacity;
 
-/**
- @brief Given an index in the range <code>0...size()-1</code>, returns the value from the <code>index</code>th key-value mapping that this FieldArray stores.
+/*!
+ @brief Given an index in the range <code>0...size()-1</code>, returns
+ the value from the <code>index</code>th key-value mapping that this
+ FieldArray stores.
  */
 - (ComGoogleProtobufNanoFieldData *)dataAtWithInt:(jint)index;
 
-/**
- @brief Gets the FieldData mapped from the specified fieldNumber, or <code>null</code> if no such mapping has been made.
+/*!
+ @brief Gets the FieldData mapped from the specified fieldNumber, or <code>null</code>
+ if no such mapping has been made.
  */
 - (ComGoogleProtobufNanoFieldData *)getWithInt:(jint)fieldNumber;
 
-/**
- @brief Adds a mapping from the specified fieldNumber to the specified data, replacing the previous mapping if there was one.
+/*!
+ @brief Adds a mapping from the specified fieldNumber to the specified data,
+ replacing the previous mapping if there was one.
  */
 - (void)putWithInt:(jint)fieldNumber
 withComGoogleProtobufNanoFieldData:(ComGoogleProtobufNanoFieldData *)data;
 
-/**
+/*!
  @brief Removes the data from the specified fieldNumber, if there was any.
  */
 - (void)removeWithInt:(jint)fieldNumber;
 
-/**
- @brief Returns the number of key-value mappings that this FieldArray currently stores.
+/*!
+ @brief Returns the number of key-value mappings that this FieldArray
+ currently stores.
  */
 - (jint)size;
 

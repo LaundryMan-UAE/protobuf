@@ -30,11 +30,13 @@
 
 - (instancetype)init;
 
-/**
+/*!
  @brief Function that will print the given message/field into the StringBuffer.
  Meant to be called recursively.
- @param identifier the identifier to use, or <code>null</code> if this is the root message to print.
- @param object the value to print. May in fact be a primitive value or byte array and not a message.
+ @param identifier the identifier to use, or <code>null</code> if this is the root message to
+ print.
+ @param object the value to print. May in fact be a primitive value or byte array and not a
+ message.
  @param indentBuf the indentation each line should begin with.
  @param buf the output buffer.
  */
@@ -43,23 +45,23 @@
  withJavaLangStringBuffer:(JavaLangStringBuffer *)indentBuf
  withJavaLangStringBuffer:(JavaLangStringBuffer *)buf;
 
-/**
+/*!
  @brief Converts an identifier of the format "FieldName" into "field_name".
  */
 + (NSString *)deCamelCaseifyWithNSString:(NSString *)identifier;
 
-/**
+/*!
  @brief Shortens and escapes the given string.
  */
 + (NSString *)sanitizeStringWithNSString:(NSString *)str;
 
-/**
+/*!
  @brief Escape everything except for low ASCII code points.
  */
 + (NSString *)escapeStringWithNSString:(NSString *)str;
 
-/**
- @brief Appends a quoted byte array to the provided <code>StringBuffer</code> .
+/*!
+ @brief Appends a quoted byte array to the provided <code>StringBuffer</code>.
  */
 + (void)appendQuotedBytesWithByteArray:(IOSByteArray *)bytes
               withJavaLangStringBuffer:(JavaLangStringBuffer *)builder;
@@ -87,10 +89,12 @@ __attribute__((unused)) static void ComGoogleProtobufNanoMessageNanoPrinter_appe
 
 @implementation ComGoogleProtobufNanoMessageNanoPrinter
 
+J2OBJC_IGNORE_DESIGNATED_BEGIN
 - (instancetype)init {
   ComGoogleProtobufNanoMessageNanoPrinter_init(self);
   return self;
 }
+J2OBJC_IGNORE_DESIGNATED_END
 
 + (NSString *)printWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)message {
   return ComGoogleProtobufNanoMessageNanoPrinter_printWithComGoogleProtobufNanoMessageNano_(message);
@@ -131,7 +135,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoMessageNanoPrinter_appe
     { "appendQuotedBytesWithByteArray:withJavaLangStringBuffer:", "appendQuotedBytes", "V", 0xa, NULL, NULL },
   };
   static const J2ObjcFieldInfo fields[] = {
-    { "INDENT_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleProtobufNanoMessageNanoPrinter_INDENT_, NULL,  },
+    { "INDENT_", NULL, 0x1a, "Ljava.lang.String;", &ComGoogleProtobufNanoMessageNanoPrinter_INDENT_, NULL, .constantValue.asLong = 0 },
     { "MAX_STRING_LEN", "MAX_STRING_LEN", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoMessageNanoPrinter_MAX_STRING_LEN },
   };
   static const J2ObjcClassInfo _ComGoogleProtobufNanoMessageNanoPrinter = { 2, "MessageNanoPrinter", "com.google.protobuf.nano", NULL, 0x11, 7, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
@@ -248,7 +252,7 @@ void ComGoogleProtobufNanoMessageNanoPrinter_printWithNSString_withId_withJavaLa
     }
   }
   else if ([JavaUtilMap_class_() isInstance:object]) {
-    id<JavaUtilMap> map = (id<JavaUtilMap>) check_protocol_cast(object, @protocol(JavaUtilMap));
+    id<JavaUtilMap> map = (id<JavaUtilMap>) check_protocol_cast(object, JavaUtilMap_class_());
     identifier = ComGoogleProtobufNanoMessageNanoPrinter_deCamelCaseifyWithNSString_(identifier);
     for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([map entrySet])) {
       [((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk([((JavaLangStringBuffer *) nil_chk(buf)) appendWithJavaLangStringBuffer:indentBuf])) appendWithNSString:identifier])) appendWithNSString:@" <\n"];

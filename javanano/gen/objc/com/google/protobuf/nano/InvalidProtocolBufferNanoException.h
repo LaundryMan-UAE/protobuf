@@ -9,8 +9,9 @@
 #include "J2ObjC_header.h"
 #include "java/io/IOException.h"
 
-/**
- @brief Thrown when a protocol message being parsed is invalid in some way, e.g. it contains a malformed varint or a negative byte length.
+/*!
+ @brief Thrown when a protocol message being parsed is invalid in some way,
+ e.g. it contains a malformed varint or a negative byte length.
  @author kenton@@google.com Kenton Varda
  */
 @interface ComGoogleProtobufNanoInvalidProtocolBufferNanoException : JavaIoIOException
