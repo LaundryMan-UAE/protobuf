@@ -81,6 +81,12 @@ ComGoogleProtobufNanoInvalidProtocolBufferNanoException *new_ComGoogleProtobufNa
   return self;
 }
 
+ComGoogleProtobufNanoInvalidProtocolBufferNanoException *create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(NSString *description_) {
+  ComGoogleProtobufNanoInvalidProtocolBufferNanoException *self = [[ComGoogleProtobufNanoInvalidProtocolBufferNanoException alloc] autorelease];
+  ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(self, description_);
+  return self;
+}
+
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_truncatedMessage() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
   return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.") autorelease];

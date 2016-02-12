@@ -21,7 +21,6 @@
 #include "java/lang/IllegalStateException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
-#include "java/lang/Throwable.h"
 #include "java/nio/Buffer.h"
 #include "java/nio/BufferOverflowException.h"
 #include "java/nio/ByteBuffer.h"
@@ -90,9 +89,13 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedOutputByteBufferNa
 
 __attribute__((unused)) static ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint offset, jint length) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoCodedOutputByteBufferNano *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint offset, jint length);
+
 __attribute__((unused)) static void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(ComGoogleProtobufNanoCodedOutputByteBufferNano *self, JavaNioByteBuffer *buffer);
 
 __attribute__((unused)) static ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static ComGoogleProtobufNanoCodedOutputByteBufferNano *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer);
 
 __attribute__((unused)) static jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthWithJavaLangCharSequence_(id<JavaLangCharSequence> sequence);
 
@@ -301,7 +304,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
   }
   @catch (JavaNioBufferOverflowException *e) {
     ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *outOfSpaceException = [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([((JavaNioByteBuffer *) nil_chk(buffer_)) position], [buffer_ limit]) autorelease];
-    [outOfSpaceException initCauseWithJavaLangThrowable:e];
+    [outOfSpaceException initCauseWithNSException:e];
     @throw outOfSpaceException;
   }
 }
@@ -880,6 +883,12 @@ ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOu
   return self;
 }
 
+ComGoogleProtobufNanoCodedOutputByteBufferNano *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint offset, jint length) {
+  ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [[ComGoogleProtobufNanoCodedOutputByteBufferNano alloc] autorelease];
+  ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, offset, length);
+  return self;
+}
+
 void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(ComGoogleProtobufNanoCodedOutputByteBufferNano *self, JavaNioByteBuffer *buffer) {
   NSObject_init(self);
   JreStrongAssign(&self->buffer_, buffer);
@@ -888,6 +897,12 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(C
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [ComGoogleProtobufNanoCodedOutputByteBufferNano alloc];
+  ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(self, buffer);
+  return self;
+}
+
+ComGoogleProtobufNanoCodedOutputByteBufferNano *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer) {
+  ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [[ComGoogleProtobufNanoCodedOutputByteBufferNano alloc] autorelease];
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(self, buffer);
   return self;
 }
@@ -961,7 +976,7 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequen
     }
     @catch (JavaLangArrayIndexOutOfBoundsException *e) {
       JavaNioBufferOverflowException *boe = [new_JavaNioBufferOverflowException_init() autorelease];
-      [boe initCauseWithJavaLangThrowable:e];
+      [boe initCauseWithNSException:e];
       @throw boe;
     }
   }
@@ -1344,6 +1359,12 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWith
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(jint position, jint limit) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *self = [ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException alloc];
+  ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(self, position, limit);
+  return self;
+}
+
+ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(jint position, jint limit) {
+  ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *self = [[ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException alloc] autorelease];
   ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(self, position, limit);
   return self;
 }

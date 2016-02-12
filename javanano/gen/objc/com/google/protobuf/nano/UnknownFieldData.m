@@ -84,4 +84,10 @@ ComGoogleProtobufNanoUnknownFieldData *new_ComGoogleProtobufNanoUnknownFieldData
   return self;
 }
 
+ComGoogleProtobufNanoUnknownFieldData *create_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(jint tag, IOSByteArray *bytes) {
+  ComGoogleProtobufNanoUnknownFieldData *self = [[ComGoogleProtobufNanoUnknownFieldData alloc] autorelease];
+  ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(self, tag, bytes);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoUnknownFieldData)

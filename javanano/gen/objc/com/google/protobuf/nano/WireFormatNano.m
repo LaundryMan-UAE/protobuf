@@ -21,6 +21,8 @@ __attribute__((unused)) static void ComGoogleProtobufNanoWireFormatNano_init(Com
 
 __attribute__((unused)) static ComGoogleProtobufNanoWireFormatNano *new_ComGoogleProtobufNanoWireFormatNano_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoWireFormatNano *create_ComGoogleProtobufNanoWireFormatNano_init();
+
 J2OBJC_INITIALIZED_DEFN(ComGoogleProtobufNanoWireFormatNano)
 
 IOSIntArray *ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY;
@@ -117,6 +119,12 @@ void ComGoogleProtobufNanoWireFormatNano_init(ComGoogleProtobufNanoWireFormatNan
 
 ComGoogleProtobufNanoWireFormatNano *new_ComGoogleProtobufNanoWireFormatNano_init() {
   ComGoogleProtobufNanoWireFormatNano *self = [ComGoogleProtobufNanoWireFormatNano alloc];
+  ComGoogleProtobufNanoWireFormatNano_init(self);
+  return self;
+}
+
+ComGoogleProtobufNanoWireFormatNano *create_ComGoogleProtobufNanoWireFormatNano_init() {
+  ComGoogleProtobufNanoWireFormatNano *self = [[ComGoogleProtobufNanoWireFormatNano alloc] autorelease];
   ComGoogleProtobufNanoWireFormatNano_init(self);
   return self;
 }

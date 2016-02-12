@@ -60,6 +60,8 @@ FOUNDATION_EXPORT void ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByt
 
 FOUNDATION_EXPORT ComGoogleProtobufNanoUnknownFieldData *new_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(jint tag, IOSByteArray *bytes) NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT ComGoogleProtobufNanoUnknownFieldData *create_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(jint tag, IOSByteArray *bytes);
+
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoUnknownFieldData)
 
 #endif

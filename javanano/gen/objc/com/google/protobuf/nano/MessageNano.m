@@ -127,7 +127,7 @@ void ComGoogleProtobufNanoMessageNano_toByteArrayWithComGoogleProtobufNanoMessag
     [((ComGoogleProtobufNanoCodedOutputByteBufferNano *) nil_chk(output)) checkNoSpaceLeft];
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangRuntimeException_initWithNSString_withJavaLangThrowable_(@"Serializing to a byte array threw an IOException (should never happen).", e) autorelease];
+    @throw [new_JavaLangRuntimeException_initWithNSString_withNSException_(@"Serializing to a byte array threw an IOException (should never happen).", e) autorelease];
   }
 }
 

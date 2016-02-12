@@ -45,6 +45,8 @@ __attribute__((unused)) static void ComGoogleProtobufNanoExtension_initWithInt_w
 
 __attribute__((unused)) static ComGoogleProtobufNanoExtension *new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(jint type, IOSClass *clazz, jint tag, jboolean repeated) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoExtension *create_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(jint type, IOSClass *clazz, jint tag, jboolean repeated);
+
 __attribute__((unused)) static id ComGoogleProtobufNanoExtension_getRepeatedValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields);
 
 __attribute__((unused)) static id ComGoogleProtobufNanoExtension_getSingularValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields);
@@ -98,6 +100,8 @@ J2OBJC_EMPTY_STATIC_INIT(ComGoogleProtobufNanoExtension_PrimitiveExtension)
 __attribute__((unused)) static void ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(ComGoogleProtobufNanoExtension_PrimitiveExtension *self, jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag);
 
 __attribute__((unused)) static ComGoogleProtobufNanoExtension_PrimitiveExtension *new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag) NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static ComGoogleProtobufNanoExtension_PrimitiveExtension *create_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag);
 
 __attribute__((unused)) static jint ComGoogleProtobufNanoExtension_PrimitiveExtension_computePackedDataSizeWithId_(ComGoogleProtobufNanoExtension_PrimitiveExtension *self, id array);
 
@@ -181,13 +185,13 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoExtension_PrimitiveExtension)
     }
   }
   @catch (JavaLangInstantiationException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withJavaLangThrowable_(JreStrcat("$@", @"Error creating instance of class ", messageType), e) autorelease];
+    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(JreStrcat("$@", @"Error creating instance of class ", messageType), e) autorelease];
   }
   @catch (JavaLangIllegalAccessException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withJavaLangThrowable_(JreStrcat("$@", @"Error creating instance of class ", messageType), e) autorelease];
+    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(JreStrcat("$@", @"Error creating instance of class ", messageType), e) autorelease];
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withJavaLangThrowable_(@"Error reading extension field", e) autorelease];
+    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e) autorelease];
   }
 }
 
@@ -231,7 +235,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
     }
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithJavaLangThrowable_(e) autorelease];
+    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
   }
 }
 
@@ -384,6 +388,12 @@ ComGoogleProtobufNanoExtension *new_ComGoogleProtobufNanoExtension_initWithInt_w
   return self;
 }
 
+ComGoogleProtobufNanoExtension *create_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(jint type, IOSClass *clazz, jint tag, jboolean repeated) {
+  ComGoogleProtobufNanoExtension *self = [[ComGoogleProtobufNanoExtension alloc] autorelease];
+  ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(self, type, clazz, tag, repeated);
+  return self;
+}
+
 id ComGoogleProtobufNanoExtension_getRepeatedValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields) {
   id<JavaUtilList> resultList = [new_JavaUtilArrayList_init() autorelease];
   for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(unknownFields)) size]; i++) {
@@ -432,7 +442,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoExtension)
     return [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readPrimitiveFieldWithInt:type_];
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withJavaLangThrowable_(@"Error reading extension field", e) autorelease];
+    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e) autorelease];
   }
 }
 
@@ -447,7 +457,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoExtension)
       [buffer pushLimitWithInt:[((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(buffer)) readRawVarint32]];
     }
     @catch (JavaIoIOException *e) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_withJavaLangThrowable_(@"Error reading extension field", e) autorelease];
+      @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e) autorelease];
     }
     while (![((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(buffer)) isAtEnd]) {
       [((id<JavaUtilList>) nil_chk(resultList)) addWithId:[self readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:buffer]];
@@ -547,7 +557,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
     }
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithJavaLangThrowable_(e) autorelease];
+    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
   }
 }
 
@@ -638,7 +648,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
       }
     }
     @catch (JavaIoIOException *e) {
-      @throw [new_JavaLangIllegalStateException_initWithJavaLangThrowable_(e) autorelease];
+      @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
     }
   }
   else {
@@ -768,6 +778,12 @@ void ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_
 
 ComGoogleProtobufNanoExtension_PrimitiveExtension *new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag) {
   ComGoogleProtobufNanoExtension_PrimitiveExtension *self = [ComGoogleProtobufNanoExtension_PrimitiveExtension alloc];
+  ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(self, type, clazz, tag, repeated, nonPackedTag, packedTag);
+  return self;
+}
+
+ComGoogleProtobufNanoExtension_PrimitiveExtension *create_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag) {
+  ComGoogleProtobufNanoExtension_PrimitiveExtension *self = [[ComGoogleProtobufNanoExtension_PrimitiveExtension alloc] autorelease];
   ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(self, type, clazz, tag, repeated, nonPackedTag, packedTag);
   return self;
 }

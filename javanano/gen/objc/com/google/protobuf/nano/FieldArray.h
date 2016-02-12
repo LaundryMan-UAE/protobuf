@@ -90,9 +90,13 @@ FOUNDATION_EXPORT void ComGoogleProtobufNanoFieldArray_init(ComGoogleProtobufNan
 
 FOUNDATION_EXPORT ComGoogleProtobufNanoFieldArray *new_ComGoogleProtobufNanoFieldArray_init() NS_RETURNS_RETAINED;
 
+FOUNDATION_EXPORT ComGoogleProtobufNanoFieldArray *create_ComGoogleProtobufNanoFieldArray_init();
+
 FOUNDATION_EXPORT void ComGoogleProtobufNanoFieldArray_initWithInt_(ComGoogleProtobufNanoFieldArray *self, jint initialCapacity);
 
 FOUNDATION_EXPORT ComGoogleProtobufNanoFieldArray *new_ComGoogleProtobufNanoFieldArray_initWithInt_(jint initialCapacity) NS_RETURNS_RETAINED;
+
+FOUNDATION_EXPORT ComGoogleProtobufNanoFieldArray *create_ComGoogleProtobufNanoFieldArray_initWithInt_(jint initialCapacity);
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoFieldArray)
 

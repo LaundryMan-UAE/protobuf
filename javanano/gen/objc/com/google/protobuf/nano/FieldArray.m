@@ -271,6 +271,12 @@ ComGoogleProtobufNanoFieldArray *new_ComGoogleProtobufNanoFieldArray_init() {
   return self;
 }
 
+ComGoogleProtobufNanoFieldArray *create_ComGoogleProtobufNanoFieldArray_init() {
+  ComGoogleProtobufNanoFieldArray *self = [[ComGoogleProtobufNanoFieldArray alloc] autorelease];
+  ComGoogleProtobufNanoFieldArray_init(self);
+  return self;
+}
+
 void ComGoogleProtobufNanoFieldArray_initWithInt_(ComGoogleProtobufNanoFieldArray *self, jint initialCapacity) {
   NSObject_init(self);
   self->mGarbage_ = false;
@@ -282,6 +288,12 @@ void ComGoogleProtobufNanoFieldArray_initWithInt_(ComGoogleProtobufNanoFieldArra
 
 ComGoogleProtobufNanoFieldArray *new_ComGoogleProtobufNanoFieldArray_initWithInt_(jint initialCapacity) {
   ComGoogleProtobufNanoFieldArray *self = [ComGoogleProtobufNanoFieldArray alloc];
+  ComGoogleProtobufNanoFieldArray_initWithInt_(self, initialCapacity);
+  return self;
+}
+
+ComGoogleProtobufNanoFieldArray *create_ComGoogleProtobufNanoFieldArray_initWithInt_(jint initialCapacity) {
+  ComGoogleProtobufNanoFieldArray *self = [[ComGoogleProtobufNanoFieldArray alloc] autorelease];
   ComGoogleProtobufNanoFieldArray_initWithInt_(self, initialCapacity);
   return self;
 }

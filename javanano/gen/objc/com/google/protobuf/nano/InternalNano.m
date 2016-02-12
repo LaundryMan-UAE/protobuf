@@ -45,6 +45,8 @@ __attribute__((unused)) static void ComGoogleProtobufNanoInternalNano_init(ComGo
 
 __attribute__((unused)) static ComGoogleProtobufNanoInternalNano *new_ComGoogleProtobufNanoInternalNano_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoInternalNano *create_ComGoogleProtobufNanoInternalNano_init();
+
 __attribute__((unused)) static id ComGoogleProtobufNanoInternalNano_primitiveDefaultValueWithInt_(jint type);
 
 __attribute__((unused)) static jboolean ComGoogleProtobufNanoInternalNano_equalsMapValueWithId_withId_(id a, id b);
@@ -268,6 +270,12 @@ void ComGoogleProtobufNanoInternalNano_init(ComGoogleProtobufNanoInternalNano *s
 
 ComGoogleProtobufNanoInternalNano *new_ComGoogleProtobufNanoInternalNano_init() {
   ComGoogleProtobufNanoInternalNano *self = [ComGoogleProtobufNanoInternalNano alloc];
+  ComGoogleProtobufNanoInternalNano_init(self);
+  return self;
+}
+
+ComGoogleProtobufNanoInternalNano *create_ComGoogleProtobufNanoInternalNano_init() {
+  ComGoogleProtobufNanoInternalNano *self = [[ComGoogleProtobufNanoInternalNano alloc] autorelease];
   ComGoogleProtobufNanoInternalNano_init(self);
   return self;
 }

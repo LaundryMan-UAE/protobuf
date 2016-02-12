@@ -166,7 +166,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     return JavaUtilArrays_equalsWithByteArray_withByteArray_(ComGoogleProtobufNanoFieldData_toByteArray(self), ComGoogleProtobufNanoFieldData_toByteArray(nil_chk(other)));
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithJavaLangThrowable_(e) autorelease];
+    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
   }
 }
 
@@ -176,7 +176,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     result = 31 * result + JavaUtilArrays_hashCodeWithByteArray_(ComGoogleProtobufNanoFieldData_toByteArray(self));
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithJavaLangThrowable_(e) autorelease];
+    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
   }
   return result;
 }
@@ -291,6 +291,12 @@ ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_initWithComGo
   return self;
 }
 
+ComGoogleProtobufNanoFieldData *create_ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(ComGoogleProtobufNanoExtension *extension, id newValue) {
+  ComGoogleProtobufNanoFieldData *self = [[ComGoogleProtobufNanoFieldData alloc] autorelease];
+  ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(self, extension, newValue);
+  return self;
+}
+
 void ComGoogleProtobufNanoFieldData_init(ComGoogleProtobufNanoFieldData *self) {
   NSObject_init(self);
   JreStrongAssignAndConsume(&self->unknownFieldData_, new_JavaUtilArrayList_init());
@@ -298,6 +304,12 @@ void ComGoogleProtobufNanoFieldData_init(ComGoogleProtobufNanoFieldData *self) {
 
 ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_init() {
   ComGoogleProtobufNanoFieldData *self = [ComGoogleProtobufNanoFieldData alloc];
+  ComGoogleProtobufNanoFieldData_init(self);
+  return self;
+}
+
+ComGoogleProtobufNanoFieldData *create_ComGoogleProtobufNanoFieldData_init() {
+  ComGoogleProtobufNanoFieldData *self = [[ComGoogleProtobufNanoFieldData alloc] autorelease];
   ComGoogleProtobufNanoFieldData_init(self);
   return self;
 }

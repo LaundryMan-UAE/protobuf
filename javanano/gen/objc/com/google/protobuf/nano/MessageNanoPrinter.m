@@ -78,6 +78,8 @@ __attribute__((unused)) static void ComGoogleProtobufNanoMessageNanoPrinter_init
 
 __attribute__((unused)) static ComGoogleProtobufNanoMessageNanoPrinter *new_ComGoogleProtobufNanoMessageNanoPrinter_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoMessageNanoPrinter *create_ComGoogleProtobufNanoMessageNanoPrinter_init();
+
 __attribute__((unused)) static void ComGoogleProtobufNanoMessageNanoPrinter_printWithNSString_withId_withJavaLangStringBuffer_withJavaLangStringBuffer_(NSString *identifier, id object, JavaLangStringBuffer *indentBuf, JavaLangStringBuffer *buf);
 
 __attribute__((unused)) static NSString *ComGoogleProtobufNanoMessageNanoPrinter_deCamelCaseifyWithNSString_(NSString *identifier);
@@ -151,6 +153,12 @@ void ComGoogleProtobufNanoMessageNanoPrinter_init(ComGoogleProtobufNanoMessageNa
 
 ComGoogleProtobufNanoMessageNanoPrinter *new_ComGoogleProtobufNanoMessageNanoPrinter_init() {
   ComGoogleProtobufNanoMessageNanoPrinter *self = [ComGoogleProtobufNanoMessageNanoPrinter alloc];
+  ComGoogleProtobufNanoMessageNanoPrinter_init(self);
+  return self;
+}
+
+ComGoogleProtobufNanoMessageNanoPrinter *create_ComGoogleProtobufNanoMessageNanoPrinter_init() {
+  ComGoogleProtobufNanoMessageNanoPrinter *self = [[ComGoogleProtobufNanoMessageNanoPrinter alloc] autorelease];
   ComGoogleProtobufNanoMessageNanoPrinter_init(self);
   return self;
 }

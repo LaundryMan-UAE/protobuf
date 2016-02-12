@@ -65,6 +65,8 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 
 __attribute__((unused)) static ComGoogleProtobufNanoCodedInputByteBufferNano *new_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint off, jint len) NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoCodedInputByteBufferNano *create_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint off, jint len);
+
 __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNano_recomputeBufferSizeAfterLimit(ComGoogleProtobufNanoCodedInputByteBufferNano *self);
 
 @implementation ComGoogleProtobufNanoCodedInputByteBufferNano
@@ -593,6 +595,12 @@ void ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_wit
 
 ComGoogleProtobufNanoCodedInputByteBufferNano *new_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint off, jint len) {
   ComGoogleProtobufNanoCodedInputByteBufferNano *self = [ComGoogleProtobufNanoCodedInputByteBufferNano alloc];
+  ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, off, len);
+  return self;
+}
+
+ComGoogleProtobufNanoCodedInputByteBufferNano *create_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint off, jint len) {
+  ComGoogleProtobufNanoCodedInputByteBufferNano *self = [[ComGoogleProtobufNanoCodedInputByteBufferNano alloc] autorelease];
   ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, off, len);
   return self;
 }

@@ -23,6 +23,8 @@ __attribute__((unused)) static void ComGoogleProtobufNanoMapFactories_init(ComGo
 
 __attribute__((unused)) static ComGoogleProtobufNanoMapFactories *new_ComGoogleProtobufNanoMapFactories_init() NS_RETURNS_RETAINED;
 
+__attribute__((unused)) static ComGoogleProtobufNanoMapFactories *create_ComGoogleProtobufNanoMapFactories_init();
+
 @interface ComGoogleProtobufNanoMapFactories_MapFactory : NSObject
 
 @end
@@ -40,6 +42,8 @@ J2OBJC_EMPTY_STATIC_INIT(ComGoogleProtobufNanoMapFactories_DefaultMapFactory)
 __attribute__((unused)) static void ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(ComGoogleProtobufNanoMapFactories_DefaultMapFactory *self);
 
 __attribute__((unused)) static ComGoogleProtobufNanoMapFactories_DefaultMapFactory *new_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init() NS_RETURNS_RETAINED;
+
+__attribute__((unused)) static ComGoogleProtobufNanoMapFactories_DefaultMapFactory *create_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init();
 
 J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoMapFactories_DefaultMapFactory)
 
@@ -105,6 +109,12 @@ ComGoogleProtobufNanoMapFactories *new_ComGoogleProtobufNanoMapFactories_init() 
   return self;
 }
 
+ComGoogleProtobufNanoMapFactories *create_ComGoogleProtobufNanoMapFactories_init() {
+  ComGoogleProtobufNanoMapFactories *self = [[ComGoogleProtobufNanoMapFactories alloc] autorelease];
+  ComGoogleProtobufNanoMapFactories_init(self);
+  return self;
+}
+
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories)
 
 @implementation ComGoogleProtobufNanoMapFactories_MapFactory
@@ -154,6 +164,12 @@ void ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(ComGoogleProtobufN
 
 ComGoogleProtobufNanoMapFactories_DefaultMapFactory *new_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init() {
   ComGoogleProtobufNanoMapFactories_DefaultMapFactory *self = [ComGoogleProtobufNanoMapFactories_DefaultMapFactory alloc];
+  ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(self);
+  return self;
+}
+
+ComGoogleProtobufNanoMapFactories_DefaultMapFactory *create_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init() {
+  ComGoogleProtobufNanoMapFactories_DefaultMapFactory *self = [[ComGoogleProtobufNanoMapFactories_DefaultMapFactory alloc] autorelease];
   ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(self);
   return self;
 }
