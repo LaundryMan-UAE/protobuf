@@ -64,8 +64,8 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (unknownFieldData_ == nil) {
     return nil;
   }
-  if (index < [((id<JavaUtilList>) nil_chk(unknownFieldData_)) size]) {
-    return [unknownFieldData_ getWithInt:index];
+  if (index < [unknownFieldData_ size]) {
+    return [((id<JavaUtilList>) nil_chk(unknownFieldData_)) getWithInt:index];
   }
   return nil;
 }
@@ -74,13 +74,13 @@ J2OBJC_IGNORE_DESIGNATED_END
   if (unknownFieldData_ == nil) {
     return 0;
   }
-  return [((id<JavaUtilList>) nil_chk(unknownFieldData_)) size];
+  return [unknownFieldData_ size];
 }
 
 - (id)getValueWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension {
   if (value_ != nil) {
     if (cachedExtension_ != extension) {
-      @throw [new_JavaLangIllegalStateException_initWithNSString_(@"Tried to getExtension with a differernt Extension.") autorelease];
+      @throw create_JavaLangIllegalStateException_initWithNSString_(@"Tried to getExtension with a differernt Extension.");
     }
   }
   else {
@@ -131,11 +131,11 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
   ComGoogleProtobufNanoFieldData *other = (ComGoogleProtobufNanoFieldData *) cast_chk(o, [ComGoogleProtobufNanoFieldData class]);
   if (value_ != nil && ((ComGoogleProtobufNanoFieldData *) nil_chk(other))->value_ != nil) {
-    if (cachedExtension_ != other->cachedExtension_) {
+    if (cachedExtension_ != ((ComGoogleProtobufNanoFieldData *) nil_chk(other))->cachedExtension_) {
       return false;
     }
     if (![((IOSClass *) nil_chk(((ComGoogleProtobufNanoExtension *) nil_chk(cachedExtension_))->clazz_)) isArray]) {
-      return [value_ isEqual:other->value_];
+      return [nil_chk(value_) isEqual:other->value_];
     }
     if ([value_ isKindOfClass:[IOSByteArray class]]) {
       return JavaUtilArrays_equalsWithByteArray_withByteArray_((IOSByteArray *) cast_chk(value_, [IOSByteArray class]), (IOSByteArray *) cast_chk(other->value_, [IOSByteArray class]));
@@ -160,13 +160,13 @@ J2OBJC_IGNORE_DESIGNATED_END
     }
   }
   if (unknownFieldData_ != nil && ((ComGoogleProtobufNanoFieldData *) nil_chk(other))->unknownFieldData_ != nil) {
-    return [unknownFieldData_ isEqual:other->unknownFieldData_];
+    return [unknownFieldData_ isEqual:((ComGoogleProtobufNanoFieldData *) nil_chk(other))->unknownFieldData_];
   }
   @try {
     return JavaUtilArrays_equalsWithByteArray_withByteArray_(ComGoogleProtobufNanoFieldData_toByteArray(self), ComGoogleProtobufNanoFieldData_toByteArray(nil_chk(other)));
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSException_(e);
   }
 }
 
@@ -176,7 +176,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     result = 31 * result + JavaUtilArrays_hashCodeWithByteArray_(ComGoogleProtobufNanoFieldData_toByteArray(self));
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSException_(e);
   }
   return result;
 }
@@ -186,7 +186,7 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 - (ComGoogleProtobufNanoFieldData *)clone {
-  ComGoogleProtobufNanoFieldData *clone = [new_ComGoogleProtobufNanoFieldData_init() autorelease];
+  ComGoogleProtobufNanoFieldData *clone = create_ComGoogleProtobufNanoFieldData_init();
   @try {
     JreStrongAssign(&clone->cachedExtension_, cachedExtension_);
     if (unknownFieldData_ == nil) {
@@ -237,7 +237,7 @@ J2OBJC_IGNORE_DESIGNATED_END
     return clone;
   }
   @catch (JavaLangCloneNotSupportedException *e) {
-    @throw [new_JavaLangAssertionError_initWithId_(e) autorelease];
+    @throw create_JavaLangAssertionError_initWithId_(e);
   }
 }
 
@@ -248,33 +248,50 @@ J2OBJC_IGNORE_DESIGNATED_END
   [super dealloc];
 }
 
-- (id)copyWithZone:(NSZone *)zone {
-  return [[self clone] retain];
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, 1, -1, -1 },
+    { NULL, NULL, 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoUnknownFieldData;", 0x0, 4, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x0, 6, 7, -1, 8, -1, -1 },
+    { NULL, "V", 0x0, 9, 0, -1, 1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 10, 11, 12, -1, -1, -1 },
+    { NULL, "Z", 0x1, 13, 14, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 15, -1, -1, -1, -1, -1 },
+    { NULL, "[B", 0x2, -1, -1, 12, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoFieldData;", 0x11, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithComGoogleProtobufNanoExtension:withId:);
+  methods[1].selector = @selector(init);
+  methods[2].selector = @selector(addUnknownFieldWithComGoogleProtobufNanoUnknownFieldData:);
+  methods[3].selector = @selector(getUnknownFieldWithInt:);
+  methods[4].selector = @selector(getUnknownFieldSize);
+  methods[5].selector = @selector(getValueWithComGoogleProtobufNanoExtension:);
+  methods[6].selector = @selector(setValueWithComGoogleProtobufNanoExtension:withId:);
+  methods[7].selector = @selector(computeSerializedSize);
+  methods[8].selector = @selector(writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[9].selector = @selector(isEqual:);
+  methods[10].selector = @selector(hash);
+  methods[11].selector = @selector(toByteArray);
+  methods[12].selector = @selector(clone);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "cachedExtension_", "LComGoogleProtobufNanoExtension;", .constantValue.asLong = 0, 0x2, -1, -1, 16, -1 },
+    { "value_", "LNSObject;", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "unknownFieldData_", "LJavaUtilList;", .constantValue.asLong = 0, 0x2, -1, -1, 17, -1 },
+  };
+  static const void *ptrTable[] = { "LComGoogleProtobufNanoExtension;LNSObject;", "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<*TT;>;TT;)V", "addUnknownField", "LComGoogleProtobufNanoUnknownFieldData;", "getUnknownField", "I", "getValue", "LComGoogleProtobufNanoExtension;", "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<*TT;>;)TT;", "setValue", "writeTo", "LComGoogleProtobufNanoCodedOutputByteBufferNano;", "LJavaIoIOException;", "equals", "LNSObject;", "hashCode", "Lcom/google/protobuf/nano/Extension<**>;", "Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoFieldData = { "FieldData", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x0, 13, 3, -1, -1, -1, -1, -1 };
+  return &_ComGoogleProtobufNanoFieldData;
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithComGoogleProtobufNanoExtension:withId:", "FieldData", NULL, 0x0, NULL, "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<*TT;>;TT;)V" },
-    { "init", "FieldData", NULL, 0x0, NULL, NULL },
-    { "addUnknownFieldWithComGoogleProtobufNanoUnknownFieldData:", "addUnknownField", "V", 0x0, NULL, NULL },
-    { "getUnknownFieldWithInt:", "getUnknownField", "Lcom.google.protobuf.nano.UnknownFieldData;", 0x0, NULL, NULL },
-    { "getUnknownFieldSize", NULL, "I", 0x0, NULL, NULL },
-    { "getValueWithComGoogleProtobufNanoExtension:", "getValue", "TT;", 0x0, NULL, "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<*TT;>;)TT;" },
-    { "setValueWithComGoogleProtobufNanoExtension:withId:", "setValue", "V", 0x0, NULL, "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<*TT;>;TT;)V" },
-    { "computeSerializedSize", NULL, "I", 0x0, NULL, NULL },
-    { "writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeTo", "V", 0x0, "Ljava.io.IOException;", NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
-    { "toByteArray", NULL, "[B", 0x2, "Ljava.io.IOException;", NULL },
-    { "clone", NULL, "Lcom.google.protobuf.nano.FieldData;", 0x11, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "cachedExtension_", NULL, 0x2, "Lcom.google.protobuf.nano.Extension;", NULL, "Lcom/google/protobuf/nano/Extension<**>;", .constantValue.asLong = 0 },
-    { "value_", NULL, 0x2, "Ljava.lang.Object;", NULL, NULL, .constantValue.asLong = 0 },
-    { "unknownFieldData_", NULL, 0x2, "Ljava.util.List;", NULL, "Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;", .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoFieldData = { 2, "FieldData", "com.google.protobuf.nano", NULL, 0x0, 13, methods, 3, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleProtobufNanoFieldData;
+- (id)copyWithZone:(NSZone *)zone {
+  return [[self clone] retain];
 }
 
 @end
@@ -286,15 +303,11 @@ void ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withI
 }
 
 ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(ComGoogleProtobufNanoExtension *extension, id newValue) {
-  ComGoogleProtobufNanoFieldData *self = [ComGoogleProtobufNanoFieldData alloc];
-  ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(self, extension, newValue);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoFieldData, initWithComGoogleProtobufNanoExtension_withId_, extension, newValue)
 }
 
 ComGoogleProtobufNanoFieldData *create_ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(ComGoogleProtobufNanoExtension *extension, id newValue) {
-  ComGoogleProtobufNanoFieldData *self = [[ComGoogleProtobufNanoFieldData alloc] autorelease];
-  ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(self, extension, newValue);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoFieldData, initWithComGoogleProtobufNanoExtension_withId_, extension, newValue)
 }
 
 void ComGoogleProtobufNanoFieldData_init(ComGoogleProtobufNanoFieldData *self) {
@@ -303,15 +316,11 @@ void ComGoogleProtobufNanoFieldData_init(ComGoogleProtobufNanoFieldData *self) {
 }
 
 ComGoogleProtobufNanoFieldData *new_ComGoogleProtobufNanoFieldData_init() {
-  ComGoogleProtobufNanoFieldData *self = [ComGoogleProtobufNanoFieldData alloc];
-  ComGoogleProtobufNanoFieldData_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoFieldData, init)
 }
 
 ComGoogleProtobufNanoFieldData *create_ComGoogleProtobufNanoFieldData_init() {
-  ComGoogleProtobufNanoFieldData *self = [[ComGoogleProtobufNanoFieldData alloc] autorelease];
-  ComGoogleProtobufNanoFieldData_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoFieldData, init)
 }
 
 IOSByteArray *ComGoogleProtobufNanoFieldData_toByteArray(ComGoogleProtobufNanoFieldData *self) {

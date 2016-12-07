@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoWireFormatNano_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoWireFormatNano_RESTRICT
-#define ComGoogleProtobufNanoWireFormatNano_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoWireFormatNano")
+#ifdef RESTRICT_ComGoogleProtobufNanoWireFormatNano
+#define INCLUDE_ALL_ComGoogleProtobufNanoWireFormatNano 0
 #else
-#define ComGoogleProtobufNanoWireFormatNano_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoWireFormatNano 1
 #endif
-#undef ComGoogleProtobufNanoWireFormatNano_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoWireFormatNano
 
-#if !defined (ComGoogleProtobufNanoWireFormatNano_) && (ComGoogleProtobufNanoWireFormatNano_INCLUDE_ALL || defined(ComGoogleProtobufNanoWireFormatNano_INCLUDE))
+#if !defined (ComGoogleProtobufNanoWireFormatNano_) && (INCLUDE_ALL_ComGoogleProtobufNanoWireFormatNano || defined(INCLUDE_ComGoogleProtobufNanoWireFormatNano))
 #define ComGoogleProtobufNanoWireFormatNano_
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -171,4 +171,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoWireFormatNano)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoWireFormatNano_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoWireFormatNano")

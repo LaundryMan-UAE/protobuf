@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoMessageNanoPrinter_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoMessageNanoPrinter_RESTRICT
-#define ComGoogleProtobufNanoMessageNanoPrinter_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoMessageNanoPrinter")
+#ifdef RESTRICT_ComGoogleProtobufNanoMessageNanoPrinter
+#define INCLUDE_ALL_ComGoogleProtobufNanoMessageNanoPrinter 0
 #else
-#define ComGoogleProtobufNanoMessageNanoPrinter_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoMessageNanoPrinter 1
 #endif
-#undef ComGoogleProtobufNanoMessageNanoPrinter_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoMessageNanoPrinter
 
-#if !defined (ComGoogleProtobufNanoMessageNanoPrinter_) && (ComGoogleProtobufNanoMessageNanoPrinter_INCLUDE_ALL || defined(ComGoogleProtobufNanoMessageNanoPrinter_INCLUDE))
+#if !defined (ComGoogleProtobufNanoMessageNanoPrinter_) && (INCLUDE_ALL_ComGoogleProtobufNanoMessageNanoPrinter || defined(INCLUDE_ComGoogleProtobufNanoMessageNanoPrinter))
 #define ComGoogleProtobufNanoMessageNanoPrinter_
 
 @class ComGoogleProtobufNanoMessageNano;
@@ -47,4 +47,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoMessageNanoPrinter)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoMessageNanoPrinter_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoMessageNanoPrinter")

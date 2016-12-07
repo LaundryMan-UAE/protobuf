@@ -66,25 +66,31 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 }
 J2OBJC_IGNORE_DESIGNATED_END
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "V", 0x8, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoMapFactories_MapFactory;", 0x9, -1, -1, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(setMapFactoryWithComGoogleProtobufNanoMapFactories_MapFactory:);
+  methods[1].selector = @selector(getMapFactory);
+  methods[2].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "mapFactory", "LComGoogleProtobufNanoMapFactories_MapFactory;", .constantValue.asLong = 0, 0x4a, -1, 2, -1, -1 },
+  };
+  static const void *ptrTable[] = { "setMapFactory", "LComGoogleProtobufNanoMapFactories_MapFactory;", &ComGoogleProtobufNanoMapFactories_mapFactory, "LComGoogleProtobufNanoMapFactories_MapFactory;LComGoogleProtobufNanoMapFactories_DefaultMapFactory;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories = { "MapFactories", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x11, 3, 1, -1, 3, -1, -1, -1 };
+  return &_ComGoogleProtobufNanoMapFactories;
+}
+
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoMapFactories class]) {
     JreVolatileStrongAssignAndConsume(&ComGoogleProtobufNanoMapFactories_mapFactory, new_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init());
     J2OBJC_SET_INITIALIZED(ComGoogleProtobufNanoMapFactories)
   }
-}
-
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "setMapFactoryWithComGoogleProtobufNanoMapFactories_MapFactory:", "setMapFactory", "V", 0x8, NULL, NULL },
-    { "getMapFactory", NULL, "Lcom.google.protobuf.nano.MapFactories$MapFactory;", 0x9, NULL, NULL },
-    { "init", "MapFactories", NULL, 0x2, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "mapFactory", "mapFactory", 0x4a, "Lcom.google.protobuf.nano.MapFactories$MapFactory;", &ComGoogleProtobufNanoMapFactories_mapFactory, NULL, .constantValue.asLong = 0 },
-  };
-  static const char *inner_classes[] = {"Lcom.google.protobuf.nano.MapFactories$MapFactory;", "Lcom.google.protobuf.nano.MapFactories$DefaultMapFactory;"};
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories = { 2, "MapFactories", "com.google.protobuf.nano", NULL, 0x11, 3, methods, 1, fields, 0, NULL, 2, inner_classes, NULL, NULL };
-  return &_ComGoogleProtobufNanoMapFactories;
 }
 
 @end
@@ -104,15 +110,11 @@ void ComGoogleProtobufNanoMapFactories_init(ComGoogleProtobufNanoMapFactories *s
 }
 
 ComGoogleProtobufNanoMapFactories *new_ComGoogleProtobufNanoMapFactories_init() {
-  ComGoogleProtobufNanoMapFactories *self = [ComGoogleProtobufNanoMapFactories alloc];
-  ComGoogleProtobufNanoMapFactories_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoMapFactories, init)
 }
 
 ComGoogleProtobufNanoMapFactories *create_ComGoogleProtobufNanoMapFactories_init() {
-  ComGoogleProtobufNanoMapFactories *self = [[ComGoogleProtobufNanoMapFactories alloc] autorelease];
-  ComGoogleProtobufNanoMapFactories_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoMapFactories, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories)
@@ -120,10 +122,15 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories)
 @implementation ComGoogleProtobufNanoMapFactories_MapFactory
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "forMapWithJavaUtilMap:", "forMap", "Ljava.util.Map;", 0x401, NULL, "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)Ljava/util/Map<TK;TV;>;" },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LJavaUtilMap;", 0x401, 0, 1, -1, 2, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories_MapFactory = { 2, "MapFactory", "com.google.protobuf.nano", "MapFactories", 0x609, 1, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(forMapWithJavaUtilMap:);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "forMap", "LJavaUtilMap;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)Ljava/util/Map<TK;TV;>;", "LComGoogleProtobufNanoMapFactories;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories_MapFactory = { "MapFactory", "com.google.protobuf.nano", ptrTable, methods, NULL, 7, 0x609, 1, 0, 3, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoMapFactories_MapFactory;
 }
 
@@ -135,7 +142,7 @@ J2OBJC_INTERFACE_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories_MapFactor
 
 - (id<JavaUtilMap>)forMapWithJavaUtilMap:(id<JavaUtilMap>)oldMap {
   if (oldMap == nil) {
-    return [new_JavaUtilHashMap_init() autorelease];
+    return create_JavaUtilHashMap_init();
   }
   return oldMap;
 }
@@ -148,11 +155,17 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "forMapWithJavaUtilMap:", "forMap", "Ljava.util.Map;", 0x1, NULL, "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)Ljava/util/Map<TK;TV;>;" },
-    { "init", NULL, NULL, 0x2, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LJavaUtilMap;", 0x1, 0, 1, -1, 2, -1, -1 },
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories_DefaultMapFactory = { 2, "DefaultMapFactory", "com.google.protobuf.nano", "MapFactories", 0xa, 2, methods, 0, NULL, 0, NULL, 0, NULL, NULL, NULL };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(forMapWithJavaUtilMap:);
+  methods[1].selector = @selector(init);
+  #pragma clang diagnostic pop
+  static const void *ptrTable[] = { "forMap", "LJavaUtilMap;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)Ljava/util/Map<TK;TV;>;", "LComGoogleProtobufNanoMapFactories;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoMapFactories_DefaultMapFactory = { "DefaultMapFactory", "com.google.protobuf.nano", ptrTable, methods, NULL, 7, 0xa, 2, 0, 3, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoMapFactories_DefaultMapFactory;
 }
 
@@ -163,15 +176,11 @@ void ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(ComGoogleProtobufN
 }
 
 ComGoogleProtobufNanoMapFactories_DefaultMapFactory *new_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init() {
-  ComGoogleProtobufNanoMapFactories_DefaultMapFactory *self = [ComGoogleProtobufNanoMapFactories_DefaultMapFactory alloc];
-  ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoMapFactories_DefaultMapFactory, init)
 }
 
 ComGoogleProtobufNanoMapFactories_DefaultMapFactory *create_ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init() {
-  ComGoogleProtobufNanoMapFactories_DefaultMapFactory *self = [[ComGoogleProtobufNanoMapFactories_DefaultMapFactory alloc] autorelease];
-  ComGoogleProtobufNanoMapFactories_DefaultMapFactory_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoMapFactories_DefaultMapFactory, init)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories_DefaultMapFactory)

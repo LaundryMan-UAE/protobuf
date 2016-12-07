@@ -3,7 +3,6 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/protobuf/javanano/src/main/java/com/google/protobuf/nano/CodedInputByteBufferNano.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/protobuf/nano/CodedInputByteBufferNano.h"
@@ -11,7 +10,6 @@
 #include "com/google/protobuf/nano/InvalidProtocolBufferNanoException.h"
 #include "com/google/protobuf/nano/MessageNano.h"
 #include "com/google/protobuf/nano/WireFormatNano.h"
-#include "java/io/IOException.h"
 #include "java/lang/Boolean.h"
 #include "java/lang/Double.h"
 #include "java/lang/Float.h"
@@ -19,6 +17,7 @@
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
 #include "java/lang/System.h"
+#include "java/nio/charset/Charset.h"
 
 @interface ComGoogleProtobufNanoCodedInputByteBufferNano () {
  @public
@@ -328,7 +327,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 
 - (jint)setRecursionLimitWithInt:(jint)limit {
   if (limit < 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Recursion limit cannot be negative: ", limit)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Recursion limit cannot be negative: ", limit));
   }
   jint oldLimit = recursionLimit_;
   recursionLimit_ = limit;
@@ -337,7 +336,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 
 - (jint)setSizeLimitWithInt:(jint)limit {
   if (limit < 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Size limit cannot be negative: ", limit)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Size limit cannot be negative: ", limit));
   }
   jint oldLimit = sizeLimit_;
   sizeLimit_ = limit;
@@ -399,10 +398,10 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 
 - (void)rewindToPositionWithInt:(jint)position {
   if (position > bufferPos_ - bufferStart_) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$I", @"Position ", position, @" is beyond current ", (bufferPos_ - bufferStart_))) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$I", @"Position ", position, @" is beyond current ", (bufferPos_ - bufferStart_)));
   }
   if (position < 0) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Bad position ", position)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Bad position ", position));
   }
   bufferPos_ = bufferStart_ + position;
 }
@@ -484,7 +483,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
     case ComGoogleProtobufNanoInternalNano_TYPE_SINT64:
     return JavaLangLong_valueOfWithLong_([self readSInt64]);
     default:
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type));
   }
 }
 
@@ -494,69 +493,119 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "newInstanceWithByteArray:", "newInstance", "Lcom.google.protobuf.nano.CodedInputByteBufferNano;", 0x9, NULL, NULL },
-    { "newInstanceWithByteArray:withInt:withInt:", "newInstance", "Lcom.google.protobuf.nano.CodedInputByteBufferNano;", 0x9, NULL, NULL },
-    { "readTag", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "checkLastTagWasWithInt:", "checkLastTagWas", "V", 0x1, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", NULL },
-    { "skipFieldWithInt:", "skipField", "Z", 0x1, "Ljava.io.IOException;", NULL },
-    { "skipMessage", NULL, "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "readDouble", NULL, "D", 0x1, "Ljava.io.IOException;", NULL },
-    { "readFloat", NULL, "F", 0x1, "Ljava.io.IOException;", NULL },
-    { "readUInt64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "readInt64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "readInt32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readFixed64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "readFixed32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readBool", NULL, "Z", 0x1, "Ljava.io.IOException;", NULL },
-    { "readString", NULL, "Ljava.lang.String;", 0x1, "Ljava.io.IOException;", NULL },
-    { "readGroupWithComGoogleProtobufNanoMessageNano:withInt:", "readGroup", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "readMessageWithComGoogleProtobufNanoMessageNano:", "readMessage", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "readBytes", NULL, "[B", 0x1, "Ljava.io.IOException;", NULL },
-    { "readUInt32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readEnum", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readSFixed32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readSFixed64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "readSInt32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readSInt64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "readRawVarint32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readRawVarint64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "readRawLittleEndian32", NULL, "I", 0x1, "Ljava.io.IOException;", NULL },
-    { "readRawLittleEndian64", NULL, "J", 0x1, "Ljava.io.IOException;", NULL },
-    { "decodeZigZag32WithInt:", "decodeZigZag32", "I", 0x9, NULL, NULL },
-    { "decodeZigZag64WithLong:", "decodeZigZag64", "J", 0x9, NULL, NULL },
-    { "initWithByteArray:withInt:withInt:", "CodedInputByteBufferNano", NULL, 0x2, NULL, NULL },
-    { "setRecursionLimitWithInt:", "setRecursionLimit", "I", 0x1, NULL, NULL },
-    { "setSizeLimitWithInt:", "setSizeLimit", "I", 0x1, NULL, NULL },
-    { "resetSizeCounter", NULL, "V", 0x1, NULL, NULL },
-    { "pushLimitWithInt:", "pushLimit", "I", 0x1, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", NULL },
-    { "recomputeBufferSizeAfterLimit", NULL, "V", 0x2, NULL, NULL },
-    { "popLimitWithInt:", "popLimit", "V", 0x1, NULL, NULL },
-    { "getBytesUntilLimit", NULL, "I", 0x1, NULL, NULL },
-    { "isAtEnd", NULL, "Z", 0x1, NULL, NULL },
-    { "getPosition", NULL, "I", 0x1, NULL, NULL },
-    { "getDataWithInt:withInt:", "getData", "[B", 0x1, NULL, NULL },
-    { "rewindToPositionWithInt:", "rewindToPosition", "V", 0x1, NULL, NULL },
-    { "readRawByte", NULL, "B", 0x1, "Ljava.io.IOException;", NULL },
-    { "readRawBytesWithInt:", "readRawBytes", "[B", 0x1, "Ljava.io.IOException;", NULL },
-    { "skipRawBytesWithInt:", "skipRawBytes", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "readPrimitiveFieldWithInt:", "readPrimitiveField", "Ljava.lang.Object;", 0x0, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LComGoogleProtobufNanoCodedInputByteBufferNano;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoCodedInputByteBufferNano;", 0x9, 0, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "V", 0x1, 4, 5, 6, -1, -1, -1 },
+    { NULL, "Z", 0x1, 7, 5, 3, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "D", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "F", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "V", 0x1, 8, 9, 3, -1, -1, -1 },
+    { NULL, "V", 0x1, 10, 11, 3, -1, -1, -1 },
+    { NULL, "[B", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "J", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 5, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 13, 14, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 2, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 15, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 16, 5, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 17, 5, 6, -1, -1, -1 },
+    { NULL, "V", 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 18, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "[B", 0x1, 19, 20, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 21, 5, -1, -1, -1, -1 },
+    { NULL, "B", 0x1, -1, -1, 3, -1, -1, -1 },
+    { NULL, "[B", 0x1, 22, 5, 3, -1, -1, -1 },
+    { NULL, "V", 0x1, 23, 5, 3, -1, -1, -1 },
+    { NULL, "LNSObject;", 0x0, 24, 5, 3, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(newInstanceWithByteArray:);
+  methods[1].selector = @selector(newInstanceWithByteArray:withInt:withInt:);
+  methods[2].selector = @selector(readTag);
+  methods[3].selector = @selector(checkLastTagWasWithInt:);
+  methods[4].selector = @selector(skipFieldWithInt:);
+  methods[5].selector = @selector(skipMessage);
+  methods[6].selector = @selector(readDouble);
+  methods[7].selector = @selector(readFloat);
+  methods[8].selector = @selector(readUInt64);
+  methods[9].selector = @selector(readInt64);
+  methods[10].selector = @selector(readInt32);
+  methods[11].selector = @selector(readFixed64);
+  methods[12].selector = @selector(readFixed32);
+  methods[13].selector = @selector(readBool);
+  methods[14].selector = @selector(readString);
+  methods[15].selector = @selector(readGroupWithComGoogleProtobufNanoMessageNano:withInt:);
+  methods[16].selector = @selector(readMessageWithComGoogleProtobufNanoMessageNano:);
+  methods[17].selector = @selector(readBytes);
+  methods[18].selector = @selector(readUInt32);
+  methods[19].selector = @selector(readEnum);
+  methods[20].selector = @selector(readSFixed32);
+  methods[21].selector = @selector(readSFixed64);
+  methods[22].selector = @selector(readSInt32);
+  methods[23].selector = @selector(readSInt64);
+  methods[24].selector = @selector(readRawVarint32);
+  methods[25].selector = @selector(readRawVarint64);
+  methods[26].selector = @selector(readRawLittleEndian32);
+  methods[27].selector = @selector(readRawLittleEndian64);
+  methods[28].selector = @selector(decodeZigZag32WithInt:);
+  methods[29].selector = @selector(decodeZigZag64WithLong:);
+  methods[30].selector = @selector(initWithByteArray:withInt:withInt:);
+  methods[31].selector = @selector(setRecursionLimitWithInt:);
+  methods[32].selector = @selector(setSizeLimitWithInt:);
+  methods[33].selector = @selector(resetSizeCounter);
+  methods[34].selector = @selector(pushLimitWithInt:);
+  methods[35].selector = @selector(recomputeBufferSizeAfterLimit);
+  methods[36].selector = @selector(popLimitWithInt:);
+  methods[37].selector = @selector(getBytesUntilLimit);
+  methods[38].selector = @selector(isAtEnd);
+  methods[39].selector = @selector(getPosition);
+  methods[40].selector = @selector(getDataWithInt:withInt:);
+  methods[41].selector = @selector(rewindToPositionWithInt:);
+  methods[42].selector = @selector(readRawByte);
+  methods[43].selector = @selector(readRawBytesWithInt:);
+  methods[44].selector = @selector(skipRawBytesWithInt:);
+  methods[45].selector = @selector(readPrimitiveFieldWithInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "buffer_", NULL, 0x12, "[B", NULL, NULL, .constantValue.asLong = 0 },
-    { "bufferStart_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "bufferSize_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "bufferSizeAfterLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "bufferPos_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "lastTag_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "currentLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "recursionDepth_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "recursionLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "sizeLimit_", NULL, 0x2, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "DEFAULT_RECURSION_LIMIT", "DEFAULT_RECURSION_LIMIT", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_RECURSION_LIMIT },
-    { "DEFAULT_SIZE_LIMIT", "DEFAULT_SIZE_LIMIT", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_SIZE_LIMIT },
+    { "buffer_", "[B", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "bufferStart_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "bufferSize_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "bufferSizeAfterLimit_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "bufferPos_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "lastTag_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "currentLimit_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "recursionDepth_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "recursionLimit_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "sizeLimit_", "I", .constantValue.asLong = 0, 0x2, -1, -1, -1, -1 },
+    { "DEFAULT_RECURSION_LIMIT", "I", .constantValue.asInt = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_RECURSION_LIMIT, 0x1a, -1, -1, -1, -1 },
+    { "DEFAULT_SIZE_LIMIT", "I", .constantValue.asInt = ComGoogleProtobufNanoCodedInputByteBufferNano_DEFAULT_SIZE_LIMIT, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoCodedInputByteBufferNano = { 2, "CodedInputByteBufferNano", "com.google.protobuf.nano", NULL, 0x11, 46, methods, 12, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "newInstance", "[B", "[BII", "LJavaIoIOException;", "checkLastTagWas", "I", "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", "skipField", "readGroup", "LComGoogleProtobufNanoMessageNano;I", "readMessage", "LComGoogleProtobufNanoMessageNano;", "decodeZigZag32", "decodeZigZag64", "J", "setRecursionLimit", "setSizeLimit", "pushLimit", "popLimit", "getData", "II", "rewindToPosition", "readRawBytes", "skipRawBytes", "readPrimitiveField" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoCodedInputByteBufferNano = { "CodedInputByteBufferNano", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x11, 46, 12, -1, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoCodedInputByteBufferNano;
 }
 
@@ -569,7 +618,7 @@ ComGoogleProtobufNanoCodedInputByteBufferNano *ComGoogleProtobufNanoCodedInputBy
 
 ComGoogleProtobufNanoCodedInputByteBufferNano *ComGoogleProtobufNanoCodedInputByteBufferNano_newInstanceWithByteArray_withInt_withInt_(IOSByteArray *buf, jint off, jint len) {
   ComGoogleProtobufNanoCodedInputByteBufferNano_initialize();
-  return [new_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(buf, off, len) autorelease];
+  return create_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(buf, off, len);
 }
 
 jint ComGoogleProtobufNanoCodedInputByteBufferNano_decodeZigZag32WithInt_(jint n) {
@@ -594,15 +643,11 @@ void ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_wit
 }
 
 ComGoogleProtobufNanoCodedInputByteBufferNano *new_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint off, jint len) {
-  ComGoogleProtobufNanoCodedInputByteBufferNano *self = [ComGoogleProtobufNanoCodedInputByteBufferNano alloc];
-  ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, off, len);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoCodedInputByteBufferNano, initWithByteArray_withInt_withInt_, buffer, off, len)
 }
 
 ComGoogleProtobufNanoCodedInputByteBufferNano *create_ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint off, jint len) {
-  ComGoogleProtobufNanoCodedInputByteBufferNano *self = [[ComGoogleProtobufNanoCodedInputByteBufferNano alloc] autorelease];
-  ComGoogleProtobufNanoCodedInputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, off, len);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoCodedInputByteBufferNano, initWithByteArray_withInt_withInt_, buffer, off, len)
 }
 
 void ComGoogleProtobufNanoCodedInputByteBufferNano_recomputeBufferSizeAfterLimit(ComGoogleProtobufNanoCodedInputByteBufferNano *self) {

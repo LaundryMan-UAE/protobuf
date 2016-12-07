@@ -128,20 +128,31 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "MessageNanoPrinter", NULL, 0x2, NULL, NULL },
-    { "printWithComGoogleProtobufNanoMessageNano:", "print", "Ljava.lang.String;", 0x9, NULL, "<T:Lcom/google/protobuf/nano/MessageNano;>(TT;)Ljava/lang/String;" },
-    { "printWithNSString:withId:withJavaLangStringBuffer:withJavaLangStringBuffer:", "print", "V", 0xa, "Ljava.lang.IllegalAccessException;Ljava.lang.reflect.InvocationTargetException;", NULL },
-    { "deCamelCaseifyWithNSString:", "deCamelCaseify", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "sanitizeStringWithNSString:", "sanitizeString", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "escapeStringWithNSString:", "escapeString", "Ljava.lang.String;", 0xa, NULL, NULL },
-    { "appendQuotedBytesWithByteArray:withJavaLangStringBuffer:", "appendQuotedBytes", "V", 0xa, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, 0, 1, -1, 2, -1, -1 },
+    { NULL, "V", 0xa, 0, 3, 4, -1, -1, -1 },
+    { NULL, "LNSString;", 0xa, 5, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0xa, 7, 6, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0xa, 8, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 9, 10, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(printWithComGoogleProtobufNanoMessageNano:);
+  methods[2].selector = @selector(printWithNSString:withId:withJavaLangStringBuffer:withJavaLangStringBuffer:);
+  methods[3].selector = @selector(deCamelCaseifyWithNSString:);
+  methods[4].selector = @selector(sanitizeStringWithNSString:);
+  methods[5].selector = @selector(escapeStringWithNSString:);
+  methods[6].selector = @selector(appendQuotedBytesWithByteArray:withJavaLangStringBuffer:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "INDENT", "INDENT", 0x1a, "Ljava.lang.String;", &ComGoogleProtobufNanoMessageNanoPrinter_INDENT, NULL, .constantValue.asLong = 0 },
-    { "MAX_STRING_LEN", "MAX_STRING_LEN", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoMessageNanoPrinter_MAX_STRING_LEN },
+    { "INDENT", "LNSString;", .constantValue.asLong = 0, 0x1a, -1, 11, -1, -1 },
+    { "MAX_STRING_LEN", "I", .constantValue.asInt = ComGoogleProtobufNanoMessageNanoPrinter_MAX_STRING_LEN, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoMessageNanoPrinter = { 2, "MessageNanoPrinter", "com.google.protobuf.nano", NULL, 0x11, 7, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "print", "LComGoogleProtobufNanoMessageNano;", "<T:Lcom/google/protobuf/nano/MessageNano;>(TT;)Ljava/lang/String;", "LNSString;LNSObject;LJavaLangStringBuffer;LJavaLangStringBuffer;", "LJavaLangIllegalAccessException;LJavaLangReflectInvocationTargetException;", "deCamelCaseify", "LNSString;", "sanitizeString", "escapeString", "appendQuotedBytes", "[BLJavaLangStringBuffer;", &ComGoogleProtobufNanoMessageNanoPrinter_INDENT };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoMessageNanoPrinter = { "MessageNanoPrinter", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x11, 7, 2, -1, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoMessageNanoPrinter;
 }
 
@@ -152,15 +163,11 @@ void ComGoogleProtobufNanoMessageNanoPrinter_init(ComGoogleProtobufNanoMessageNa
 }
 
 ComGoogleProtobufNanoMessageNanoPrinter *new_ComGoogleProtobufNanoMessageNanoPrinter_init() {
-  ComGoogleProtobufNanoMessageNanoPrinter *self = [ComGoogleProtobufNanoMessageNanoPrinter alloc];
-  ComGoogleProtobufNanoMessageNanoPrinter_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoMessageNanoPrinter, init)
 }
 
 ComGoogleProtobufNanoMessageNanoPrinter *create_ComGoogleProtobufNanoMessageNanoPrinter_init() {
-  ComGoogleProtobufNanoMessageNanoPrinter *self = [[ComGoogleProtobufNanoMessageNanoPrinter alloc] autorelease];
-  ComGoogleProtobufNanoMessageNanoPrinter_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoMessageNanoPrinter, init)
 }
 
 NSString *ComGoogleProtobufNanoMessageNanoPrinter_printWithComGoogleProtobufNanoMessageNano_(ComGoogleProtobufNanoMessageNano *message) {
@@ -168,9 +175,9 @@ NSString *ComGoogleProtobufNanoMessageNanoPrinter_printWithComGoogleProtobufNano
   if (message == nil) {
     return @"";
   }
-  JavaLangStringBuffer *buf = [new_JavaLangStringBuffer_init() autorelease];
+  JavaLangStringBuffer *buf = create_JavaLangStringBuffer_init();
   @try {
-    ComGoogleProtobufNanoMessageNanoPrinter_printWithNSString_withId_withJavaLangStringBuffer_withJavaLangStringBuffer_(nil, message, [new_JavaLangStringBuffer_init() autorelease], buf);
+    ComGoogleProtobufNanoMessageNanoPrinter_printWithNSString_withId_withJavaLangStringBuffer_withJavaLangStringBuffer_(nil, message, create_JavaLangStringBuffer_init(), buf);
   }
   @catch (JavaLangIllegalAccessException *e) {
     return JreStrcat("$$", @"Error printing proto: ", [((JavaLangIllegalAccessException *) nil_chk(e)) getMessage]);
@@ -292,7 +299,7 @@ void ComGoogleProtobufNanoMessageNanoPrinter_printWithNSString_withId_withJavaLa
 
 NSString *ComGoogleProtobufNanoMessageNanoPrinter_deCamelCaseifyWithNSString_(NSString *identifier) {
   ComGoogleProtobufNanoMessageNanoPrinter_initialize();
-  JavaLangStringBuffer *out = [new_JavaLangStringBuffer_init() autorelease];
+  JavaLangStringBuffer *out = create_JavaLangStringBuffer_init();
   for (jint i = 0; i < ((jint) [((NSString *) nil_chk(identifier)) length]); i++) {
     jchar currentChar = [identifier charAtWithInt:i];
     if (i == 0) {
@@ -319,7 +326,7 @@ NSString *ComGoogleProtobufNanoMessageNanoPrinter_sanitizeStringWithNSString_(NS
 NSString *ComGoogleProtobufNanoMessageNanoPrinter_escapeStringWithNSString_(NSString *str) {
   ComGoogleProtobufNanoMessageNanoPrinter_initialize();
   jint strLen = ((jint) [((NSString *) nil_chk(str)) length]);
-  JavaLangStringBuilder *b = [new_JavaLangStringBuilder_initWithInt_(strLen) autorelease];
+  JavaLangStringBuilder *b = create_JavaLangStringBuilder_initWithInt_(strLen);
   for (jint i = 0; i < strLen; i++) {
     jchar original = [str charAtWithInt:i];
     if (original >= ' ' && original <= '~' && original != '"' && original != '\'') {
@@ -339,7 +346,7 @@ void ComGoogleProtobufNanoMessageNanoPrinter_appendQuotedBytesWithByteArray_with
     return;
   }
   [((JavaLangStringBuffer *) nil_chk(builder)) appendWithChar:'"'];
-  for (jint i = 0; i < ((IOSByteArray *) nil_chk(bytes))->size_; ++i) {
+  for (jint i = 0; i < bytes->size_; ++i) {
     jint ch = IOSByteArray_Get(bytes, i) & (jint) 0xff;
     if (ch == '\\' || ch == '"') {
       [((JavaLangStringBuffer *) nil_chk([builder appendWithChar:'\\'])) appendWithChar:(jchar) ch];

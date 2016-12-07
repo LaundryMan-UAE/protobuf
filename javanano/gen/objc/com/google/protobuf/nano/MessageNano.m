@@ -12,7 +12,6 @@
 #include "com/google/protobuf/nano/MessageNano.h"
 #include "com/google/protobuf/nano/MessageNanoPrinter.h"
 #include "java/io/IOException.h"
-#include "java/lang/CloneNotSupportedException.h"
 #include "java/lang/RuntimeException.h"
 #include "java/util/Arrays.h"
 
@@ -55,15 +54,15 @@
   ComGoogleProtobufNanoMessageNano_toByteArrayWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(msg, data, offset, length);
 }
 
-+ (id)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
-                                      withByteArray:(IOSByteArray *)data {
++ (ComGoogleProtobufNanoMessageNano *)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
+                                                                      withByteArray:(IOSByteArray *)data {
   return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_(msg, data);
 }
 
-+ (id)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
-                                      withByteArray:(IOSByteArray *)data
-                                            withInt:(jint)off
-                                            withInt:(jint)len {
++ (ComGoogleProtobufNanoMessageNano *)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
+                                                                      withByteArray:(IOSByteArray *)data
+                                                                            withInt:(jint)off
+                                                                            withInt:(jint)len {
   return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(msg, data, off, len);
 }
 
@@ -88,25 +87,42 @@ J2OBJC_IGNORE_DESIGNATED_BEGIN
 J2OBJC_IGNORE_DESIGNATED_END
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "getCachedSize", NULL, "I", 0x1, NULL, NULL },
-    { "getSerializedSize", NULL, "I", 0x1, NULL, NULL },
-    { "computeSerializedSize", NULL, "I", 0x4, NULL, NULL },
-    { "writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:", "mergeFrom", "Lcom.google.protobuf.nano.MessageNano;", 0x401, "Ljava.io.IOException;", NULL },
-    { "toByteArrayWithComGoogleProtobufNanoMessageNano:", "toByteArray", "[B", 0x19, NULL, NULL },
-    { "toByteArrayWithComGoogleProtobufNanoMessageNano:withByteArray:withInt:withInt:", "toByteArray", "V", 0x19, NULL, NULL },
-    { "mergeFromWithComGoogleProtobufNanoMessageNano:withByteArray:", "mergeFrom", "TT;", 0x19, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", "<T:Lcom/google/protobuf/nano/MessageNano;>(TT;[B)TT;" },
-    { "mergeFromWithComGoogleProtobufNanoMessageNano:withByteArray:withInt:withInt:", "mergeFrom", "TT;", 0x19, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", "<T:Lcom/google/protobuf/nano/MessageNano;>(TT;[BII)TT;" },
-    { "messageNanoEqualsWithComGoogleProtobufNanoMessageNano:withComGoogleProtobufNanoMessageNano:", "messageNanoEquals", "Z", 0x19, NULL, NULL },
-    { "description", "toString", "Ljava.lang.String;", 0x1, NULL, NULL },
-    { "clone", NULL, "Lcom.google.protobuf.nano.MessageNano;", 0x1, "Ljava.lang.CloneNotSupportedException;", NULL },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 0, 1, 2, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoMessageNano;", 0x401, 3, 4, 2, -1, -1, -1 },
+    { NULL, "[B", 0x19, 5, 6, -1, -1, -1, -1 },
+    { NULL, "V", 0x19, 5, 7, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoMessageNano;", 0x19, 3, 8, 9, 10, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoMessageNano;", 0x19, 3, 7, 9, 11, -1, -1 },
+    { NULL, "Z", 0x19, 12, 13, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x1, 14, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoMessageNano;", 0x1, -1, -1, 15, -1, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(getCachedSize);
+  methods[1].selector = @selector(getSerializedSize);
+  methods[2].selector = @selector(computeSerializedSize);
+  methods[3].selector = @selector(writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[4].selector = @selector(mergeFromWithComGoogleProtobufNanoCodedInputByteBufferNano:);
+  methods[5].selector = @selector(toByteArrayWithComGoogleProtobufNanoMessageNano:);
+  methods[6].selector = @selector(toByteArrayWithComGoogleProtobufNanoMessageNano:withByteArray:withInt:withInt:);
+  methods[7].selector = @selector(mergeFromWithComGoogleProtobufNanoMessageNano:withByteArray:);
+  methods[8].selector = @selector(mergeFromWithComGoogleProtobufNanoMessageNano:withByteArray:withInt:withInt:);
+  methods[9].selector = @selector(messageNanoEqualsWithComGoogleProtobufNanoMessageNano:withComGoogleProtobufNanoMessageNano:);
+  methods[10].selector = @selector(description);
+  methods[11].selector = @selector(clone);
+  methods[12].selector = @selector(init);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "cachedSize_", NULL, 0x44, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "cachedSize_", "I", .constantValue.asLong = 0, 0x44, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoMessageNano = { 2, "MessageNano", "com.google.protobuf.nano", NULL, 0x401, 13, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "writeTo", "LComGoogleProtobufNanoCodedOutputByteBufferNano;", "LJavaIoIOException;", "mergeFrom", "LComGoogleProtobufNanoCodedInputByteBufferNano;", "toByteArray", "LComGoogleProtobufNanoMessageNano;", "LComGoogleProtobufNanoMessageNano;[BII", "LComGoogleProtobufNanoMessageNano;[B", "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", "<T:Lcom/google/protobuf/nano/MessageNano;>(TT;[B)TT;", "<T:Lcom/google/protobuf/nano/MessageNano;>(TT;[BII)TT;", "messageNanoEquals", "LComGoogleProtobufNanoMessageNano;LComGoogleProtobufNanoMessageNano;", "toString", "LJavaLangCloneNotSupportedException;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoMessageNano = { "MessageNano", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x401, 13, 1, -1, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoMessageNano;
 }
 
@@ -127,16 +143,16 @@ void ComGoogleProtobufNanoMessageNano_toByteArrayWithComGoogleProtobufNanoMessag
     [((ComGoogleProtobufNanoCodedOutputByteBufferNano *) nil_chk(output)) checkNoSpaceLeft];
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangRuntimeException_initWithNSString_withNSException_(@"Serializing to a byte array threw an IOException (should never happen).", e) autorelease];
+    @throw create_JavaLangRuntimeException_initWithNSString_withNSException_(@"Serializing to a byte array threw an IOException (should never happen).", e);
   }
 }
 
-id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data) {
+ComGoogleProtobufNanoMessageNano *ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data) {
   ComGoogleProtobufNanoMessageNano_initialize();
-  return ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(msg, data, 0, ((IOSByteArray *) nil_chk(data))->size_);
+  return ((ComGoogleProtobufNanoMessageNano *) ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(msg, data, 0, ((IOSByteArray *) nil_chk(data))->size_));
 }
 
-id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data, jint off, jint len) {
+ComGoogleProtobufNanoMessageNano *ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data, jint off, jint len) {
   ComGoogleProtobufNanoMessageNano_initialize();
   @try {
     ComGoogleProtobufNanoCodedInputByteBufferNano *input = ComGoogleProtobufNanoCodedInputByteBufferNano_newInstanceWithByteArray_withInt_withInt_(data, off, len);
@@ -148,7 +164,7 @@ id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNan
     @throw e;
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangRuntimeException_initWithNSString_(@"Reading from a byte array threw an IOException (should never happen).") autorelease];
+    @throw create_JavaLangRuntimeException_initWithNSString_(@"Reading from a byte array threw an IOException (should never happen).");
   }
 }
 
@@ -160,7 +176,7 @@ jboolean ComGoogleProtobufNanoMessageNano_messageNanoEqualsWithComGoogleProtobuf
   if (a == nil || b == nil) {
     return false;
   }
-  if ([((ComGoogleProtobufNanoMessageNano *) nil_chk(a)) getClass] != (id) [((ComGoogleProtobufNanoMessageNano *) nil_chk(b)) getClass]) {
+  if ([a getClass] != (id) [b getClass]) {
     return false;
   }
   jint serializedSize = [a getSerializedSize];

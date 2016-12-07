@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoInvalidProtocolBufferNanoException_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoInvalidProtocolBufferNanoException_RESTRICT
-#define ComGoogleProtobufNanoInvalidProtocolBufferNanoException_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoInvalidProtocolBufferNanoException")
+#ifdef RESTRICT_ComGoogleProtobufNanoInvalidProtocolBufferNanoException
+#define INCLUDE_ALL_ComGoogleProtobufNanoInvalidProtocolBufferNanoException 0
 #else
-#define ComGoogleProtobufNanoInvalidProtocolBufferNanoException_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoInvalidProtocolBufferNanoException 1
 #endif
-#undef ComGoogleProtobufNanoInvalidProtocolBufferNanoException_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoInvalidProtocolBufferNanoException
 
-#if !defined (ComGoogleProtobufNanoInvalidProtocolBufferNanoException_) && (ComGoogleProtobufNanoInvalidProtocolBufferNanoException_INCLUDE_ALL || defined(ComGoogleProtobufNanoInvalidProtocolBufferNanoException_INCLUDE))
+#if !defined (ComGoogleProtobufNanoInvalidProtocolBufferNanoException_) && (INCLUDE_ALL_ComGoogleProtobufNanoInvalidProtocolBufferNanoException || defined(INCLUDE_ComGoogleProtobufNanoInvalidProtocolBufferNanoException))
 #define ComGoogleProtobufNanoInvalidProtocolBufferNanoException_
 
-#define JavaIoIOException_RESTRICT 1
-#define JavaIoIOException_INCLUDE 1
+#define RESTRICT_JavaIoIOException 1
+#define INCLUDE_JavaIoIOException 1
 #include "java/io/IOException.h"
 
 /*!
@@ -79,4 +79,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoInvalidProtocolBufferNanoExcepti
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoInvalidProtocolBufferNanoException_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoInvalidProtocolBufferNanoException")

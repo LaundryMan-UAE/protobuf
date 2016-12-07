@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoMapFactories_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoMapFactories_RESTRICT
-#define ComGoogleProtobufNanoMapFactories_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoMapFactories")
+#ifdef RESTRICT_ComGoogleProtobufNanoMapFactories
+#define INCLUDE_ALL_ComGoogleProtobufNanoMapFactories 0
 #else
-#define ComGoogleProtobufNanoMapFactories_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoMapFactories 1
 #endif
-#undef ComGoogleProtobufNanoMapFactories_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoMapFactories
 
-#if !defined (ComGoogleProtobufNanoMapFactories_) && (ComGoogleProtobufNanoMapFactories_INCLUDE_ALL || defined(ComGoogleProtobufNanoMapFactories_INCLUDE))
+#if !defined (ComGoogleProtobufNanoMapFactories_) && (INCLUDE_ALL_ComGoogleProtobufNanoMapFactories || defined(INCLUDE_ComGoogleProtobufNanoMapFactories))
 #define ComGoogleProtobufNanoMapFactories_
 
 @protocol ComGoogleProtobufNanoMapFactories_MapFactory;
@@ -43,12 +43,12 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoMapFactories)
 
 #endif
 
-#if !defined (ComGoogleProtobufNanoMapFactories_MapFactory_) && (ComGoogleProtobufNanoMapFactories_INCLUDE_ALL || defined(ComGoogleProtobufNanoMapFactories_MapFactory_INCLUDE))
+#if !defined (ComGoogleProtobufNanoMapFactories_MapFactory_) && (INCLUDE_ALL_ComGoogleProtobufNanoMapFactories || defined(INCLUDE_ComGoogleProtobufNanoMapFactories_MapFactory))
 #define ComGoogleProtobufNanoMapFactories_MapFactory_
 
 @protocol JavaUtilMap;
 
-@protocol ComGoogleProtobufNanoMapFactories_MapFactory < NSObject, JavaObject >
+@protocol ComGoogleProtobufNanoMapFactories_MapFactory < JavaObject >
 
 - (id<JavaUtilMap>)forMapWithJavaUtilMap:(id<JavaUtilMap>)oldMap;
 
@@ -60,4 +60,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoMapFactories_MapFactory)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoMapFactories_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoMapFactories")

@@ -26,19 +26,13 @@ task cycleFinder(type:Exec) {
     inputs.files sourceSets.main.allJava
     executable "${J2OBJC_HOME_LATEST}/cycle_finder"
     args '-sourcepath', sourceSets.main.allJava.srcDirs // + configurations.runtime.allDependencies.dependencyProject.sourceSets.main.allJava.srcDirs.flatten()).join(':')
-    args '-classpath', "${J2OBJC_HOME}/lib/guava-14.0.1.jar:${J2OBJC_HOME}/lib/jsr305-2.0.2.jar"
+    args '-classpath', "${J2OBJC_HOME}/lib/guava-19.0.jar:${J2OBJC_HOME}/lib/jsr305-3.0.0.jar"
     args inputs.files
 }
 
 task translateJava(type:Exec) {
     inputs.files sourceSets.main.allJava
-    outputs.files files((sourceSets.main.allJava).collect { i ->
-        i.collect { j ->
-            def name = projectDir.path + '/gen/objc/' + i.name
-            //def name = j.path.replace(i.srcDirs.iterator().next().path, 'src/gen/objc')
-            return [name.replace('.java', '.h'), name.replace('.java', '.m')]
-        }
-    }.flatten())
+
 
 
     // the classpath is built from the runtime dependencies for the sourcesets ...

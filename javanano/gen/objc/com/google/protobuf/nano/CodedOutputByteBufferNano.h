@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoCodedOutputByteBufferNano_RESTRICT
-#define ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoCodedOutputByteBufferNano")
+#ifdef RESTRICT_ComGoogleProtobufNanoCodedOutputByteBufferNano
+#define INCLUDE_ALL_ComGoogleProtobufNanoCodedOutputByteBufferNano 0
 #else
-#define ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoCodedOutputByteBufferNano 1
 #endif
-#undef ComGoogleProtobufNanoCodedOutputByteBufferNano_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoCodedOutputByteBufferNano
 
-#if !defined (ComGoogleProtobufNanoCodedOutputByteBufferNano_) && (ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE_ALL || defined(ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE))
+#if !defined (ComGoogleProtobufNanoCodedOutputByteBufferNano_) && (INCLUDE_ALL_ComGoogleProtobufNanoCodedOutputByteBufferNano || defined(INCLUDE_ComGoogleProtobufNanoCodedOutputByteBufferNano))
 #define ComGoogleProtobufNanoCodedOutputByteBufferNano_
 
 @class ComGoogleProtobufNanoMessageNano;
@@ -725,11 +725,11 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoCodedOutputByteBufferNano)
 
 #endif
 
-#if !defined (ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_) && (ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE_ALL || defined(ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_INCLUDE))
+#if !defined (ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_) && (INCLUDE_ALL_ComGoogleProtobufNanoCodedOutputByteBufferNano || defined(INCLUDE_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException))
 #define ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_
 
-#define JavaIoIOException_RESTRICT 1
-#define JavaIoIOException_INCLUDE 1
+#define RESTRICT_JavaIoIOException 1
+#define INCLUDE_JavaIoIOException 1
 #include "java/io/IOException.h"
 
 /*!
@@ -759,4 +759,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfS
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoCodedOutputByteBufferNano_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoCodedOutputByteBufferNano")

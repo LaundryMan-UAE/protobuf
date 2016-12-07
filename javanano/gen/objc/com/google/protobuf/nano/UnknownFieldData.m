@@ -3,12 +3,10 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/protobuf/javanano/src/main/java/com/google/protobuf/nano/UnknownFieldData.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/protobuf/nano/CodedOutputByteBufferNano.h"
 #include "com/google/protobuf/nano/UnknownFieldData.h"
-#include "java/io/IOException.h"
 #include "java/util/Arrays.h"
 
 @implementation ComGoogleProtobufNanoUnknownFieldData
@@ -55,18 +53,27 @@
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:withByteArray:", "UnknownFieldData", NULL, 0x0, NULL, NULL },
-    { "computeSerializedSize", NULL, "I", 0x0, NULL, NULL },
-    { "writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeTo", "V", 0x0, "Ljava.io.IOException;", NULL },
-    { "isEqual:", "equals", "Z", 0x1, NULL, NULL },
-    { "hash", "hashCode", "I", 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 1, 2, 3, -1, -1, -1 },
+    { NULL, "Z", 0x1, 4, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, 6, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:withByteArray:);
+  methods[1].selector = @selector(computeSerializedSize);
+  methods[2].selector = @selector(writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[3].selector = @selector(isEqual:);
+  methods[4].selector = @selector(hash);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "tag_", NULL, 0x10, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "bytes_", NULL, 0x10, "[B", NULL, NULL, .constantValue.asLong = 0 },
+    { "tag_", "I", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
+    { "bytes_", "[B", .constantValue.asLong = 0, 0x10, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoUnknownFieldData = { 2, "UnknownFieldData", "com.google.protobuf.nano", NULL, 0x10, 5, methods, 2, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "I[B", "writeTo", "LComGoogleProtobufNanoCodedOutputByteBufferNano;", "LJavaIoIOException;", "equals", "LNSObject;", "hashCode" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoUnknownFieldData = { "UnknownFieldData", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x10, 5, 2, -1, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoUnknownFieldData;
 }
 
@@ -79,15 +86,11 @@ void ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(ComGoogleP
 }
 
 ComGoogleProtobufNanoUnknownFieldData *new_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(jint tag, IOSByteArray *bytes) {
-  ComGoogleProtobufNanoUnknownFieldData *self = [ComGoogleProtobufNanoUnknownFieldData alloc];
-  ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(self, tag, bytes);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoUnknownFieldData, initWithInt_withByteArray_, tag, bytes)
 }
 
 ComGoogleProtobufNanoUnknownFieldData *create_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(jint tag, IOSByteArray *bytes) {
-  ComGoogleProtobufNanoUnknownFieldData *self = [[ComGoogleProtobufNanoUnknownFieldData alloc] autorelease];
-  ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(self, tag, bytes);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoUnknownFieldData, initWithInt_withByteArray_, tag, bytes)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoUnknownFieldData)

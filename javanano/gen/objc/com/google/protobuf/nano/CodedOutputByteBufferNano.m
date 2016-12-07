@@ -3,7 +3,6 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/protobuf/javanano/src/main/java/com/google/protobuf/nano/CodedOutputByteBufferNano.java
 //
 
-#include "IOSClass.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/protobuf/nano/CodedOutputByteBufferNano.h"
@@ -288,7 +287,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
     if (minLengthVarIntSize == maxLengthVarIntSize) {
       jint oldPosition = [((JavaNioByteBuffer *) nil_chk(buffer_)) position];
       if ([buffer_ remaining] < minLengthVarIntSize) {
-        @throw [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(oldPosition + minLengthVarIntSize, [buffer_ limit]) autorelease];
+        @throw create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(oldPosition + minLengthVarIntSize, [buffer_ limit]);
       }
       [buffer_ positionWithInt:oldPosition + minLengthVarIntSize];
       ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequence_withJavaNioByteBuffer_(value, buffer_);
@@ -303,7 +302,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
     }
   }
   @catch (JavaNioBufferOverflowException *e) {
-    ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *outOfSpaceException = [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([((JavaNioByteBuffer *) nil_chk(buffer_)) position], [buffer_ limit]) autorelease];
+    ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *outOfSpaceException = create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([((JavaNioByteBuffer *) nil_chk(buffer_)) position], [buffer_ limit]);
     [outOfSpaceException initCauseWithNSException:e];
     @throw outOfSpaceException;
   }
@@ -541,7 +540,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
 
 - (void)checkNoSpaceLeft {
   if ([self spaceLeft] != 0) {
-    @throw [new_JavaLangIllegalStateException_initWithNSString_(@"Did not write as much data as expected.") autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSString_(@"Did not write as much data as expected.");
   }
 }
 
@@ -555,7 +554,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
 
 - (void)writeRawByteWithByte:(jbyte)value {
   if (![((JavaNioByteBuffer *) nil_chk(buffer_)) hasRemaining]) {
-    @throw [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]) autorelease];
+    @throw create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]);
   }
   [buffer_ putWithByte:value];
 }
@@ -575,7 +574,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
     [buffer_ putWithByteArray:value withInt:offset withInt:length];
   }
   else {
-    @throw [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]) autorelease];
+    @throw create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]);
   }
 }
 
@@ -624,14 +623,14 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
 
 - (void)writeRawLittleEndian32WithInt:(jint)value {
   if ([((JavaNioByteBuffer *) nil_chk(buffer_)) remaining] < 4) {
-    @throw [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]) autorelease];
+    @throw create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]);
   }
   [buffer_ putIntWithInt:value];
 }
 
 - (void)writeRawLittleEndian64WithLong:(jlong)value {
   if ([((JavaNioByteBuffer *) nil_chk(buffer_)) remaining] < 8) {
-    @throw [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]) autorelease];
+    @throw create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_([buffer_ position], [buffer_ limit]);
   }
   [buffer_ putLongWithLong:value];
 }
@@ -746,7 +745,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
       [self writeGroupWithInt:number withComGoogleProtobufNanoMessageNano:groupValue];
       break;
       default:
-      @throw [new_JavaIoIOException_initWithNSString_(JreStrcat("$I", @"Unknown type: ", type)) autorelease];
+      @throw create_JavaIoIOException_initWithNSString_(JreStrcat("$I", @"Unknown type: ", type));
     }
   }
 }
@@ -757,117 +756,221 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithByteArray:withInt:withInt:", "CodedOutputByteBufferNano", NULL, 0x2, NULL, NULL },
-    { "initWithJavaNioByteBuffer:", "CodedOutputByteBufferNano", NULL, 0x2, NULL, NULL },
-    { "newInstanceWithByteArray:", "newInstance", "Lcom.google.protobuf.nano.CodedOutputByteBufferNano;", 0x9, NULL, NULL },
-    { "newInstanceWithByteArray:withInt:withInt:", "newInstance", "Lcom.google.protobuf.nano.CodedOutputByteBufferNano;", 0x9, NULL, NULL },
-    { "writeDoubleWithInt:withDouble:", "writeDouble", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeFloatWithInt:withFloat:", "writeFloat", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeUInt64WithInt:withLong:", "writeUInt64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeInt64WithInt:withLong:", "writeInt64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeInt32WithInt:withInt:", "writeInt32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeFixed64WithInt:withLong:", "writeFixed64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeFixed32WithInt:withInt:", "writeFixed32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeBoolWithInt:withBoolean:", "writeBool", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeStringWithInt:withNSString:", "writeString", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeGroupWithInt:withComGoogleProtobufNanoMessageNano:", "writeGroup", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeMessageWithInt:withComGoogleProtobufNanoMessageNano:", "writeMessage", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeBytesWithInt:withByteArray:", "writeBytes", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeUInt32WithInt:withInt:", "writeUInt32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeEnumWithInt:withInt:", "writeEnum", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSFixed32WithInt:withInt:", "writeSFixed32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSFixed64WithInt:withLong:", "writeSFixed64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSInt32WithInt:withInt:", "writeSInt32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSInt64WithInt:withLong:", "writeSInt64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeDoubleNoTagWithDouble:", "writeDoubleNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeFloatNoTagWithFloat:", "writeFloatNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeUInt64NoTagWithLong:", "writeUInt64NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeInt64NoTagWithLong:", "writeInt64NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeInt32NoTagWithInt:", "writeInt32NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeFixed64NoTagWithLong:", "writeFixed64NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeFixed32NoTagWithInt:", "writeFixed32NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeBoolNoTagWithBoolean:", "writeBoolNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeStringNoTagWithNSString:", "writeStringNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "encodedLengthWithJavaLangCharSequence:", "encodedLength", "I", 0xa, NULL, NULL },
-    { "encodedLengthGeneralWithJavaLangCharSequence:withInt:", "encodedLengthGeneral", "I", 0xa, NULL, NULL },
-    { "encodeWithJavaLangCharSequence:withJavaNioByteBuffer:", "encode", "V", 0xa, NULL, NULL },
-    { "encodeDirectWithJavaLangCharSequence:withJavaNioByteBuffer:", "encodeDirect", "V", 0xa, NULL, NULL },
-    { "encodeWithJavaLangCharSequence:withByteArray:withInt:withInt:", "encode", "I", 0xa, NULL, NULL },
-    { "writeGroupNoTagWithComGoogleProtobufNanoMessageNano:", "writeGroupNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeMessageNoTagWithComGoogleProtobufNanoMessageNano:", "writeMessageNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeBytesNoTagWithByteArray:", "writeBytesNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeUInt32NoTagWithInt:", "writeUInt32NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeEnumNoTagWithInt:", "writeEnumNoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSFixed32NoTagWithInt:", "writeSFixed32NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSFixed64NoTagWithLong:", "writeSFixed64NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSInt32NoTagWithInt:", "writeSInt32NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeSInt64NoTagWithLong:", "writeSInt64NoTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "computeDoubleSizeWithInt:withDouble:", "computeDoubleSize", "I", 0x9, NULL, NULL },
-    { "computeFloatSizeWithInt:withFloat:", "computeFloatSize", "I", 0x9, NULL, NULL },
-    { "computeUInt64SizeWithInt:withLong:", "computeUInt64Size", "I", 0x9, NULL, NULL },
-    { "computeInt64SizeWithInt:withLong:", "computeInt64Size", "I", 0x9, NULL, NULL },
-    { "computeInt32SizeWithInt:withInt:", "computeInt32Size", "I", 0x9, NULL, NULL },
-    { "computeFixed64SizeWithInt:withLong:", "computeFixed64Size", "I", 0x9, NULL, NULL },
-    { "computeFixed32SizeWithInt:withInt:", "computeFixed32Size", "I", 0x9, NULL, NULL },
-    { "computeBoolSizeWithInt:withBoolean:", "computeBoolSize", "I", 0x9, NULL, NULL },
-    { "computeStringSizeWithInt:withNSString:", "computeStringSize", "I", 0x9, NULL, NULL },
-    { "computeGroupSizeWithInt:withComGoogleProtobufNanoMessageNano:", "computeGroupSize", "I", 0x9, NULL, NULL },
-    { "computeMessageSizeWithInt:withComGoogleProtobufNanoMessageNano:", "computeMessageSize", "I", 0x9, NULL, NULL },
-    { "computeBytesSizeWithInt:withByteArray:", "computeBytesSize", "I", 0x9, NULL, NULL },
-    { "computeUInt32SizeWithInt:withInt:", "computeUInt32Size", "I", 0x9, NULL, NULL },
-    { "computeEnumSizeWithInt:withInt:", "computeEnumSize", "I", 0x9, NULL, NULL },
-    { "computeSFixed32SizeWithInt:withInt:", "computeSFixed32Size", "I", 0x9, NULL, NULL },
-    { "computeSFixed64SizeWithInt:withLong:", "computeSFixed64Size", "I", 0x9, NULL, NULL },
-    { "computeSInt32SizeWithInt:withInt:", "computeSInt32Size", "I", 0x9, NULL, NULL },
-    { "computeSInt64SizeWithInt:withLong:", "computeSInt64Size", "I", 0x9, NULL, NULL },
-    { "computeDoubleSizeNoTagWithDouble:", "computeDoubleSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeFloatSizeNoTagWithFloat:", "computeFloatSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeUInt64SizeNoTagWithLong:", "computeUInt64SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeInt64SizeNoTagWithLong:", "computeInt64SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeInt32SizeNoTagWithInt:", "computeInt32SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeFixed64SizeNoTagWithLong:", "computeFixed64SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeFixed32SizeNoTagWithInt:", "computeFixed32SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeBoolSizeNoTagWithBoolean:", "computeBoolSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeStringSizeNoTagWithNSString:", "computeStringSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeGroupSizeNoTagWithComGoogleProtobufNanoMessageNano:", "computeGroupSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeMessageSizeNoTagWithComGoogleProtobufNanoMessageNano:", "computeMessageSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeBytesSizeNoTagWithByteArray:", "computeBytesSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeUInt32SizeNoTagWithInt:", "computeUInt32SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeEnumSizeNoTagWithInt:", "computeEnumSizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeSFixed32SizeNoTagWithInt:", "computeSFixed32SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeSFixed64SizeNoTagWithLong:", "computeSFixed64SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeSInt32SizeNoTagWithInt:", "computeSInt32SizeNoTag", "I", 0x9, NULL, NULL },
-    { "computeSInt64SizeNoTagWithLong:", "computeSInt64SizeNoTag", "I", 0x9, NULL, NULL },
-    { "spaceLeft", NULL, "I", 0x1, NULL, NULL },
-    { "checkNoSpaceLeft", NULL, "V", 0x1, NULL, NULL },
-    { "position", NULL, "I", 0x1, NULL, NULL },
-    { "reset", NULL, "V", 0x1, NULL, NULL },
-    { "writeRawByteWithByte:", "writeRawByte", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeRawByteWithInt:", "writeRawByte", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeRawBytesWithByteArray:", "writeRawBytes", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeRawBytesWithByteArray:withInt:withInt:", "writeRawBytes", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeTagWithInt:withInt:", "writeTag", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "computeTagSizeWithInt:", "computeTagSize", "I", 0x9, NULL, NULL },
-    { "writeRawVarint32WithInt:", "writeRawVarint32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "computeRawVarint32SizeWithInt:", "computeRawVarint32Size", "I", 0x9, NULL, NULL },
-    { "writeRawVarint64WithLong:", "writeRawVarint64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "computeRawVarint64SizeWithLong:", "computeRawVarint64Size", "I", 0x9, NULL, NULL },
-    { "writeRawLittleEndian32WithInt:", "writeRawLittleEndian32", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "writeRawLittleEndian64WithLong:", "writeRawLittleEndian64", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "encodeZigZag32WithInt:", "encodeZigZag32", "I", 0x9, NULL, NULL },
-    { "encodeZigZag64WithLong:", "encodeZigZag64", "J", 0x9, NULL, NULL },
-    { "computeFieldSizeWithInt:withInt:withId:", "computeFieldSize", "I", 0x8, NULL, NULL },
-    { "writeFieldWithInt:withInt:withId:", "writeField", "V", 0x0, "Ljava.io.IOException;", NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, 0, -1, -1, -1, -1 },
+    { NULL, NULL, 0x2, -1, 1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoCodedOutputByteBufferNano;", 0x9, 2, 3, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoCodedOutputByteBufferNano;", 0x9, 2, 0, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 4, 5, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 7, 8, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 9, 10, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 11, 10, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 12, 13, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 14, 10, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 15, 13, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 16, 17, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 18, 19, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 20, 21, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 22, 21, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 23, 24, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 25, 13, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 26, 13, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 27, 13, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 28, 10, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 29, 13, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 30, 10, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 31, 32, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 33, 34, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 35, 36, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 37, 36, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 38, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 40, 36, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 41, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 42, 43, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 44, 45, 6, -1, -1, -1 },
+    { NULL, "I", 0xa, 46, 47, -1, -1, -1, -1 },
+    { NULL, "I", 0xa, 48, 49, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 50, 51, -1, -1, -1, -1 },
+    { NULL, "V", 0xa, 52, 51, -1, -1, -1, -1 },
+    { NULL, "I", 0xa, 50, 53, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 54, 55, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 56, 55, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 57, 3, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 58, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 59, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 60, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 61, 36, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 62, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 63, 36, 6, -1, -1, -1 },
+    { NULL, "I", 0x9, 64, 5, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 65, 8, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 66, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 67, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 68, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 69, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 70, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 71, 17, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 72, 19, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 73, 21, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 74, 21, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 75, 24, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 76, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 77, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 78, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 79, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 80, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 81, 10, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 82, 32, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 83, 34, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 84, 36, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 85, 36, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 86, 39, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 87, 36, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 88, 39, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 89, 43, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 90, 45, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 91, 55, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 92, 55, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 93, 3, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 94, 39, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 95, 39, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 96, 39, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 97, 36, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 98, 39, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 99, 36, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 100, 101, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 100, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 102, 3, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 102, 0, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 103, 13, 6, -1, -1, -1 },
+    { NULL, "I", 0x9, 104, 39, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 105, 39, 6, -1, -1, -1 },
+    { NULL, "I", 0x9, 106, 39, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 107, 36, 6, -1, -1, -1 },
+    { NULL, "I", 0x9, 108, 36, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 109, 39, 6, -1, -1, -1 },
+    { NULL, "V", 0x1, 110, 36, 6, -1, -1, -1 },
+    { NULL, "I", 0x9, 111, 39, -1, -1, -1, -1 },
+    { NULL, "J", 0x9, 112, 36, -1, -1, -1, -1 },
+    { NULL, "I", 0x8, 113, 114, -1, -1, -1, -1 },
+    { NULL, "V", 0x0, 115, 114, 6, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithByteArray:withInt:withInt:);
+  methods[1].selector = @selector(initWithJavaNioByteBuffer:);
+  methods[2].selector = @selector(newInstanceWithByteArray:);
+  methods[3].selector = @selector(newInstanceWithByteArray:withInt:withInt:);
+  methods[4].selector = @selector(writeDoubleWithInt:withDouble:);
+  methods[5].selector = @selector(writeFloatWithInt:withFloat:);
+  methods[6].selector = @selector(writeUInt64WithInt:withLong:);
+  methods[7].selector = @selector(writeInt64WithInt:withLong:);
+  methods[8].selector = @selector(writeInt32WithInt:withInt:);
+  methods[9].selector = @selector(writeFixed64WithInt:withLong:);
+  methods[10].selector = @selector(writeFixed32WithInt:withInt:);
+  methods[11].selector = @selector(writeBoolWithInt:withBoolean:);
+  methods[12].selector = @selector(writeStringWithInt:withNSString:);
+  methods[13].selector = @selector(writeGroupWithInt:withComGoogleProtobufNanoMessageNano:);
+  methods[14].selector = @selector(writeMessageWithInt:withComGoogleProtobufNanoMessageNano:);
+  methods[15].selector = @selector(writeBytesWithInt:withByteArray:);
+  methods[16].selector = @selector(writeUInt32WithInt:withInt:);
+  methods[17].selector = @selector(writeEnumWithInt:withInt:);
+  methods[18].selector = @selector(writeSFixed32WithInt:withInt:);
+  methods[19].selector = @selector(writeSFixed64WithInt:withLong:);
+  methods[20].selector = @selector(writeSInt32WithInt:withInt:);
+  methods[21].selector = @selector(writeSInt64WithInt:withLong:);
+  methods[22].selector = @selector(writeDoubleNoTagWithDouble:);
+  methods[23].selector = @selector(writeFloatNoTagWithFloat:);
+  methods[24].selector = @selector(writeUInt64NoTagWithLong:);
+  methods[25].selector = @selector(writeInt64NoTagWithLong:);
+  methods[26].selector = @selector(writeInt32NoTagWithInt:);
+  methods[27].selector = @selector(writeFixed64NoTagWithLong:);
+  methods[28].selector = @selector(writeFixed32NoTagWithInt:);
+  methods[29].selector = @selector(writeBoolNoTagWithBoolean:);
+  methods[30].selector = @selector(writeStringNoTagWithNSString:);
+  methods[31].selector = @selector(encodedLengthWithJavaLangCharSequence:);
+  methods[32].selector = @selector(encodedLengthGeneralWithJavaLangCharSequence:withInt:);
+  methods[33].selector = @selector(encodeWithJavaLangCharSequence:withJavaNioByteBuffer:);
+  methods[34].selector = @selector(encodeDirectWithJavaLangCharSequence:withJavaNioByteBuffer:);
+  methods[35].selector = @selector(encodeWithJavaLangCharSequence:withByteArray:withInt:withInt:);
+  methods[36].selector = @selector(writeGroupNoTagWithComGoogleProtobufNanoMessageNano:);
+  methods[37].selector = @selector(writeMessageNoTagWithComGoogleProtobufNanoMessageNano:);
+  methods[38].selector = @selector(writeBytesNoTagWithByteArray:);
+  methods[39].selector = @selector(writeUInt32NoTagWithInt:);
+  methods[40].selector = @selector(writeEnumNoTagWithInt:);
+  methods[41].selector = @selector(writeSFixed32NoTagWithInt:);
+  methods[42].selector = @selector(writeSFixed64NoTagWithLong:);
+  methods[43].selector = @selector(writeSInt32NoTagWithInt:);
+  methods[44].selector = @selector(writeSInt64NoTagWithLong:);
+  methods[45].selector = @selector(computeDoubleSizeWithInt:withDouble:);
+  methods[46].selector = @selector(computeFloatSizeWithInt:withFloat:);
+  methods[47].selector = @selector(computeUInt64SizeWithInt:withLong:);
+  methods[48].selector = @selector(computeInt64SizeWithInt:withLong:);
+  methods[49].selector = @selector(computeInt32SizeWithInt:withInt:);
+  methods[50].selector = @selector(computeFixed64SizeWithInt:withLong:);
+  methods[51].selector = @selector(computeFixed32SizeWithInt:withInt:);
+  methods[52].selector = @selector(computeBoolSizeWithInt:withBoolean:);
+  methods[53].selector = @selector(computeStringSizeWithInt:withNSString:);
+  methods[54].selector = @selector(computeGroupSizeWithInt:withComGoogleProtobufNanoMessageNano:);
+  methods[55].selector = @selector(computeMessageSizeWithInt:withComGoogleProtobufNanoMessageNano:);
+  methods[56].selector = @selector(computeBytesSizeWithInt:withByteArray:);
+  methods[57].selector = @selector(computeUInt32SizeWithInt:withInt:);
+  methods[58].selector = @selector(computeEnumSizeWithInt:withInt:);
+  methods[59].selector = @selector(computeSFixed32SizeWithInt:withInt:);
+  methods[60].selector = @selector(computeSFixed64SizeWithInt:withLong:);
+  methods[61].selector = @selector(computeSInt32SizeWithInt:withInt:);
+  methods[62].selector = @selector(computeSInt64SizeWithInt:withLong:);
+  methods[63].selector = @selector(computeDoubleSizeNoTagWithDouble:);
+  methods[64].selector = @selector(computeFloatSizeNoTagWithFloat:);
+  methods[65].selector = @selector(computeUInt64SizeNoTagWithLong:);
+  methods[66].selector = @selector(computeInt64SizeNoTagWithLong:);
+  methods[67].selector = @selector(computeInt32SizeNoTagWithInt:);
+  methods[68].selector = @selector(computeFixed64SizeNoTagWithLong:);
+  methods[69].selector = @selector(computeFixed32SizeNoTagWithInt:);
+  methods[70].selector = @selector(computeBoolSizeNoTagWithBoolean:);
+  methods[71].selector = @selector(computeStringSizeNoTagWithNSString:);
+  methods[72].selector = @selector(computeGroupSizeNoTagWithComGoogleProtobufNanoMessageNano:);
+  methods[73].selector = @selector(computeMessageSizeNoTagWithComGoogleProtobufNanoMessageNano:);
+  methods[74].selector = @selector(computeBytesSizeNoTagWithByteArray:);
+  methods[75].selector = @selector(computeUInt32SizeNoTagWithInt:);
+  methods[76].selector = @selector(computeEnumSizeNoTagWithInt:);
+  methods[77].selector = @selector(computeSFixed32SizeNoTagWithInt:);
+  methods[78].selector = @selector(computeSFixed64SizeNoTagWithLong:);
+  methods[79].selector = @selector(computeSInt32SizeNoTagWithInt:);
+  methods[80].selector = @selector(computeSInt64SizeNoTagWithLong:);
+  methods[81].selector = @selector(spaceLeft);
+  methods[82].selector = @selector(checkNoSpaceLeft);
+  methods[83].selector = @selector(position);
+  methods[84].selector = @selector(reset);
+  methods[85].selector = @selector(writeRawByteWithByte:);
+  methods[86].selector = @selector(writeRawByteWithInt:);
+  methods[87].selector = @selector(writeRawBytesWithByteArray:);
+  methods[88].selector = @selector(writeRawBytesWithByteArray:withInt:withInt:);
+  methods[89].selector = @selector(writeTagWithInt:withInt:);
+  methods[90].selector = @selector(computeTagSizeWithInt:);
+  methods[91].selector = @selector(writeRawVarint32WithInt:);
+  methods[92].selector = @selector(computeRawVarint32SizeWithInt:);
+  methods[93].selector = @selector(writeRawVarint64WithLong:);
+  methods[94].selector = @selector(computeRawVarint64SizeWithLong:);
+  methods[95].selector = @selector(writeRawLittleEndian32WithInt:);
+  methods[96].selector = @selector(writeRawLittleEndian64WithLong:);
+  methods[97].selector = @selector(encodeZigZag32WithInt:);
+  methods[98].selector = @selector(encodeZigZag64WithLong:);
+  methods[99].selector = @selector(computeFieldSizeWithInt:withInt:withId:);
+  methods[100].selector = @selector(writeFieldWithInt:withInt:withId:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "MAX_UTF8_EXPANSION", "MAX_UTF8_EXPANSION", 0x1a, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_MAX_UTF8_EXPANSION },
-    { "buffer_", NULL, 0x12, "Ljava.nio.ByteBuffer;", NULL, NULL, .constantValue.asLong = 0 },
-    { "LITTLE_ENDIAN_32_SIZE", "LITTLE_ENDIAN_32_SIZE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_LITTLE_ENDIAN_32_SIZE },
-    { "LITTLE_ENDIAN_64_SIZE", "LITTLE_ENDIAN_64_SIZE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_LITTLE_ENDIAN_64_SIZE },
+    { "MAX_UTF8_EXPANSION", "I", .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_MAX_UTF8_EXPANSION, 0x1a, -1, -1, -1, -1 },
+    { "buffer_", "LJavaNioByteBuffer;", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "LITTLE_ENDIAN_32_SIZE", "I", .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_LITTLE_ENDIAN_32_SIZE, 0x19, -1, -1, -1, -1 },
+    { "LITTLE_ENDIAN_64_SIZE", "I", .constantValue.asInt = ComGoogleProtobufNanoCodedOutputByteBufferNano_LITTLE_ENDIAN_64_SIZE, 0x19, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lcom.google.protobuf.nano.CodedOutputByteBufferNano$OutOfSpaceException;"};
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoCodedOutputByteBufferNano = { 2, "CodedOutputByteBufferNano", "com.google.protobuf.nano", NULL, 0x11, 101, methods, 4, fields, 0, NULL, 1, inner_classes, NULL, NULL };
+  static const void *ptrTable[] = { "[BII", "LJavaNioByteBuffer;", "newInstance", "[B", "writeDouble", "ID", "LJavaIoIOException;", "writeFloat", "IF", "writeUInt64", "IJ", "writeInt64", "writeInt32", "II", "writeFixed64", "writeFixed32", "writeBool", "IZ", "writeString", "ILNSString;", "writeGroup", "ILComGoogleProtobufNanoMessageNano;", "writeMessage", "writeBytes", "I[B", "writeUInt32", "writeEnum", "writeSFixed32", "writeSFixed64", "writeSInt32", "writeSInt64", "writeDoubleNoTag", "D", "writeFloatNoTag", "F", "writeUInt64NoTag", "J", "writeInt64NoTag", "writeInt32NoTag", "I", "writeFixed64NoTag", "writeFixed32NoTag", "writeBoolNoTag", "Z", "writeStringNoTag", "LNSString;", "encodedLength", "LJavaLangCharSequence;", "encodedLengthGeneral", "LJavaLangCharSequence;I", "encode", "LJavaLangCharSequence;LJavaNioByteBuffer;", "encodeDirect", "LJavaLangCharSequence;[BII", "writeGroupNoTag", "LComGoogleProtobufNanoMessageNano;", "writeMessageNoTag", "writeBytesNoTag", "writeUInt32NoTag", "writeEnumNoTag", "writeSFixed32NoTag", "writeSFixed64NoTag", "writeSInt32NoTag", "writeSInt64NoTag", "computeDoubleSize", "computeFloatSize", "computeUInt64Size", "computeInt64Size", "computeInt32Size", "computeFixed64Size", "computeFixed32Size", "computeBoolSize", "computeStringSize", "computeGroupSize", "computeMessageSize", "computeBytesSize", "computeUInt32Size", "computeEnumSize", "computeSFixed32Size", "computeSFixed64Size", "computeSInt32Size", "computeSInt64Size", "computeDoubleSizeNoTag", "computeFloatSizeNoTag", "computeUInt64SizeNoTag", "computeInt64SizeNoTag", "computeInt32SizeNoTag", "computeFixed64SizeNoTag", "computeFixed32SizeNoTag", "computeBoolSizeNoTag", "computeStringSizeNoTag", "computeGroupSizeNoTag", "computeMessageSizeNoTag", "computeBytesSizeNoTag", "computeUInt32SizeNoTag", "computeEnumSizeNoTag", "computeSFixed32SizeNoTag", "computeSFixed64SizeNoTag", "computeSInt32SizeNoTag", "computeSInt64SizeNoTag", "writeRawByte", "B", "writeRawBytes", "writeTag", "computeTagSize", "writeRawVarint32", "computeRawVarint32Size", "writeRawVarint64", "computeRawVarint64Size", "writeRawLittleEndian32", "writeRawLittleEndian64", "encodeZigZag32", "encodeZigZag64", "computeFieldSize", "IILNSObject;", "writeField", "LComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoCodedOutputByteBufferNano = { "CodedOutputByteBufferNano", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x11, 101, 4, -1, 116, -1, -1, -1 };
   return &_ComGoogleProtobufNanoCodedOutputByteBufferNano;
 }
 
@@ -878,15 +981,11 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_wi
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint offset, jint length) {
-  ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [ComGoogleProtobufNanoCodedOutputByteBufferNano alloc];
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, offset, length);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoCodedOutputByteBufferNano, initWithByteArray_withInt_withInt_, buffer, offset, length)
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(IOSByteArray *buffer, jint offset, jint length) {
-  ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [[ComGoogleProtobufNanoCodedOutputByteBufferNano alloc] autorelease];
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(self, buffer, offset, length);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoCodedOutputByteBufferNano, initWithByteArray_withInt_withInt_, buffer, offset, length)
 }
 
 void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(ComGoogleProtobufNanoCodedOutputByteBufferNano *self, JavaNioByteBuffer *buffer) {
@@ -896,15 +995,11 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(C
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer) {
-  ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [ComGoogleProtobufNanoCodedOutputByteBufferNano alloc];
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(self, buffer);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoCodedOutputByteBufferNano, initWithJavaNioByteBuffer_, buffer)
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(JavaNioByteBuffer *buffer) {
-  ComGoogleProtobufNanoCodedOutputByteBufferNano *self = [[ComGoogleProtobufNanoCodedOutputByteBufferNano alloc] autorelease];
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithJavaNioByteBuffer_(self, buffer);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoCodedOutputByteBufferNano, initWithJavaNioByteBuffer_, buffer)
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *ComGoogleProtobufNanoCodedOutputByteBufferNano_newInstanceWithByteArray_(IOSByteArray *flatArray) {
@@ -914,7 +1009,7 @@ ComGoogleProtobufNanoCodedOutputByteBufferNano *ComGoogleProtobufNanoCodedOutput
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano *ComGoogleProtobufNanoCodedOutputByteBufferNano_newInstanceWithByteArray_withInt_withInt_(IOSByteArray *flatArray, jint offset, jint length) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initialize();
-  return [new_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(flatArray, offset, length) autorelease];
+  return create_ComGoogleProtobufNanoCodedOutputByteBufferNano_initWithByteArray_withInt_withInt_(flatArray, offset, length);
 }
 
 jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthWithJavaLangCharSequence_(id<JavaLangCharSequence> sequence) {
@@ -936,7 +1031,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthWithJavaLangCha
     }
   }
   if (utf8Length < utf16Length) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$J", @"UTF-8 length does not fit in int: ", (utf8Length + (JreLShift64(1LL, 32))))) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$J", @"UTF-8 length does not fit in int: ", (utf8Length + (JreLShift64(1LL, 32)))));
   }
   return utf8Length;
 }
@@ -955,7 +1050,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthGeneralWithJava
       if (JavaLangCharacter_MIN_SURROGATE <= c && c <= JavaLangCharacter_MAX_SURROGATE) {
         jint cp = JavaLangCharacter_codePointAtWithJavaLangCharSequence_withInt_(sequence, i);
         if (cp < JavaLangCharacter_MIN_SUPPLEMENTARY_CODE_POINT) {
-          @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", i)) autorelease];
+          @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", i));
         }
         i++;
       }
@@ -967,7 +1062,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodedLengthGeneralWithJava
 void ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequence_withJavaNioByteBuffer_(id<JavaLangCharSequence> sequence, JavaNioByteBuffer *byteBuffer) {
   ComGoogleProtobufNanoCodedOutputByteBufferNano_initialize();
   if ([((JavaNioByteBuffer *) nil_chk(byteBuffer)) isReadOnly]) {
-    @throw [new_JavaNioReadOnlyBufferException_init() autorelease];
+    @throw create_JavaNioReadOnlyBufferException_init();
   }
   else if ([byteBuffer hasArray]) {
     @try {
@@ -975,7 +1070,7 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequen
       [byteBuffer positionWithInt:encoded - [byteBuffer arrayOffset]];
     }
     @catch (JavaLangArrayIndexOutOfBoundsException *e) {
-      JavaNioBufferOverflowException *boe = [new_JavaNioBufferOverflowException_init() autorelease];
+      JavaNioBufferOverflowException *boe = create_JavaNioBufferOverflowException_init();
       [boe initCauseWithNSException:e];
       @throw boe;
     }
@@ -1005,7 +1100,7 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeDirectWithJavaLangChar
     else {
       jchar low;
       if (i + 1 == [sequence length] || !JavaLangCharacter_isSurrogatePairWithChar_withChar_(c, (low = [sequence charAtWithInt:++i]))) {
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", (i - 1))) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", (i - 1)));
       }
       jint codePoint = JavaLangCharacter_toCodePointWithChar_withChar_(c, low);
       [((JavaNioByteBuffer *) nil_chk(byteBuffer)) putWithByte:(jbyte) ((JreLShift32((jint) 0xF, 4)) | (JreURShift32(codePoint, 18)))];
@@ -1046,7 +1141,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequen
     else if (j <= limit - 4) {
       jchar low;
       if (i + 1 == [sequence length] || !JavaLangCharacter_isSurrogatePairWithChar_withChar_(c, (low = [sequence charAtWithInt:++i]))) {
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", (i - 1))) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpaired surrogate at index ", (i - 1)));
       }
       jint codePoint = JavaLangCharacter_toCodePointWithChar_withChar_(c, low);
       *IOSByteArray_GetRef(nil_chk(bytes), j++) = (jbyte) ((JreLShift32((jint) 0xF, 4)) | (JreURShift32(codePoint, 18)));
@@ -1055,7 +1150,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_encodeWithJavaLangCharSequen
       *IOSByteArray_GetRef(bytes, j++) = (jbyte) ((jint) 0x80 | ((jint) 0x3F & codePoint));
     }
     else {
-      @throw [new_JavaLangArrayIndexOutOfBoundsException_initWithNSString_(JreStrcat("$C$I", @"Failed writing ", c, @" at index ", j)) autorelease];
+      @throw create_JavaLangArrayIndexOutOfBoundsException_initWithNSString_(JreStrcat("$C$I", @"Failed writing ", c, @" at index ", j));
     }
   }
   return j;
@@ -1326,7 +1421,7 @@ jint ComGoogleProtobufNanoCodedOutputByteBufferNano_computeFieldSizeWithInt_with
     case ComGoogleProtobufNanoInternalNano_TYPE_GROUP:
     return ComGoogleProtobufNanoCodedOutputByteBufferNano_computeGroupSizeWithInt_withComGoogleProtobufNanoMessageNano_(number, (ComGoogleProtobufNanoMessageNano *) cast_chk(object, [ComGoogleProtobufNanoMessageNano class]));
     default:
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type: ", type)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type: ", type));
   }
 }
 
@@ -1341,13 +1436,18 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoCodedOutputByteBufferNano)
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:withInt:", "OutOfSpaceException", NULL, 0x0, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x0, -1, 0, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:withInt:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException = { 2, "OutOfSpaceException", "com.google.protobuf.nano", "CodedOutputByteBufferNano", 0x9, 1, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "II", "LComGoogleProtobufNanoCodedOutputByteBufferNano;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException = { "OutOfSpaceException", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x9, 1, 1, 1, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException;
 }
 
@@ -1358,15 +1458,11 @@ void ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWith
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *new_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(jint position, jint limit) {
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *self = [ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException alloc];
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(self, position, limit);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException, initWithInt_withInt_, position, limit)
 }
 
 ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *create_ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(jint position, jint limit) {
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException *self = [[ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException alloc] autorelease];
-  ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException_initWithInt_withInt_(self, position, limit);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException, initWithInt_withInt_, position, limit)
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoCodedOutputByteBufferNano_OutOfSpaceException)

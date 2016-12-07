@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoExtension_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoExtension_RESTRICT
-#define ComGoogleProtobufNanoExtension_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoExtension")
+#ifdef RESTRICT_ComGoogleProtobufNanoExtension
+#define INCLUDE_ALL_ComGoogleProtobufNanoExtension 0
 #else
-#define ComGoogleProtobufNanoExtension_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoExtension 1
 #endif
-#undef ComGoogleProtobufNanoExtension_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoExtension
 
-#if !defined (ComGoogleProtobufNanoExtension_) && (ComGoogleProtobufNanoExtension_INCLUDE_ALL || defined(ComGoogleProtobufNanoExtension_INCLUDE))
+#if !defined (ComGoogleProtobufNanoExtension_) && (INCLUDE_ALL_ComGoogleProtobufNanoExtension || defined(INCLUDE_ComGoogleProtobufNanoExtension))
 #define ComGoogleProtobufNanoExtension_
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -228,4 +228,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoExtension)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoExtension_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoExtension")

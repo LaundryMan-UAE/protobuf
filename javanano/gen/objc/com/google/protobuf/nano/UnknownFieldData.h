@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoUnknownFieldData_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoUnknownFieldData_RESTRICT
-#define ComGoogleProtobufNanoUnknownFieldData_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoUnknownFieldData")
+#ifdef RESTRICT_ComGoogleProtobufNanoUnknownFieldData
+#define INCLUDE_ALL_ComGoogleProtobufNanoUnknownFieldData 0
 #else
-#define ComGoogleProtobufNanoUnknownFieldData_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoUnknownFieldData 1
 #endif
-#undef ComGoogleProtobufNanoUnknownFieldData_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoUnknownFieldData
 
-#if !defined (ComGoogleProtobufNanoUnknownFieldData_) && (ComGoogleProtobufNanoUnknownFieldData_INCLUDE_ALL || defined(ComGoogleProtobufNanoUnknownFieldData_INCLUDE))
+#if !defined (ComGoogleProtobufNanoUnknownFieldData_) && (INCLUDE_ALL_ComGoogleProtobufNanoUnknownFieldData || defined(INCLUDE_ComGoogleProtobufNanoUnknownFieldData))
 #define ComGoogleProtobufNanoUnknownFieldData_
 
 @class ComGoogleProtobufNanoCodedOutputByteBufferNano;
@@ -66,4 +66,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoUnknownFieldData)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoUnknownFieldData_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoUnknownFieldData")

@@ -5,19 +5,19 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoExtendableMessageNano_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoExtendableMessageNano_RESTRICT
-#define ComGoogleProtobufNanoExtendableMessageNano_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoExtendableMessageNano")
+#ifdef RESTRICT_ComGoogleProtobufNanoExtendableMessageNano
+#define INCLUDE_ALL_ComGoogleProtobufNanoExtendableMessageNano 0
 #else
-#define ComGoogleProtobufNanoExtendableMessageNano_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoExtendableMessageNano 1
 #endif
-#undef ComGoogleProtobufNanoExtendableMessageNano_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoExtendableMessageNano
 
-#if !defined (ComGoogleProtobufNanoExtendableMessageNano_) && (ComGoogleProtobufNanoExtendableMessageNano_INCLUDE_ALL || defined(ComGoogleProtobufNanoExtendableMessageNano_INCLUDE))
+#if !defined (ComGoogleProtobufNanoExtendableMessageNano_) && (INCLUDE_ALL_ComGoogleProtobufNanoExtendableMessageNano || defined(INCLUDE_ComGoogleProtobufNanoExtendableMessageNano))
 #define ComGoogleProtobufNanoExtendableMessageNano_
 
-#define ComGoogleProtobufNanoMessageNano_RESTRICT 1
-#define ComGoogleProtobufNanoMessageNano_INCLUDE 1
+#define RESTRICT_ComGoogleProtobufNanoMessageNano 1
+#define INCLUDE_ComGoogleProtobufNanoMessageNano 1
 #include "com/google/protobuf/nano/MessageNano.h"
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -43,7 +43,7 @@
 
 - (instancetype)init;
 
-- (id)clone;
+- (ComGoogleProtobufNanoExtendableMessageNano *)clone;
 
 /*!
  @brief Gets the value stored in the specified extension of this message.
@@ -59,8 +59,8 @@
 /*!
  @brief Sets the value of the specified extension of this message.
  */
-- (id)setExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension
-                                              withId:(id)value;
+- (ComGoogleProtobufNanoExtendableMessageNano *)setExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension
+                                                                                        withId:(id)value;
 
 - (void)writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOutputByteBufferNano *)output;
 
@@ -93,4 +93,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoExtendableMessageNano)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoExtendableMessageNano_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoExtendableMessageNano")

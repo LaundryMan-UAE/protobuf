@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoFieldData_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoFieldData_RESTRICT
-#define ComGoogleProtobufNanoFieldData_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoFieldData")
+#ifdef RESTRICT_ComGoogleProtobufNanoFieldData
+#define INCLUDE_ALL_ComGoogleProtobufNanoFieldData 0
 #else
-#define ComGoogleProtobufNanoFieldData_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoFieldData 1
 #endif
-#undef ComGoogleProtobufNanoFieldData_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoFieldData
 
-#if !defined (ComGoogleProtobufNanoFieldData_) && (ComGoogleProtobufNanoFieldData_INCLUDE_ALL || defined(ComGoogleProtobufNanoFieldData_INCLUDE))
+#if !defined (ComGoogleProtobufNanoFieldData_) && (INCLUDE_ALL_ComGoogleProtobufNanoFieldData || defined(INCLUDE_ComGoogleProtobufNanoFieldData))
 #define ComGoogleProtobufNanoFieldData_
 
 @class ComGoogleProtobufNanoCodedOutputByteBufferNano;
@@ -77,4 +77,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoFieldData)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoFieldData_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoFieldData")

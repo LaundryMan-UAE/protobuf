@@ -2,7 +2,7 @@ Pod::Spec.new do |s|
   s.name             = "Protobuf-JavaNano"
   s.version          = '3.0.0-alpha-4'
   s.author           = { "Marcus Smith" => "marcus@laundrapp.com" }
-  s.source           = { :git => "https://github.com/hambroperks/protobuf.git", :tag => "v3.0.0-alpha-4-j2objc0.9.8.2.1" }
+  s.source           = { :git => "https://github.com/hambroperks/protobuf.git", :tag => "v3.0.0-alpha-4-j2objc1.2" }
   s.summary          = "JavaNano is a special code generator and runtime library designed specially for resource-restricted systems, like Android. Converted to Objective-C using J2ObjC."
   s.homepage         = "https://developers.google.com/protocol-buffers"
   s.license          = { :type => 'Google Inc. 2008', :file => 'LICENSE' }

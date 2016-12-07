@@ -16,16 +16,14 @@
 #include "com/google/protobuf/nano/MessageNano.h"
 #include "com/google/protobuf/nano/UnknownFieldData.h"
 #include "com/google/protobuf/nano/WireFormatNano.h"
-#include "java/io/IOException.h"
-#include "java/lang/CloneNotSupportedException.h"
 
 @implementation ComGoogleProtobufNanoExtendableMessageNano
 
 - (jint)computeSerializedSize {
   jint size = 0;
   if (unknownFieldData_ != nil) {
-    for (jint i = 0; i < [unknownFieldData_ size]; i++) {
-      ComGoogleProtobufNanoFieldData *field = [unknownFieldData_ dataAtWithInt:i];
+    for (jint i = 0; i < [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) size]; i++) {
+      ComGoogleProtobufNanoFieldData *field = [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) dataAtWithInt:i];
       size += [((ComGoogleProtobufNanoFieldData *) nil_chk(field)) computeSerializedSize];
     }
   }
@@ -37,7 +35,7 @@
     return;
   }
   for (jint i = 0; i < [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) size]; i++) {
-    ComGoogleProtobufNanoFieldData *field = [unknownFieldData_ dataAtWithInt:i];
+    ComGoogleProtobufNanoFieldData *field = [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) dataAtWithInt:i];
     [((ComGoogleProtobufNanoFieldData *) nil_chk(field)) writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:output];
   }
 }
@@ -46,7 +44,7 @@
   if (unknownFieldData_ == nil) {
     return false;
   }
-  ComGoogleProtobufNanoFieldData *field = [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) getWithInt:ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(((ComGoogleProtobufNanoExtension *) nil_chk(extension))->tag_)];
+  ComGoogleProtobufNanoFieldData *field = [unknownFieldData_ getWithInt:ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(((ComGoogleProtobufNanoExtension *) nil_chk(extension))->tag_)];
   return field != nil;
 }
 
@@ -54,17 +52,17 @@
   if (unknownFieldData_ == nil) {
     return nil;
   }
-  ComGoogleProtobufNanoFieldData *field = [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) getWithInt:ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(((ComGoogleProtobufNanoExtension *) nil_chk(extension))->tag_)];
+  ComGoogleProtobufNanoFieldData *field = [unknownFieldData_ getWithInt:ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(((ComGoogleProtobufNanoExtension *) nil_chk(extension))->tag_)];
   return field == nil ? nil : [field getValueWithComGoogleProtobufNanoExtension:extension];
 }
 
-- (id)setExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension
-                                              withId:(id)value {
+- (ComGoogleProtobufNanoExtendableMessageNano *)setExtensionWithComGoogleProtobufNanoExtension:(ComGoogleProtobufNanoExtension *)extension
+                                                                                        withId:(id)value {
   jint fieldNumber = ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(((ComGoogleProtobufNanoExtension *) nil_chk(extension))->tag_);
   if (value == nil) {
     if (unknownFieldData_ != nil) {
       [unknownFieldData_ removeWithInt:fieldNumber];
-      if ([unknownFieldData_ isEmpty]) {
+      if ([((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) isEmpty]) {
         JreStrongAssign(&unknownFieldData_, nil);
       }
     }
@@ -78,7 +76,7 @@
       field = [unknownFieldData_ getWithInt:fieldNumber];
     }
     if (field == nil) {
-      [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) putWithInt:fieldNumber withComGoogleProtobufNanoFieldData:[new_ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(extension, value) autorelease]];
+      [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) putWithInt:fieldNumber withComGoogleProtobufNanoFieldData:create_ComGoogleProtobufNanoFieldData_initWithComGoogleProtobufNanoExtension_withId_(extension, value)];
     }
     else {
       [field setValueWithComGoogleProtobufNanoExtension:extension withId:value];
@@ -97,7 +95,7 @@
   jint fieldNumber = ComGoogleProtobufNanoWireFormatNano_getTagFieldNumberWithInt_(tag);
   jint endPos = [input getPosition];
   IOSByteArray *bytes = [input getDataWithInt:startPos withInt:endPos - startPos];
-  ComGoogleProtobufNanoUnknownFieldData *unknownField = [new_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(tag, bytes) autorelease];
+  ComGoogleProtobufNanoUnknownFieldData *unknownField = create_ComGoogleProtobufNanoUnknownFieldData_initWithInt_withByteArray_(tag, bytes);
   ComGoogleProtobufNanoFieldData *field = nil;
   if (unknownFieldData_ == nil) {
     JreStrongAssignAndConsume(&unknownFieldData_, new_ComGoogleProtobufNanoFieldArray_init());
@@ -106,14 +104,14 @@
     field = [unknownFieldData_ getWithInt:fieldNumber];
   }
   if (field == nil) {
-    field = [new_ComGoogleProtobufNanoFieldData_init() autorelease];
+    field = create_ComGoogleProtobufNanoFieldData_init();
     [((ComGoogleProtobufNanoFieldArray *) nil_chk(unknownFieldData_)) putWithInt:fieldNumber withComGoogleProtobufNanoFieldData:field];
   }
-  [((ComGoogleProtobufNanoFieldData *) nil_chk(field)) addUnknownFieldWithComGoogleProtobufNanoUnknownFieldData:unknownField];
+  [field addUnknownFieldWithComGoogleProtobufNanoUnknownFieldData:unknownField];
   return true;
 }
 
-- (id)clone {
+- (ComGoogleProtobufNanoExtendableMessageNano *)clone {
   ComGoogleProtobufNanoExtendableMessageNano *cloned = (ComGoogleProtobufNanoExtendableMessageNano *) cast_chk([super clone], [ComGoogleProtobufNanoExtendableMessageNano class]);
   ComGoogleProtobufNanoInternalNano_cloneUnknownFieldDataWithComGoogleProtobufNanoExtendableMessageNano_withComGoogleProtobufNanoExtendableMessageNano_(self, cloned);
   return cloned;
@@ -132,20 +130,32 @@ J2OBJC_IGNORE_DESIGNATED_END
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "computeSerializedSize", NULL, "I", 0x4, NULL, NULL },
-    { "writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeTo", "V", 0x1, "Ljava.io.IOException;", NULL },
-    { "hasExtensionWithComGoogleProtobufNanoExtension:", "hasExtension", "Z", 0x11, NULL, "(Lcom/google/protobuf/nano/Extension<TM;*>;)Z" },
-    { "getExtensionWithComGoogleProtobufNanoExtension:", "getExtension", "TT;", 0x11, NULL, "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<TM;TT;>;)TT;" },
-    { "setExtensionWithComGoogleProtobufNanoExtension:withId:", "setExtension", "TM;", 0x11, NULL, "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<TM;TT;>;TT;)TM;" },
-    { "storeUnknownFieldWithComGoogleProtobufNanoCodedInputByteBufferNano:withInt:", "storeUnknownField", "Z", 0x14, "Ljava.io.IOException;", NULL },
-    { "clone", NULL, "TM;", 0x1, "Ljava.lang.CloneNotSupportedException;", "()TM;" },
-    { "init", NULL, NULL, 0x1, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "I", 0x4, -1, -1, -1, -1, -1, -1 },
+    { NULL, "V", 0x1, 0, 1, 2, -1, -1, -1 },
+    { NULL, "Z", 0x11, 3, 4, -1, 5, -1, -1 },
+    { NULL, "LNSObject;", 0x11, 6, 4, -1, 7, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoExtendableMessageNano;", 0x11, 8, 9, -1, 10, -1, -1 },
+    { NULL, "Z", 0x14, 11, 12, 2, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoExtendableMessageNano;", 0x1, -1, -1, 13, 14, -1, -1 },
+    { NULL, NULL, 0x1, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(computeSerializedSize);
+  methods[1].selector = @selector(writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[2].selector = @selector(hasExtensionWithComGoogleProtobufNanoExtension:);
+  methods[3].selector = @selector(getExtensionWithComGoogleProtobufNanoExtension:);
+  methods[4].selector = @selector(setExtensionWithComGoogleProtobufNanoExtension:withId:);
+  methods[5].selector = @selector(storeUnknownFieldWithComGoogleProtobufNanoCodedInputByteBufferNano:withInt:);
+  methods[6].selector = @selector(clone);
+  methods[7].selector = @selector(init);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "unknownFieldData_", NULL, 0x4, "Lcom.google.protobuf.nano.FieldArray;", NULL, NULL, .constantValue.asLong = 0 },
+    { "unknownFieldData_", "LComGoogleProtobufNanoFieldArray;", .constantValue.asLong = 0, 0x4, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoExtendableMessageNano = { 2, "ExtendableMessageNano", "com.google.protobuf.nano", NULL, 0x401, 8, methods, 1, fields, 0, NULL, 0, NULL, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;>Lcom/google/protobuf/nano/MessageNano;" };
+  static const void *ptrTable[] = { "writeTo", "LComGoogleProtobufNanoCodedOutputByteBufferNano;", "LJavaIoIOException;", "hasExtension", "LComGoogleProtobufNanoExtension;", "(Lcom/google/protobuf/nano/Extension<TM;*>;)Z", "getExtension", "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<TM;TT;>;)TT;", "setExtension", "LComGoogleProtobufNanoExtension;LNSObject;", "<T:Ljava/lang/Object;>(Lcom/google/protobuf/nano/Extension<TM;TT;>;TT;)TM;", "storeUnknownField", "LComGoogleProtobufNanoCodedInputByteBufferNano;I", "LJavaLangCloneNotSupportedException;", "()TM;", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;>Lcom/google/protobuf/nano/MessageNano;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoExtendableMessageNano = { "ExtendableMessageNano", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x401, 8, 1, -1, -1, -1, 15, -1 };
   return &_ComGoogleProtobufNanoExtendableMessageNano;
 }
 

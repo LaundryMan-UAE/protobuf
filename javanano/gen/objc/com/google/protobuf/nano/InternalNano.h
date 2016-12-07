@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoInternalNano_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoInternalNano_RESTRICT
-#define ComGoogleProtobufNanoInternalNano_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoInternalNano")
+#ifdef RESTRICT_ComGoogleProtobufNanoInternalNano
+#define INCLUDE_ALL_ComGoogleProtobufNanoInternalNano 0
 #else
-#define ComGoogleProtobufNanoInternalNano_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoInternalNano 1
 #endif
-#undef ComGoogleProtobufNanoInternalNano_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoInternalNano
 
-#if !defined (ComGoogleProtobufNanoInternalNano_) && (ComGoogleProtobufNanoInternalNano_INCLUDE_ALL || defined(ComGoogleProtobufNanoInternalNano_INCLUDE))
+#if !defined (ComGoogleProtobufNanoInternalNano_) && (INCLUDE_ALL_ComGoogleProtobufNanoInternalNano || defined(INCLUDE_ComGoogleProtobufNanoInternalNano))
 #define ComGoogleProtobufNanoInternalNano_
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -396,4 +396,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoInternalNano)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoInternalNano_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoInternalNano")

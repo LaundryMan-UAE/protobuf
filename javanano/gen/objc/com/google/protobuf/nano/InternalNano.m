@@ -3,7 +3,6 @@
 //  source: /Users/andrefonseca/Documents/PodsFolders/protobuf/javanano/src/main/java/com/google/protobuf/nano/InternalNano.java
 //
 
-#include "IOSClass.h"
 #include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
@@ -15,7 +14,6 @@
 #include "com/google/protobuf/nano/MapFactories.h"
 #include "com/google/protobuf/nano/MessageNano.h"
 #include "com/google/protobuf/nano/WireFormatNano.h"
-#include "java/io/IOException.h"
 #include "java/lang/Boolean.h"
 #include "java/lang/Double.h"
 #include "java/lang/Float.h"
@@ -196,6 +194,94 @@ J2OBJC_IGNORE_DESIGNATED_END
   ComGoogleProtobufNanoInternalNano_cloneUnknownFieldDataWithComGoogleProtobufNanoExtendableMessageNano_withComGoogleProtobufNanoExtendableMessageNano_(original, cloned);
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LNSString;", 0x9, 0, 1, -1, -1, -1, -1 },
+    { NULL, "[B", 0x9, 2, 1, -1, -1, -1, -1 },
+    { NULL, "[B", 0x9, 3, 1, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 5, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 6, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 7, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 8, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 9, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 10, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 4, 11, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 13, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 14, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 15, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 16, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 17, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 18, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 19, -1, -1, -1, -1 },
+    { NULL, "LNSObject;", 0xa, 20, 21, -1, -1, -1, -1 },
+    { NULL, "LJavaUtilMap;", 0x19, 22, 23, 24, 25, -1, -1 },
+    { NULL, "V", 0x9, 26, 27, 24, 28, -1, -1 },
+    { NULL, "I", 0x9, 29, 30, -1, 31, -1, -1 },
+    { NULL, "Z", 0x9, 4, 32, -1, 33, -1, -1 },
+    { NULL, "Z", 0xa, 34, 35, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 12, 36, -1, 37, -1, -1 },
+    { NULL, "I", 0xa, 38, 39, -1, -1, -1, -1 },
+    { NULL, "V", 0x9, 40, 41, -1, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(stringDefaultValueWithNSString:);
+  methods[2].selector = @selector(bytesDefaultValueWithNSString:);
+  methods[3].selector = @selector(copyFromUtf8WithNSString:);
+  methods[4].selector = @selector(equalsWithIntArray:withIntArray:);
+  methods[5].selector = @selector(equalsWithLongArray:withLongArray:);
+  methods[6].selector = @selector(equalsWithFloatArray:withFloatArray:);
+  methods[7].selector = @selector(equalsWithDoubleArray:withDoubleArray:);
+  methods[8].selector = @selector(equalsWithBooleanArray:withBooleanArray:);
+  methods[9].selector = @selector(equalsWithByteArray2:withByteArray2:);
+  methods[10].selector = @selector(equalsWithNSObjectArray:withNSObjectArray:);
+  methods[11].selector = @selector(hashCodeWithIntArray:);
+  methods[12].selector = @selector(hashCodeWithLongArray:);
+  methods[13].selector = @selector(hashCodeWithFloatArray:);
+  methods[14].selector = @selector(hashCodeWithDoubleArray:);
+  methods[15].selector = @selector(hashCodeWithBooleanArray:);
+  methods[16].selector = @selector(hashCodeWithByteArray2:);
+  methods[17].selector = @selector(hashCodeWithNSObjectArray:);
+  methods[18].selector = @selector(primitiveDefaultValueWithInt:);
+  methods[19].selector = @selector(mergeMapEntryWithComGoogleProtobufNanoCodedInputByteBufferNano:withJavaUtilMap:withComGoogleProtobufNanoMapFactories_MapFactory:withInt:withInt:withId:withInt:withInt:);
+  methods[20].selector = @selector(serializeMapFieldWithComGoogleProtobufNanoCodedOutputByteBufferNano:withJavaUtilMap:withInt:withInt:withInt:);
+  methods[21].selector = @selector(computeMapFieldSizeWithJavaUtilMap:withInt:withInt:withInt:);
+  methods[22].selector = @selector(equalsWithJavaUtilMap:withJavaUtilMap:);
+  methods[23].selector = @selector(equalsMapValueWithId:withId:);
+  methods[24].selector = @selector(hashCodeWithJavaUtilMap:);
+  methods[25].selector = @selector(hashCodeForMapWithId:);
+  methods[26].selector = @selector(cloneUnknownFieldDataWithComGoogleProtobufNanoExtendableMessageNano:withComGoogleProtobufNanoExtendableMessageNano:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "TYPE_DOUBLE", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_DOUBLE, 0x19, -1, -1, -1, -1 },
+    { "TYPE_FLOAT", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_FLOAT, 0x19, -1, -1, -1, -1 },
+    { "TYPE_INT64", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_INT64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_UINT64", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_UINT64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_INT32", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_INT32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_FIXED64", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_FIXED64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_FIXED32", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_FIXED32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_BOOL", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_BOOL, 0x19, -1, -1, -1, -1 },
+    { "TYPE_STRING", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_STRING, 0x19, -1, -1, -1, -1 },
+    { "TYPE_GROUP", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_GROUP, 0x19, -1, -1, -1, -1 },
+    { "TYPE_MESSAGE", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_MESSAGE, 0x19, -1, -1, -1, -1 },
+    { "TYPE_BYTES", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_BYTES, 0x19, -1, -1, -1, -1 },
+    { "TYPE_UINT32", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_UINT32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_ENUM", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_ENUM, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SFIXED32", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SFIXED32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SFIXED64", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SFIXED64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SINT32", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SINT32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SINT64", "I", .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SINT64, 0x19, -1, -1, -1, -1 },
+    { "UTF_8", "LJavaNioCharsetCharset;", .constantValue.asLong = 0, 0x1c, -1, 42, -1, -1 },
+    { "ISO_8859_1", "LJavaNioCharsetCharset;", .constantValue.asLong = 0, 0x1c, -1, 43, -1, -1 },
+    { "LAZY_INIT_LOCK", "LNSObject;", .constantValue.asLong = 0, 0x19, -1, 44, -1, -1 },
+  };
+  static const void *ptrTable[] = { "stringDefaultValue", "LNSString;", "bytesDefaultValue", "copyFromUtf8", "equals", "[I[I", "[J[J", "[F[F", "[D[D", "[Z[Z", "[[B[[B", "[LNSObject;[LNSObject;", "hashCode", "[I", "[J", "[F", "[D", "[Z", "[[B", "[LNSObject;", "primitiveDefaultValue", "I", "mergeMapEntry", "LComGoogleProtobufNanoCodedInputByteBufferNano;LJavaUtilMap;LComGoogleProtobufNanoMapFactories_MapFactory;IILNSObject;II", "LJavaIoIOException;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Lcom/google/protobuf/nano/CodedInputByteBufferNano;Ljava/util/Map<TK;TV;>;Lcom/google/protobuf/nano/MapFactories$MapFactory;IITV;II)Ljava/util/Map<TK;TV;>;", "serializeMapField", "LComGoogleProtobufNanoCodedOutputByteBufferNano;LJavaUtilMap;III", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Lcom/google/protobuf/nano/CodedOutputByteBufferNano;Ljava/util/Map<TK;TV;>;III)V", "computeMapFieldSize", "LJavaUtilMap;III", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;III)I", "LJavaUtilMap;LJavaUtilMap;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;Ljava/util/Map<TK;TV;>;)Z", "equalsMapValue", "LNSObject;LNSObject;", "LJavaUtilMap;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)I", "hashCodeForMap", "LNSObject;", "cloneUnknownFieldData", "LComGoogleProtobufNanoExtendableMessageNano;LComGoogleProtobufNanoExtendableMessageNano;", &ComGoogleProtobufNanoInternalNano_UTF_8, &ComGoogleProtobufNanoInternalNano_ISO_8859_1, &ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoInternalNano = { "InternalNano", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x11, 27, 21, -1, -1, -1, -1, -1 };
+  return &_ComGoogleProtobufNanoInternalNano;
+}
+
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoInternalNano class]) {
     JreStrongAssign(&ComGoogleProtobufNanoInternalNano_UTF_8, JavaNioCharsetCharset_forNameWithNSString_(@"UTF-8"));
@@ -205,63 +291,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "InternalNano", NULL, 0x2, NULL, NULL },
-    { "stringDefaultValueWithNSString:", "stringDefaultValue", "Ljava.lang.String;", 0x9, NULL, NULL },
-    { "bytesDefaultValueWithNSString:", "bytesDefaultValue", "[B", 0x9, NULL, NULL },
-    { "copyFromUtf8WithNSString:", "copyFromUtf8", "[B", 0x9, NULL, NULL },
-    { "equalsWithIntArray:withIntArray:", "equals", "Z", 0x9, NULL, NULL },
-    { "equalsWithLongArray:withLongArray:", "equals", "Z", 0x9, NULL, NULL },
-    { "equalsWithFloatArray:withFloatArray:", "equals", "Z", 0x9, NULL, NULL },
-    { "equalsWithDoubleArray:withDoubleArray:", "equals", "Z", 0x9, NULL, NULL },
-    { "equalsWithBooleanArray:withBooleanArray:", "equals", "Z", 0x9, NULL, NULL },
-    { "equalsWithByteArray2:withByteArray2:", "equals", "Z", 0x9, NULL, NULL },
-    { "equalsWithNSObjectArray:withNSObjectArray:", "equals", "Z", 0x9, NULL, NULL },
-    { "hashCodeWithIntArray:", "hashCode", "I", 0x9, NULL, NULL },
-    { "hashCodeWithLongArray:", "hashCode", "I", 0x9, NULL, NULL },
-    { "hashCodeWithFloatArray:", "hashCode", "I", 0x9, NULL, NULL },
-    { "hashCodeWithDoubleArray:", "hashCode", "I", 0x9, NULL, NULL },
-    { "hashCodeWithBooleanArray:", "hashCode", "I", 0x9, NULL, NULL },
-    { "hashCodeWithByteArray2:", "hashCode", "I", 0x9, NULL, NULL },
-    { "hashCodeWithNSObjectArray:", "hashCode", "I", 0x9, NULL, NULL },
-    { "primitiveDefaultValueWithInt:", "primitiveDefaultValue", "Ljava.lang.Object;", 0xa, NULL, NULL },
-    { "mergeMapEntryWithComGoogleProtobufNanoCodedInputByteBufferNano:withJavaUtilMap:withComGoogleProtobufNanoMapFactories_MapFactory:withInt:withInt:withId:withInt:withInt:", "mergeMapEntry", "Ljava.util.Map;", 0x19, "Ljava.io.IOException;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Lcom/google/protobuf/nano/CodedInputByteBufferNano;Ljava/util/Map<TK;TV;>;Lcom/google/protobuf/nano/MapFactories$MapFactory;IITV;II)Ljava/util/Map<TK;TV;>;" },
-    { "serializeMapFieldWithComGoogleProtobufNanoCodedOutputByteBufferNano:withJavaUtilMap:withInt:withInt:withInt:", "serializeMapField", "V", 0x9, "Ljava.io.IOException;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Lcom/google/protobuf/nano/CodedOutputByteBufferNano;Ljava/util/Map<TK;TV;>;III)V" },
-    { "computeMapFieldSizeWithJavaUtilMap:withInt:withInt:withInt:", "computeMapFieldSize", "I", 0x9, NULL, "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;III)I" },
-    { "equalsWithJavaUtilMap:withJavaUtilMap:", "equals", "Z", 0x9, NULL, "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;Ljava/util/Map<TK;TV;>;)Z" },
-    { "equalsMapValueWithId:withId:", "equalsMapValue", "Z", 0xa, NULL, NULL },
-    { "hashCodeWithJavaUtilMap:", "hashCode", "I", 0x9, NULL, "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)I" },
-    { "hashCodeForMapWithId:", "hashCodeForMap", "I", 0xa, NULL, NULL },
-    { "cloneUnknownFieldDataWithComGoogleProtobufNanoExtendableMessageNano:withComGoogleProtobufNanoExtendableMessageNano:", "cloneUnknownFieldData", "V", 0x9, NULL, NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "TYPE_DOUBLE", "TYPE_DOUBLE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_DOUBLE },
-    { "TYPE_FLOAT", "TYPE_FLOAT", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_FLOAT },
-    { "TYPE_INT64", "TYPE_INT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_INT64 },
-    { "TYPE_UINT64", "TYPE_UINT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_UINT64 },
-    { "TYPE_INT32", "TYPE_INT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_INT32 },
-    { "TYPE_FIXED64", "TYPE_FIXED64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_FIXED64 },
-    { "TYPE_FIXED32", "TYPE_FIXED32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_FIXED32 },
-    { "TYPE_BOOL", "TYPE_BOOL", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_BOOL },
-    { "TYPE_STRING", "TYPE_STRING", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_STRING },
-    { "TYPE_GROUP", "TYPE_GROUP", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_GROUP },
-    { "TYPE_MESSAGE", "TYPE_MESSAGE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_MESSAGE },
-    { "TYPE_BYTES", "TYPE_BYTES", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_BYTES },
-    { "TYPE_UINT32", "TYPE_UINT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_UINT32 },
-    { "TYPE_ENUM", "TYPE_ENUM", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_ENUM },
-    { "TYPE_SFIXED32", "TYPE_SFIXED32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SFIXED32 },
-    { "TYPE_SFIXED64", "TYPE_SFIXED64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SFIXED64 },
-    { "TYPE_SINT32", "TYPE_SINT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SINT32 },
-    { "TYPE_SINT64", "TYPE_SINT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoInternalNano_TYPE_SINT64 },
-    { "UTF_8", "UTF_8", 0x1c, "Ljava.nio.charset.Charset;", &ComGoogleProtobufNanoInternalNano_UTF_8, NULL, .constantValue.asLong = 0 },
-    { "ISO_8859_1", "ISO_8859_1", 0x1c, "Ljava.nio.charset.Charset;", &ComGoogleProtobufNanoInternalNano_ISO_8859_1, NULL, .constantValue.asLong = 0 },
-    { "LAZY_INIT_LOCK", "LAZY_INIT_LOCK", 0x19, "Ljava.lang.Object;", &ComGoogleProtobufNanoInternalNano_LAZY_INIT_LOCK, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoInternalNano = { 2, "InternalNano", "com.google.protobuf.nano", NULL, 0x11, 27, methods, 21, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleProtobufNanoInternalNano;
-}
-
 @end
 
 void ComGoogleProtobufNanoInternalNano_init(ComGoogleProtobufNanoInternalNano *self) {
@@ -269,15 +298,11 @@ void ComGoogleProtobufNanoInternalNano_init(ComGoogleProtobufNanoInternalNano *s
 }
 
 ComGoogleProtobufNanoInternalNano *new_ComGoogleProtobufNanoInternalNano_init() {
-  ComGoogleProtobufNanoInternalNano *self = [ComGoogleProtobufNanoInternalNano alloc];
-  ComGoogleProtobufNanoInternalNano_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoInternalNano, init)
 }
 
 ComGoogleProtobufNanoInternalNano *create_ComGoogleProtobufNanoInternalNano_init() {
-  ComGoogleProtobufNanoInternalNano *self = [[ComGoogleProtobufNanoInternalNano alloc] autorelease];
-  ComGoogleProtobufNanoInternalNano_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoInternalNano, init)
 }
 
 NSString *ComGoogleProtobufNanoInternalNano_stringDefaultValueWithNSString_(NSString *bytes) {
@@ -481,7 +506,7 @@ id ComGoogleProtobufNanoInternalNano_primitiveDefaultValueWithInt_(jint type) {
     case ComGoogleProtobufNanoInternalNano_TYPE_MESSAGE:
     case ComGoogleProtobufNanoInternalNano_TYPE_GROUP:
     default:
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$", @"Type: ", type, @" is not a primitive type.")) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$", @"Type: ", type, @" is not a primitive type."));
   }
 }
 
@@ -531,7 +556,7 @@ void ComGoogleProtobufNanoInternalNano_serializeMapFieldWithComGoogleProtobufNan
     id key = [((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey];
     id value = [entry_ getValue];
     if (key == nil || value == nil) {
-      @throw [new_JavaLangIllegalStateException_initWithNSString_(@"keys and values in maps cannot be null") autorelease];
+      @throw create_JavaLangIllegalStateException_initWithNSString_(@"keys and values in maps cannot be null");
     }
     jint entrySize = ComGoogleProtobufNanoCodedOutputByteBufferNano_computeFieldSizeWithInt_withInt_withId_(1, keyType, key) + ComGoogleProtobufNanoCodedOutputByteBufferNano_computeFieldSizeWithInt_withInt_withId_(2, valueType, value);
     [((ComGoogleProtobufNanoCodedOutputByteBufferNano *) nil_chk(output)) writeTagWithInt:number withInt:ComGoogleProtobufNanoWireFormatNano_WIRETYPE_LENGTH_DELIMITED];
@@ -549,7 +574,7 @@ jint ComGoogleProtobufNanoInternalNano_computeMapFieldSizeWithJavaUtilMap_withIn
     id key = [((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey];
     id value = [entry_ getValue];
     if (key == nil || value == nil) {
-      @throw [new_JavaLangIllegalStateException_initWithNSString_(@"keys and values in maps cannot be null") autorelease];
+      @throw create_JavaLangIllegalStateException_initWithNSString_(@"keys and values in maps cannot be null");
     }
     jint entrySize = ComGoogleProtobufNanoCodedOutputByteBufferNano_computeFieldSizeWithInt_withInt_withId_(1, keyType, key) + ComGoogleProtobufNanoCodedOutputByteBufferNano_computeFieldSizeWithInt_withInt_withId_(2, valueType, value);
     size += tagSize + entrySize + ComGoogleProtobufNanoCodedOutputByteBufferNano_computeRawVarint32SizeWithInt_(entrySize);
@@ -566,9 +591,9 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithJavaUtilMap_withJavaUtilMap
     return [((id<JavaUtilMap>) nil_chk(b)) size] == 0;
   }
   if (b == nil) {
-    return [((id<JavaUtilMap>) nil_chk(a)) size] == 0;
+    return [a size] == 0;
   }
-  if ([((id<JavaUtilMap>) nil_chk(a)) size] != [((id<JavaUtilMap>) nil_chk(b)) size]) {
+  if ([a size] != [b size]) {
     return false;
   }
   for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([a entrySet])) {
@@ -585,12 +610,12 @@ jboolean ComGoogleProtobufNanoInternalNano_equalsWithJavaUtilMap_withJavaUtilMap
 jboolean ComGoogleProtobufNanoInternalNano_equalsMapValueWithId_withId_(id a, id b) {
   ComGoogleProtobufNanoInternalNano_initialize();
   if (a == nil || b == nil) {
-    @throw [new_JavaLangIllegalStateException_initWithNSString_(@"keys and values in maps cannot be null") autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSString_(@"keys and values in maps cannot be null");
   }
   if ([a isKindOfClass:[IOSByteArray class]] && [b isKindOfClass:[IOSByteArray class]]) {
     return JavaUtilArrays_equalsWithByteArray_withByteArray_((IOSByteArray *) cast_chk(a, [IOSByteArray class]), (IOSByteArray *) cast_chk(b, [IOSByteArray class]));
   }
-  return [nil_chk(a) isEqual:b];
+  return [a isEqual:b];
 }
 
 jint ComGoogleProtobufNanoInternalNano_hashCodeWithJavaUtilMap_(id<JavaUtilMap> map) {
@@ -599,7 +624,7 @@ jint ComGoogleProtobufNanoInternalNano_hashCodeWithJavaUtilMap_(id<JavaUtilMap> 
     return 0;
   }
   jint result = 0;
-  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([((id<JavaUtilMap>) nil_chk(map)) entrySet])) {
+  for (id<JavaUtilMap_Entry> __strong entry_ in nil_chk([map entrySet])) {
     result += ComGoogleProtobufNanoInternalNano_hashCodeForMapWithId_([((id<JavaUtilMap_Entry>) nil_chk(entry_)) getKey]) ^ ComGoogleProtobufNanoInternalNano_hashCodeForMapWithId_([entry_ getValue]);
   }
   return result;

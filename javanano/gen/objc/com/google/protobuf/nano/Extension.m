@@ -4,6 +4,7 @@
 //
 
 #include "IOSClass.h"
+#include "IOSObjectArray.h"
 #include "IOSPrimitiveArray.h"
 #include "J2ObjC_source.h"
 #include "com/google/protobuf/nano/CodedInputByteBufferNano.h"
@@ -24,6 +25,7 @@
 #include "java/lang/InstantiationException.h"
 #include "java/lang/Integer.h"
 #include "java/lang/Long.h"
+#include "java/lang/annotation/Annotation.h"
 #include "java/lang/reflect/Array.h"
 #include "java/util/ArrayList.h"
 #include "java/util/List.h"
@@ -50,6 +52,8 @@ __attribute__((unused)) static ComGoogleProtobufNanoExtension *create_ComGoogleP
 __attribute__((unused)) static id ComGoogleProtobufNanoExtension_getRepeatedValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields);
 
 __attribute__((unused)) static id ComGoogleProtobufNanoExtension_getSingularValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields);
+
+__attribute__((unused)) static IOSObjectArray *ComGoogleProtobufNanoExtension__Annotations$0();
 
 /*!
  @brief Represents an extension of a primitive (including enum) type.
@@ -165,7 +169,7 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoExtension_PrimitiveExtension)
 }
 
 - (id)readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:(ComGoogleProtobufNanoCodedInputByteBufferNano *)input {
-  IOSClass *messageType = repeated_ ? [((IOSClass *) nil_chk(clazz_)) getComponentType] : clazz_;
+  IOSClass *messageType = repeated_ ? [((IOSClass *) nil_chk(clazz_)) getComponentType] : (id) clazz_;
   @try {
     {
       ComGoogleProtobufNanoMessageNano *group;
@@ -180,18 +184,18 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoExtension_PrimitiveExtension)
         [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readMessageWithComGoogleProtobufNanoMessageNano:message];
         return message;
         default:
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_)) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_));
       }
     }
   }
   @catch (JavaLangInstantiationException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(JreStrcat("$@", @"Error creating instance of class ", messageType), e) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_withNSException_(JreStrcat("$@", @"Error creating instance of class ", messageType), e);
   }
   @catch (JavaLangIllegalAccessException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(JreStrcat("$@", @"Error creating instance of class ", messageType), e) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_withNSException_(JreStrcat("$@", @"Error creating instance of class ", messageType), e);
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e);
   }
 }
 
@@ -230,12 +234,12 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
         [outArg writeMessageNoTagWithComGoogleProtobufNanoMessageNano:messageValue];
         break;
         default:
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_)) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_));
       }
     }
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSException_(e);
   }
 }
 
@@ -284,7 +288,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
       messageValue = (ComGoogleProtobufNanoMessageNano *) cast_chk(value, [ComGoogleProtobufNanoMessageNano class]);
       return ComGoogleProtobufNanoCodedOutputByteBufferNano_computeMessageSizeWithInt_withComGoogleProtobufNanoMessageNano_(fieldNumber, messageValue);
       default:
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_)) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_));
     }
   }
 }
@@ -294,56 +298,72 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
   [super dealloc];
 }
 
-+ (IOSObjectArray *)__annotations_createMessageTypedWithInt_withIOSClass_withInt_ {
-  return [IOSObjectArray arrayWithObjects:(id[]) { [[[JavaLangDeprecated alloc] init] autorelease] } count:1 type:JavaLangAnnotationAnnotation_class_()];
-}
-
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "createMessageTypedWithInt:withIOSClass:withInt:", "createMessageTyped", "Lcom.google.protobuf.nano.Extension;", 0x9, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Lcom/google/protobuf/nano/MessageNano;>(ILjava/lang/Class<TT;>;I)Lcom/google/protobuf/nano/Extension<TM;TT;>;" },
-    { "createMessageTypedWithInt:withIOSClass:withLong:", "createMessageTyped", "Lcom.google.protobuf.nano.Extension;", 0x9, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Lcom/google/protobuf/nano/MessageNano;>(ILjava/lang/Class<TT;>;J)Lcom/google/protobuf/nano/Extension<TM;TT;>;" },
-    { "createRepeatedMessageTypedWithInt:withIOSClass:withLong:", "createRepeatedMessageTyped", "Lcom.google.protobuf.nano.Extension;", 0x9, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Lcom/google/protobuf/nano/MessageNano;>(ILjava/lang/Class<L[Lcom/google/protobuf/nano/MessageNano;;>;J)Lcom/google/protobuf/nano/Extension<TM;L[Lcom/google/protobuf/nano/MessageNano;;>;" },
-    { "createPrimitiveTypedWithInt:withIOSClass:withLong:", "createPrimitiveTyped", "Lcom.google.protobuf.nano.Extension;", 0x9, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>(ILjava/lang/Class<TT;>;J)Lcom/google/protobuf/nano/Extension<TM;TT;>;" },
-    { "createRepeatedPrimitiveTypedWithInt:withIOSClass:withLong:withLong:withLong:", "createRepeatedPrimitiveTyped", "Lcom.google.protobuf.nano.Extension;", 0x9, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>(ILjava/lang/Class<TT;>;JJJ)Lcom/google/protobuf/nano/Extension<TM;TT;>;" },
-    { "initWithInt:withIOSClass:withInt:withBoolean:", "Extension", NULL, 0x2, NULL, "(ILjava/lang/Class<TT;>;IZ)V" },
-    { "getValueFromWithJavaUtilList:", "getValueFrom", "TT;", 0x10, NULL, "(Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;)TT;" },
-    { "getRepeatedValueFromWithJavaUtilList:", "getRepeatedValueFrom", "TT;", 0x2, NULL, "(Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;)TT;" },
-    { "getSingularValueFromWithJavaUtilList:", "getSingularValueFrom", "TT;", 0x2, NULL, "(Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;)TT;" },
-    { "readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:", "readData", "Ljava.lang.Object;", 0x4, NULL, NULL },
-    { "readDataIntoWithComGoogleProtobufNanoUnknownFieldData:withJavaUtilList:", "readDataInto", "V", 0x4, NULL, "(Lcom/google/protobuf/nano/UnknownFieldData;Ljava/util/List<Ljava/lang/Object;>;)V" },
-    { "writeToWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeTo", "V", 0x0, "Ljava.io.IOException;", NULL },
-    { "writeSingularDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeSingularData", "V", 0x4, NULL, NULL },
-    { "writeRepeatedDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeRepeatedData", "V", 0x4, NULL, NULL },
-    { "computeSerializedSizeWithId:", "computeSerializedSize", "I", 0x0, NULL, NULL },
-    { "computeRepeatedSerializedSizeWithId:", "computeRepeatedSerializedSize", "I", 0x4, NULL, NULL },
-    { "computeSingularSerializedSizeWithId:", "computeSingularSerializedSize", "I", 0x4, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, "LComGoogleProtobufNanoExtension;", 0x9, 0, 1, -1, 2, 3, -1 },
+    { NULL, "LComGoogleProtobufNanoExtension;", 0x9, 0, 4, -1, 5, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoExtension;", 0x9, 6, 4, -1, 7, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoExtension;", 0x9, 8, 4, -1, 9, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoExtension;", 0x9, 10, 11, -1, 12, -1, -1 },
+    { NULL, NULL, 0x2, -1, 13, -1, 14, -1, -1 },
+    { NULL, "LNSObject;", 0x10, 15, 16, -1, 17, -1, -1 },
+    { NULL, "LNSObject;", 0x2, 18, 16, -1, 17, -1, -1 },
+    { NULL, "LNSObject;", 0x2, 19, 16, -1, 17, -1, -1 },
+    { NULL, "LNSObject;", 0x4, 20, 21, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 22, 23, -1, 24, -1, -1 },
+    { NULL, "V", 0x0, 25, 26, 27, -1, -1, -1 },
+    { NULL, "V", 0x4, 28, 26, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 29, 26, -1, -1, -1, -1 },
+    { NULL, "I", 0x0, 30, 31, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 32, 31, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 33, 31, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(createMessageTypedWithInt:withIOSClass:withInt:);
+  methods[1].selector = @selector(createMessageTypedWithInt:withIOSClass:withLong:);
+  methods[2].selector = @selector(createRepeatedMessageTypedWithInt:withIOSClass:withLong:);
+  methods[3].selector = @selector(createPrimitiveTypedWithInt:withIOSClass:withLong:);
+  methods[4].selector = @selector(createRepeatedPrimitiveTypedWithInt:withIOSClass:withLong:withLong:withLong:);
+  methods[5].selector = @selector(initWithInt:withIOSClass:withInt:withBoolean:);
+  methods[6].selector = @selector(getValueFromWithJavaUtilList:);
+  methods[7].selector = @selector(getRepeatedValueFromWithJavaUtilList:);
+  methods[8].selector = @selector(getSingularValueFromWithJavaUtilList:);
+  methods[9].selector = @selector(readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:);
+  methods[10].selector = @selector(readDataIntoWithComGoogleProtobufNanoUnknownFieldData:withJavaUtilList:);
+  methods[11].selector = @selector(writeToWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[12].selector = @selector(writeSingularDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[13].selector = @selector(writeRepeatedDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[14].selector = @selector(computeSerializedSizeWithId:);
+  methods[15].selector = @selector(computeRepeatedSerializedSizeWithId:);
+  methods[16].selector = @selector(computeSingularSerializedSizeWithId:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "TYPE_DOUBLE", "TYPE_DOUBLE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_DOUBLE },
-    { "TYPE_FLOAT", "TYPE_FLOAT", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_FLOAT },
-    { "TYPE_INT64", "TYPE_INT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_INT64 },
-    { "TYPE_UINT64", "TYPE_UINT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_UINT64 },
-    { "TYPE_INT32", "TYPE_INT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_INT32 },
-    { "TYPE_FIXED64", "TYPE_FIXED64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_FIXED64 },
-    { "TYPE_FIXED32", "TYPE_FIXED32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_FIXED32 },
-    { "TYPE_BOOL", "TYPE_BOOL", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_BOOL },
-    { "TYPE_STRING", "TYPE_STRING", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_STRING },
-    { "TYPE_GROUP", "TYPE_GROUP", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_GROUP },
-    { "TYPE_MESSAGE", "TYPE_MESSAGE", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_MESSAGE },
-    { "TYPE_BYTES", "TYPE_BYTES", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_BYTES },
-    { "TYPE_UINT32", "TYPE_UINT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_UINT32 },
-    { "TYPE_ENUM", "TYPE_ENUM", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_ENUM },
-    { "TYPE_SFIXED32", "TYPE_SFIXED32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SFIXED32 },
-    { "TYPE_SFIXED64", "TYPE_SFIXED64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SFIXED64 },
-    { "TYPE_SINT32", "TYPE_SINT32", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SINT32 },
-    { "TYPE_SINT64", "TYPE_SINT64", 0x19, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SINT64 },
-    { "type_", NULL, 0x14, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "clazz_", NULL, 0x14, "Ljava.lang.Class;", NULL, "Ljava/lang/Class<TT;>;", .constantValue.asLong = 0 },
-    { "tag_", NULL, 0x11, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "repeated_", NULL, 0x14, "Z", NULL, NULL, .constantValue.asLong = 0 },
+    { "TYPE_DOUBLE", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_DOUBLE, 0x19, -1, -1, -1, -1 },
+    { "TYPE_FLOAT", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_FLOAT, 0x19, -1, -1, -1, -1 },
+    { "TYPE_INT64", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_INT64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_UINT64", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_UINT64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_INT32", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_INT32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_FIXED64", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_FIXED64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_FIXED32", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_FIXED32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_BOOL", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_BOOL, 0x19, -1, -1, -1, -1 },
+    { "TYPE_STRING", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_STRING, 0x19, -1, -1, -1, -1 },
+    { "TYPE_GROUP", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_GROUP, 0x19, -1, -1, -1, -1 },
+    { "TYPE_MESSAGE", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_MESSAGE, 0x19, -1, -1, -1, -1 },
+    { "TYPE_BYTES", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_BYTES, 0x19, -1, -1, -1, -1 },
+    { "TYPE_UINT32", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_UINT32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_ENUM", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_ENUM, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SFIXED32", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SFIXED32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SFIXED64", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SFIXED64, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SINT32", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SINT32, 0x19, -1, -1, -1, -1 },
+    { "TYPE_SINT64", "I", .constantValue.asInt = ComGoogleProtobufNanoExtension_TYPE_SINT64, 0x19, -1, -1, -1, -1 },
+    { "type_", "I", .constantValue.asLong = 0, 0x14, -1, -1, -1, -1 },
+    { "clazz_", "LIOSClass;", .constantValue.asLong = 0, 0x14, -1, -1, 34, -1 },
+    { "tag_", "I", .constantValue.asLong = 0, 0x11, -1, -1, -1, -1 },
+    { "repeated_", "Z", .constantValue.asLong = 0, 0x14, -1, -1, -1, -1 },
   };
-  static const char *inner_classes[] = {"Lcom.google.protobuf.nano.Extension$PrimitiveExtension;"};
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoExtension = { 2, "Extension", "com.google.protobuf.nano", NULL, 0x1, 17, methods, 22, fields, 0, NULL, 1, inner_classes, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const void *ptrTable[] = { "createMessageTyped", "ILIOSClass;I", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Lcom/google/protobuf/nano/MessageNano;>(ILjava/lang/Class<TT;>;I)Lcom/google/protobuf/nano/Extension<TM;TT;>;", (void *)&ComGoogleProtobufNanoExtension__Annotations$0, "ILIOSClass;J", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Lcom/google/protobuf/nano/MessageNano;>(ILjava/lang/Class<TT;>;J)Lcom/google/protobuf/nano/Extension<TM;TT;>;", "createRepeatedMessageTyped", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Lcom/google/protobuf/nano/MessageNano;>(ILjava/lang/Class<[Lcom/google/protobuf/nano/Extension$(ILjava/lang/Class;J)Lcom/google/protobuf/nano/Extension;$T;>;J)Lcom/google/protobuf/nano/Extension<TM;[Lcom/google/protobuf/nano/Extension$(ILjava/lang/Class;J)Lcom/google/protobuf/nano/Extension;$T;>;", "createPrimitiveTyped", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>(ILjava/lang/Class<TT;>;J)Lcom/google/protobuf/nano/Extension<TM;TT;>;", "createRepeatedPrimitiveTyped", "ILIOSClass;JJJ", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>(ILjava/lang/Class<TT;>;JJJ)Lcom/google/protobuf/nano/Extension<TM;TT;>;", "ILIOSClass;IZ", "(ILjava/lang/Class<TT;>;IZ)V", "getValueFrom", "LJavaUtilList;", "(Ljava/util/List<Lcom/google/protobuf/nano/UnknownFieldData;>;)TT;", "getRepeatedValueFrom", "getSingularValueFrom", "readData", "LComGoogleProtobufNanoCodedInputByteBufferNano;", "readDataInto", "LComGoogleProtobufNanoUnknownFieldData;LJavaUtilList;", "(Lcom/google/protobuf/nano/UnknownFieldData;Ljava/util/List<Ljava/lang/Object;>;)V", "writeTo", "LNSObject;LComGoogleProtobufNanoCodedOutputByteBufferNano;", "LJavaIoIOException;", "writeSingularData", "writeRepeatedData", "computeSerializedSize", "LNSObject;", "computeRepeatedSerializedSize", "computeSingularSerializedSize", "Ljava/lang/Class<TT;>;", "LComGoogleProtobufNanoExtension_PrimitiveExtension;", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>Ljava/lang/Object;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoExtension = { "Extension", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x1, 17, 22, -1, 35, -1, 36, -1 };
   return &_ComGoogleProtobufNanoExtension;
 }
 
@@ -351,27 +371,27 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createMessageTypedWithInt_withIOSClass_withInt_(jint type, IOSClass *clazz, jint tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, tag, false) autorelease];
+  return create_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, tag, false);
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createMessageTypedWithInt_withIOSClass_withLong_(jint type, IOSClass *clazz, jlong tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, false) autorelease];
+  return create_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, false);
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createRepeatedMessageTypedWithInt_withIOSClass_withLong_(jint type, IOSClass *clazz, jlong tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, true) autorelease];
+  return create_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(type, clazz, (jint) tag, true);
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createPrimitiveTypedWithInt_withIOSClass_withLong_(jint type, IOSClass *clazz, jlong tag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, false, 0, 0) autorelease];
+  return create_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, false, 0, 0);
 }
 
 ComGoogleProtobufNanoExtension *ComGoogleProtobufNanoExtension_createRepeatedPrimitiveTypedWithInt_withIOSClass_withLong_withLong_withLong_(jint type, IOSClass *clazz, jlong tag, jlong nonPackedTag, jlong packedTag) {
   ComGoogleProtobufNanoExtension_initialize();
-  return [new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, true, (jint) nonPackedTag, (jint) packedTag) autorelease];
+  return create_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(type, clazz, (jint) tag, true, (jint) nonPackedTag, (jint) packedTag);
 }
 
 void ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(ComGoogleProtobufNanoExtension *self, jint type, IOSClass *clazz, jint tag, jboolean repeated) {
@@ -383,19 +403,15 @@ void ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean
 }
 
 ComGoogleProtobufNanoExtension *new_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(jint type, IOSClass *clazz, jint tag, jboolean repeated) {
-  ComGoogleProtobufNanoExtension *self = [ComGoogleProtobufNanoExtension alloc];
-  ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(self, type, clazz, tag, repeated);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoExtension, initWithInt_withIOSClass_withInt_withBoolean_, type, clazz, tag, repeated)
 }
 
 ComGoogleProtobufNanoExtension *create_ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(jint type, IOSClass *clazz, jint tag, jboolean repeated) {
-  ComGoogleProtobufNanoExtension *self = [[ComGoogleProtobufNanoExtension alloc] autorelease];
-  ComGoogleProtobufNanoExtension_initWithInt_withIOSClass_withInt_withBoolean_(self, type, clazz, tag, repeated);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoExtension, initWithInt_withIOSClass_withInt_withBoolean_, type, clazz, tag, repeated)
 }
 
 id ComGoogleProtobufNanoExtension_getRepeatedValueFromWithJavaUtilList_(ComGoogleProtobufNanoExtension *self, id<JavaUtilList> unknownFields) {
-  id<JavaUtilList> resultList = [new_JavaUtilArrayList_init() autorelease];
+  id<JavaUtilList> resultList = create_JavaUtilArrayList_init();
   for (jint i = 0; i < [((id<JavaUtilList>) nil_chk(unknownFields)) size]; i++) {
     ComGoogleProtobufNanoUnknownFieldData *data = [unknownFields getWithInt:i];
     if (((IOSByteArray *) nil_chk(((ComGoogleProtobufNanoUnknownFieldData *) nil_chk(data))->bytes_))->size_ != 0) {
@@ -407,7 +423,7 @@ id ComGoogleProtobufNanoExtension_getRepeatedValueFromWithJavaUtilList_(ComGoogl
     return nil;
   }
   else {
-    id result = [self->clazz_ cast:JavaLangReflectArray_newInstanceWithIOSClass_withInt_([((IOSClass *) nil_chk(self->clazz_)) getComponentType], resultSize)];
+    id result = [((IOSClass *) nil_chk(self->clazz_)) cast:JavaLangReflectArray_newInstanceWithIOSClass_withInt_([self->clazz_ getComponentType], resultSize)];
     for (jint i = 0; i < resultSize; i++) {
       JavaLangReflectArray_setWithId_withInt_withId_(result, i, [resultList getWithInt:i]);
     }
@@ -421,6 +437,10 @@ id ComGoogleProtobufNanoExtension_getSingularValueFromWithJavaUtilList_(ComGoogl
   }
   ComGoogleProtobufNanoUnknownFieldData *lastData = [unknownFields getWithInt:[unknownFields size] - 1];
   return [((IOSClass *) nil_chk(self->clazz_)) cast:[self readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:ComGoogleProtobufNanoCodedInputByteBufferNano_newInstanceWithByteArray_(((ComGoogleProtobufNanoUnknownFieldData *) nil_chk(lastData))->bytes_)]];
+}
+
+IOSObjectArray *ComGoogleProtobufNanoExtension__Annotations$0() {
+  return [IOSObjectArray arrayWithObjects:(id[]){ create_JavaLangDeprecated() } count:1 type:JavaLangAnnotationAnnotation_class_()];
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoExtension)
@@ -442,7 +462,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoExtension)
     return [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(input)) readPrimitiveFieldWithInt:type_];
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e);
   }
 }
 
@@ -454,12 +474,12 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoExtension)
   else {
     ComGoogleProtobufNanoCodedInputByteBufferNano *buffer = ComGoogleProtobufNanoCodedInputByteBufferNano_newInstanceWithByteArray_(data->bytes_);
     @try {
-      [buffer pushLimitWithInt:[((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(buffer)) readRawVarint32]];
+      [((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(buffer)) pushLimitWithInt:[buffer readRawVarint32]];
     }
     @catch (JavaIoIOException *e) {
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_withNSException_(@"Error reading extension field", e);
     }
-    while (![((ComGoogleProtobufNanoCodedInputByteBufferNano *) nil_chk(buffer)) isAtEnd]) {
+    while (![buffer isAtEnd]) {
       [((id<JavaUtilList>) nil_chk(resultList)) addWithId:[self readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:buffer]];
     }
   }
@@ -552,12 +572,12 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
         [output writeSInt64NoTagWithLong:[((JavaLangLong *) nil_chk(sint64Value)) longLongValue]];
         break;
         default:
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_)) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_));
       }
     }
   }
   @catch (JavaIoIOException *e) {
-    @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
+    @throw create_JavaLangIllegalStateException_initWithNSException_(e);
   }
 }
 
@@ -644,15 +664,15 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
         }
         break;
         default:
-        @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpackable type ", type_)) autorelease];
+        @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unpackable type ", type_));
       }
     }
     @catch (JavaIoIOException *e) {
-      @throw [new_JavaLangIllegalStateException_initWithNSException_(e) autorelease];
+      @throw create_JavaLangIllegalStateException_initWithNSException_(e);
     }
   }
   else {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$I$I", @"Unexpected repeated extension tag ", tag_, @", unequal to both non-packed variant ", nonPackedTag_, @" and packed variant ", packedTag_)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$I$I", @"Unexpected repeated extension tag ", tag_, @", unequal to both non-packed variant ", nonPackedTag_, @" and packed variant ", packedTag_));
   }
 }
 
@@ -670,7 +690,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
     return payloadSize + ComGoogleProtobufNanoCodedOutputByteBufferNano_computeRawVarint32SizeWithInt_(tag_);
   }
   else {
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$I$I", @"Unexpected repeated extension tag ", tag_, @", unequal to both non-packed variant ", nonPackedTag_, @" and packed variant ", packedTag_)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I$I$I", @"Unexpected repeated extension tag ", tag_, @", unequal to both non-packed variant ", nonPackedTag_, @" and packed variant ", packedTag_));
   }
 }
 
@@ -743,28 +763,39 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
       sint64Value = (JavaLangLong *) cast_chk(value, [JavaLangLong class]);
       return ComGoogleProtobufNanoCodedOutputByteBufferNano_computeSInt64SizeWithInt_withLong_(fieldNumber, [((JavaLangLong *) nil_chk(sint64Value)) longLongValue]);
       default:
-      @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_)) autorelease];
+      @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unknown type ", type_));
     }
   }
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithInt:withIOSClass:withInt:withBoolean:withInt:withInt:", "PrimitiveExtension", NULL, 0x1, NULL, "(ILjava/lang/Class<TT;>;IZII)V" },
-    { "readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:", "readData", "Ljava.lang.Object;", 0x4, NULL, NULL },
-    { "readDataIntoWithComGoogleProtobufNanoUnknownFieldData:withJavaUtilList:", "readDataInto", "V", 0x4, NULL, "(Lcom/google/protobuf/nano/UnknownFieldData;Ljava/util/List<Ljava/lang/Object;>;)V" },
-    { "writeSingularDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeSingularData", "V", 0x14, NULL, NULL },
-    { "writeRepeatedDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:", "writeRepeatedData", "V", 0x4, NULL, NULL },
-    { "computePackedDataSizeWithId:", "computePackedDataSize", "I", 0x2, NULL, NULL },
-    { "computeRepeatedSerializedSizeWithId:", "computeRepeatedSerializedSize", "I", 0x4, NULL, NULL },
-    { "computeSingularSerializedSizeWithId:", "computeSingularSerializedSize", "I", 0x14, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, 1, -1, -1 },
+    { NULL, "LNSObject;", 0x4, 2, 3, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 4, 5, -1, 6, -1, -1 },
+    { NULL, "V", 0x14, 7, 8, -1, -1, -1, -1 },
+    { NULL, "V", 0x4, 9, 8, -1, -1, -1, -1 },
+    { NULL, "I", 0x2, 10, 11, -1, -1, -1, -1 },
+    { NULL, "I", 0x4, 12, 11, -1, -1, -1, -1 },
+    { NULL, "I", 0x14, 13, 11, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithInt:withIOSClass:withInt:withBoolean:withInt:withInt:);
+  methods[1].selector = @selector(readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:);
+  methods[2].selector = @selector(readDataIntoWithComGoogleProtobufNanoUnknownFieldData:withJavaUtilList:);
+  methods[3].selector = @selector(writeSingularDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[4].selector = @selector(writeRepeatedDataWithId:withComGoogleProtobufNanoCodedOutputByteBufferNano:);
+  methods[5].selector = @selector(computePackedDataSizeWithId:);
+  methods[6].selector = @selector(computeRepeatedSerializedSizeWithId:);
+  methods[7].selector = @selector(computeSingularSerializedSizeWithId:);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "nonPackedTag_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
-    { "packedTag_", NULL, 0x12, "I", NULL, NULL, .constantValue.asLong = 0 },
+    { "nonPackedTag_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
+    { "packedTag_", "I", .constantValue.asLong = 0, 0x12, -1, -1, -1, -1 },
   };
-  static const char *superclass_type_args[] = {"TM;", "TT;"};
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoExtension_PrimitiveExtension = { 2, "PrimitiveExtension", "com.google.protobuf.nano", "Extension", 0xa, 8, methods, 2, fields, 2, superclass_type_args, 0, NULL, NULL, "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>Lcom/google/protobuf/nano/Extension<TM;TT;>;" };
+  static const void *ptrTable[] = { "ILIOSClass;IZII", "(ILjava/lang/Class<TT;>;IZII)V", "readData", "LComGoogleProtobufNanoCodedInputByteBufferNano;", "readDataInto", "LComGoogleProtobufNanoUnknownFieldData;LJavaUtilList;", "(Lcom/google/protobuf/nano/UnknownFieldData;Ljava/util/List<Ljava/lang/Object;>;)V", "writeSingularData", "LNSObject;LComGoogleProtobufNanoCodedOutputByteBufferNano;", "writeRepeatedData", "computePackedDataSize", "LNSObject;", "computeRepeatedSerializedSize", "computeSingularSerializedSize", "LComGoogleProtobufNanoExtension;", "<M:Lcom/google/protobuf/nano/ExtendableMessageNano<TM;>;T:Ljava/lang/Object;>Lcom/google/protobuf/nano/Extension<TM;TT;>;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoExtension_PrimitiveExtension = { "PrimitiveExtension", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0xa, 8, 2, 14, -1, -1, 15, -1 };
   return &_ComGoogleProtobufNanoExtension_PrimitiveExtension;
 }
 
@@ -777,15 +808,11 @@ void ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_
 }
 
 ComGoogleProtobufNanoExtension_PrimitiveExtension *new_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag) {
-  ComGoogleProtobufNanoExtension_PrimitiveExtension *self = [ComGoogleProtobufNanoExtension_PrimitiveExtension alloc];
-  ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(self, type, clazz, tag, repeated, nonPackedTag, packedTag);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoExtension_PrimitiveExtension, initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_, type, clazz, tag, repeated, nonPackedTag, packedTag)
 }
 
 ComGoogleProtobufNanoExtension_PrimitiveExtension *create_ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(jint type, IOSClass *clazz, jint tag, jboolean repeated, jint nonPackedTag, jint packedTag) {
-  ComGoogleProtobufNanoExtension_PrimitiveExtension *self = [[ComGoogleProtobufNanoExtension_PrimitiveExtension alloc] autorelease];
-  ComGoogleProtobufNanoExtension_PrimitiveExtension_initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_(self, type, clazz, tag, repeated, nonPackedTag, packedTag);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoExtension_PrimitiveExtension, initWithInt_withIOSClass_withInt_withBoolean_withInt_withInt_, type, clazz, tag, repeated, nonPackedTag, packedTag)
 }
 
 jint ComGoogleProtobufNanoExtension_PrimitiveExtension_computePackedDataSizeWithId_(ComGoogleProtobufNanoExtension_PrimitiveExtension *self, id array) {
@@ -841,7 +868,7 @@ jint ComGoogleProtobufNanoExtension_PrimitiveExtension_computePackedDataSizeWith
     }
     break;
     default:
-    @throw [new_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unexpected non-packable type ", self->type_)) autorelease];
+    @throw create_JavaLangIllegalArgumentException_initWithNSString_(JreStrcat("$I", @"Unexpected non-packable type ", self->type_));
   }
   return dataSize;
 }

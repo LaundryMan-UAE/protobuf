@@ -9,7 +9,6 @@
 #include "J2ObjC_source.h"
 #include "com/google/protobuf/nano/CodedInputByteBufferNano.h"
 #include "com/google/protobuf/nano/WireFormatNano.h"
-#include "java/io/IOException.h"
 
 @interface ComGoogleProtobufNanoWireFormatNano ()
 
@@ -66,6 +65,47 @@ J2OBJC_IGNORE_DESIGNATED_END
   return ComGoogleProtobufNanoWireFormatNano_getRepeatedFieldArrayLengthWithComGoogleProtobufNanoCodedInputByteBufferNano_withInt_(input, tag);
 }
 
++ (const J2ObjcClassInfo *)__metadata {
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x2, -1, -1, -1, -1, -1, -1 },
+    { NULL, "I", 0x8, 0, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x9, 2, 1, -1, -1, -1, -1 },
+    { NULL, "I", 0x8, 3, 4, -1, -1, -1, -1 },
+    { NULL, "Z", 0x9, 5, 6, 7, -1, -1, -1 },
+    { NULL, "I", 0x19, 8, 6, 7, -1, -1, -1 },
+  };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(init);
+  methods[1].selector = @selector(getTagWireTypeWithInt:);
+  methods[2].selector = @selector(getTagFieldNumberWithInt:);
+  methods[3].selector = @selector(makeTagWithInt:withInt:);
+  methods[4].selector = @selector(parseUnknownFieldWithComGoogleProtobufNanoCodedInputByteBufferNano:withInt:);
+  methods[5].selector = @selector(getRepeatedFieldArrayLengthWithComGoogleProtobufNanoCodedInputByteBufferNano:withInt:);
+  #pragma clang diagnostic pop
+  static const J2ObjcFieldInfo fields[] = {
+    { "WIRETYPE_VARINT", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_VARINT, 0x18, -1, -1, -1, -1 },
+    { "WIRETYPE_FIXED64", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED64, 0x18, -1, -1, -1, -1 },
+    { "WIRETYPE_LENGTH_DELIMITED", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_LENGTH_DELIMITED, 0x18, -1, -1, -1, -1 },
+    { "WIRETYPE_START_GROUP", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_START_GROUP, 0x18, -1, -1, -1, -1 },
+    { "WIRETYPE_END_GROUP", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_END_GROUP, 0x18, -1, -1, -1, -1 },
+    { "WIRETYPE_FIXED32", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED32, 0x18, -1, -1, -1, -1 },
+    { "TAG_TYPE_BITS", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS, 0x18, -1, -1, -1, -1 },
+    { "TAG_TYPE_MASK", "I", .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_MASK, 0x18, -1, -1, -1, -1 },
+    { "EMPTY_INT_ARRAY", "[I", .constantValue.asLong = 0, 0x19, -1, 9, -1, -1 },
+    { "EMPTY_LONG_ARRAY", "[J", .constantValue.asLong = 0, 0x19, -1, 10, -1, -1 },
+    { "EMPTY_FLOAT_ARRAY", "[F", .constantValue.asLong = 0, 0x19, -1, 11, -1, -1 },
+    { "EMPTY_DOUBLE_ARRAY", "[D", .constantValue.asLong = 0, 0x19, -1, 12, -1, -1 },
+    { "EMPTY_BOOLEAN_ARRAY", "[Z", .constantValue.asLong = 0, 0x19, -1, 13, -1, -1 },
+    { "EMPTY_STRING_ARRAY", "[LNSString;", .constantValue.asLong = 0, 0x19, -1, 14, -1, -1 },
+    { "EMPTY_BYTES_ARRAY", "[[B", .constantValue.asLong = 0, 0x19, -1, 15, -1, -1 },
+    { "EMPTY_BYTES", "[B", .constantValue.asLong = 0, 0x19, -1, 16, -1, -1 },
+  };
+  static const void *ptrTable[] = { "getTagWireType", "I", "getTagFieldNumber", "makeTag", "II", "parseUnknownField", "LComGoogleProtobufNanoCodedInputByteBufferNano;I", "LJavaIoIOException;", "getRepeatedFieldArrayLength", &ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_LONG_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_FLOAT_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_DOUBLE_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_BOOLEAN_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_STRING_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_ARRAY, &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoWireFormatNano = { "WireFormatNano", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x11, 6, 16, -1, -1, -1, -1, -1 };
+  return &_ComGoogleProtobufNanoWireFormatNano;
+}
+
 + (void)initialize {
   if (self == [ComGoogleProtobufNanoWireFormatNano class]) {
     JreStrongAssignAndConsume(&ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY, [IOSIntArray newArrayWithInts:(jint[]){  } count:0]);
@@ -80,37 +120,6 @@ J2OBJC_IGNORE_DESIGNATED_END
   }
 }
 
-+ (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "init", "WireFormatNano", NULL, 0x2, NULL, NULL },
-    { "getTagWireTypeWithInt:", "getTagWireType", "I", 0x8, NULL, NULL },
-    { "getTagFieldNumberWithInt:", "getTagFieldNumber", "I", 0x9, NULL, NULL },
-    { "makeTagWithInt:withInt:", "makeTag", "I", 0x8, NULL, NULL },
-    { "parseUnknownFieldWithComGoogleProtobufNanoCodedInputByteBufferNano:withInt:", "parseUnknownField", "Z", 0x9, "Ljava.io.IOException;", NULL },
-    { "getRepeatedFieldArrayLengthWithComGoogleProtobufNanoCodedInputByteBufferNano:withInt:", "getRepeatedFieldArrayLength", "I", 0x19, "Ljava.io.IOException;", NULL },
-  };
-  static const J2ObjcFieldInfo fields[] = {
-    { "WIRETYPE_VARINT", "WIRETYPE_VARINT", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_VARINT },
-    { "WIRETYPE_FIXED64", "WIRETYPE_FIXED64", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED64 },
-    { "WIRETYPE_LENGTH_DELIMITED", "WIRETYPE_LENGTH_DELIMITED", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_LENGTH_DELIMITED },
-    { "WIRETYPE_START_GROUP", "WIRETYPE_START_GROUP", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_START_GROUP },
-    { "WIRETYPE_END_GROUP", "WIRETYPE_END_GROUP", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_END_GROUP },
-    { "WIRETYPE_FIXED32", "WIRETYPE_FIXED32", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_WIRETYPE_FIXED32 },
-    { "TAG_TYPE_BITS", "TAG_TYPE_BITS", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_BITS },
-    { "TAG_TYPE_MASK", "TAG_TYPE_MASK", 0x18, "I", NULL, NULL, .constantValue.asInt = ComGoogleProtobufNanoWireFormatNano_TAG_TYPE_MASK },
-    { "EMPTY_INT_ARRAY", "EMPTY_INT_ARRAY", 0x19, "[I", &ComGoogleProtobufNanoWireFormatNano_EMPTY_INT_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_LONG_ARRAY", "EMPTY_LONG_ARRAY", 0x19, "[J", &ComGoogleProtobufNanoWireFormatNano_EMPTY_LONG_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_FLOAT_ARRAY", "EMPTY_FLOAT_ARRAY", 0x19, "[F", &ComGoogleProtobufNanoWireFormatNano_EMPTY_FLOAT_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_DOUBLE_ARRAY", "EMPTY_DOUBLE_ARRAY", 0x19, "[D", &ComGoogleProtobufNanoWireFormatNano_EMPTY_DOUBLE_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_BOOLEAN_ARRAY", "EMPTY_BOOLEAN_ARRAY", 0x19, "[Z", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BOOLEAN_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_STRING_ARRAY", "EMPTY_STRING_ARRAY", 0x19, "[Ljava.lang.String;", &ComGoogleProtobufNanoWireFormatNano_EMPTY_STRING_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_BYTES_ARRAY", "EMPTY_BYTES_ARRAY", 0x19, "[[B", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES_ARRAY, NULL, .constantValue.asLong = 0 },
-    { "EMPTY_BYTES", "EMPTY_BYTES", 0x19, "[B", &ComGoogleProtobufNanoWireFormatNano_EMPTY_BYTES, NULL, .constantValue.asLong = 0 },
-  };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoWireFormatNano = { 2, "WireFormatNano", "com.google.protobuf.nano", NULL, 0x11, 6, methods, 16, fields, 0, NULL, 0, NULL, NULL, NULL };
-  return &_ComGoogleProtobufNanoWireFormatNano;
-}
-
 @end
 
 void ComGoogleProtobufNanoWireFormatNano_init(ComGoogleProtobufNanoWireFormatNano *self) {
@@ -118,15 +127,11 @@ void ComGoogleProtobufNanoWireFormatNano_init(ComGoogleProtobufNanoWireFormatNan
 }
 
 ComGoogleProtobufNanoWireFormatNano *new_ComGoogleProtobufNanoWireFormatNano_init() {
-  ComGoogleProtobufNanoWireFormatNano *self = [ComGoogleProtobufNanoWireFormatNano alloc];
-  ComGoogleProtobufNanoWireFormatNano_init(self);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoWireFormatNano, init)
 }
 
 ComGoogleProtobufNanoWireFormatNano *create_ComGoogleProtobufNanoWireFormatNano_init() {
-  ComGoogleProtobufNanoWireFormatNano *self = [[ComGoogleProtobufNanoWireFormatNano alloc] autorelease];
-  ComGoogleProtobufNanoWireFormatNano_init(self);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoWireFormatNano, init)
 }
 
 jint ComGoogleProtobufNanoWireFormatNano_getTagWireTypeWithInt_(jint tag) {

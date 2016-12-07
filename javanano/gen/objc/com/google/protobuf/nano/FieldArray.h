@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoFieldArray_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoFieldArray_RESTRICT
-#define ComGoogleProtobufNanoFieldArray_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoFieldArray")
+#ifdef RESTRICT_ComGoogleProtobufNanoFieldArray
+#define INCLUDE_ALL_ComGoogleProtobufNanoFieldArray 0
 #else
-#define ComGoogleProtobufNanoFieldArray_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoFieldArray 1
 #endif
-#undef ComGoogleProtobufNanoFieldArray_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoFieldArray
 
-#if !defined (ComGoogleProtobufNanoFieldArray_) && (ComGoogleProtobufNanoFieldArray_INCLUDE_ALL || defined(ComGoogleProtobufNanoFieldArray_INCLUDE))
+#if !defined (ComGoogleProtobufNanoFieldArray_) && (INCLUDE_ALL_ComGoogleProtobufNanoFieldArray || defined(INCLUDE_ComGoogleProtobufNanoFieldArray))
 #define ComGoogleProtobufNanoFieldArray_
 
 @class ComGoogleProtobufNanoFieldData;
@@ -102,4 +102,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoFieldArray)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoFieldArray_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoFieldArray")

@@ -5,15 +5,15 @@
 
 #include "J2ObjC_header.h"
 
-#pragma push_macro("ComGoogleProtobufNanoMessageNano_INCLUDE_ALL")
-#ifdef ComGoogleProtobufNanoMessageNano_RESTRICT
-#define ComGoogleProtobufNanoMessageNano_INCLUDE_ALL 0
+#pragma push_macro("INCLUDE_ALL_ComGoogleProtobufNanoMessageNano")
+#ifdef RESTRICT_ComGoogleProtobufNanoMessageNano
+#define INCLUDE_ALL_ComGoogleProtobufNanoMessageNano 0
 #else
-#define ComGoogleProtobufNanoMessageNano_INCLUDE_ALL 1
+#define INCLUDE_ALL_ComGoogleProtobufNanoMessageNano 1
 #endif
-#undef ComGoogleProtobufNanoMessageNano_RESTRICT
+#undef RESTRICT_ComGoogleProtobufNanoMessageNano
 
-#if !defined (ComGoogleProtobufNanoMessageNano_) && (ComGoogleProtobufNanoMessageNano_INCLUDE_ALL || defined(ComGoogleProtobufNanoMessageNano_INCLUDE))
+#if !defined (ComGoogleProtobufNanoMessageNano_) && (INCLUDE_ALL_ComGoogleProtobufNanoMessageNano || defined(INCLUDE_ComGoogleProtobufNanoMessageNano))
 #define ComGoogleProtobufNanoMessageNano_
 
 @class ComGoogleProtobufNanoCodedInputByteBufferNano;
@@ -65,17 +65,17 @@
  @brief Parse <code>data</code> as a message of this type and merge it with the
  message being built.
  */
-+ (id)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
-                                      withByteArray:(IOSByteArray *)data;
++ (ComGoogleProtobufNanoMessageNano *)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
+                                                                      withByteArray:(IOSByteArray *)data;
 
 /*!
  @brief Parse <code>data</code> as a message of this type and merge it with the
  message being built.
  */
-+ (id)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
-                                      withByteArray:(IOSByteArray *)data
-                                            withInt:(jint)off
-                                            withInt:(jint)len;
++ (ComGoogleProtobufNanoMessageNano *)mergeFromWithComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)msg
+                                                                      withByteArray:(IOSByteArray *)data
+                                                                            withInt:(jint)off
+                                                                            withInt:(jint)len;
 
 /*!
  @brief Compares two <code>MessageNano</code>s and returns true if the message's are the same class and
@@ -137,9 +137,9 @@ FOUNDATION_EXPORT IOSByteArray *ComGoogleProtobufNanoMessageNano_toByteArrayWith
 
 FOUNDATION_EXPORT void ComGoogleProtobufNanoMessageNano_toByteArrayWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data, jint offset, jint length);
 
-FOUNDATION_EXPORT id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data);
+FOUNDATION_EXPORT ComGoogleProtobufNanoMessageNano *ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data);
 
-FOUNDATION_EXPORT id ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data, jint off, jint len);
+FOUNDATION_EXPORT ComGoogleProtobufNanoMessageNano *ComGoogleProtobufNanoMessageNano_mergeFromWithComGoogleProtobufNanoMessageNano_withByteArray_withInt_withInt_(ComGoogleProtobufNanoMessageNano *msg, IOSByteArray *data, jint off, jint len);
 
 FOUNDATION_EXPORT jboolean ComGoogleProtobufNanoMessageNano_messageNanoEqualsWithComGoogleProtobufNanoMessageNano_withComGoogleProtobufNanoMessageNano_(ComGoogleProtobufNanoMessageNano *a, ComGoogleProtobufNanoMessageNano *b);
 
@@ -149,4 +149,4 @@ J2OBJC_TYPE_LITERAL_HEADER(ComGoogleProtobufNanoMessageNano)
 
 #endif
 
-#pragma pop_macro("ComGoogleProtobufNanoMessageNano_INCLUDE_ALL")
+#pragma pop_macro("INCLUDE_ALL_ComGoogleProtobufNanoMessageNano")

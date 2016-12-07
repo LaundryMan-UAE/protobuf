@@ -51,21 +51,34 @@ J2OBJC_STATIC_FIELD_CONSTANT(ComGoogleProtobufNanoInvalidProtocolBufferNanoExcep
 }
 
 + (const J2ObjcClassInfo *)__metadata {
-  static const J2ObjcMethodInfo methods[] = {
-    { "initWithNSString:", "InvalidProtocolBufferNanoException", NULL, 0x1, NULL, NULL },
-    { "truncatedMessage", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "negativeSize", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "malformedVarint", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "invalidTag", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "invalidEndTag", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "invalidWireType", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "recursionLimitExceeded", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
-    { "sizeLimitExceeded", NULL, "Lcom.google.protobuf.nano.InvalidProtocolBufferNanoException;", 0x8, NULL, NULL },
+  static J2ObjcMethodInfo methods[] = {
+    { NULL, NULL, 0x1, -1, 0, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
+    { NULL, "LComGoogleProtobufNanoInvalidProtocolBufferNanoException;", 0x8, -1, -1, -1, -1, -1, -1 },
   };
+  #pragma clang diagnostic push
+  #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  methods[0].selector = @selector(initWithNSString:);
+  methods[1].selector = @selector(truncatedMessage);
+  methods[2].selector = @selector(negativeSize);
+  methods[3].selector = @selector(malformedVarint);
+  methods[4].selector = @selector(invalidTag);
+  methods[5].selector = @selector(invalidEndTag);
+  methods[6].selector = @selector(invalidWireType);
+  methods[7].selector = @selector(recursionLimitExceeded);
+  methods[8].selector = @selector(sizeLimitExceeded);
+  #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {
-    { "serialVersionUID", "serialVersionUID", 0x1a, "J", NULL, NULL, .constantValue.asLong = ComGoogleProtobufNanoInvalidProtocolBufferNanoException_serialVersionUID },
+    { "serialVersionUID", "J", .constantValue.asLong = ComGoogleProtobufNanoInvalidProtocolBufferNanoException_serialVersionUID, 0x1a, -1, -1, -1, -1 },
   };
-  static const J2ObjcClassInfo _ComGoogleProtobufNanoInvalidProtocolBufferNanoException = { 2, "InvalidProtocolBufferNanoException", "com.google.protobuf.nano", NULL, 0x1, 9, methods, 1, fields, 0, NULL, 0, NULL, NULL, NULL };
+  static const void *ptrTable[] = { "LNSString;" };
+  static const J2ObjcClassInfo _ComGoogleProtobufNanoInvalidProtocolBufferNanoException = { "InvalidProtocolBufferNanoException", "com.google.protobuf.nano", ptrTable, methods, fields, 7, 0x1, 9, 1, -1, -1, -1, -1, -1 };
   return &_ComGoogleProtobufNanoInvalidProtocolBufferNanoException;
 }
 
@@ -76,55 +89,51 @@ void ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(C
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(NSString *description_) {
-  ComGoogleProtobufNanoInvalidProtocolBufferNanoException *self = [ComGoogleProtobufNanoInvalidProtocolBufferNanoException alloc];
-  ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(self, description_);
-  return self;
+  J2OBJC_NEW_IMPL(ComGoogleProtobufNanoInvalidProtocolBufferNanoException, initWithNSString_, description_)
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(NSString *description_) {
-  ComGoogleProtobufNanoInvalidProtocolBufferNanoException *self = [[ComGoogleProtobufNanoInvalidProtocolBufferNanoException alloc] autorelease];
-  ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(self, description_);
-  return self;
+  J2OBJC_CREATE_IMPL(ComGoogleProtobufNanoInvalidProtocolBufferNanoException, initWithNSString_, description_)
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_truncatedMessage() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"While parsing a protocol message, the input ended unexpectedly in the middle of a field.  This could mean either than the input has been truncated or that an embedded message misreported its own length.");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_negativeSize() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"CodedInputStream encountered an embedded string or message which claimed to have negative size.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"CodedInputStream encountered an embedded string or message which claimed to have negative size.");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_malformedVarint() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"CodedInputStream encountered a malformed varint.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"CodedInputStream encountered a malformed varint.");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_invalidTag() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message contained an invalid tag (zero).") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message contained an invalid tag (zero).");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_invalidEndTag() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message end-group tag did not match expected tag.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message end-group tag did not match expected tag.");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_invalidWireType() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message tag had invalid wire type.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message tag had invalid wire type.");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_recursionLimitExceeded() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message had too many levels of nesting.  May be malicious.  Use CodedInputStream.setRecursionLimit() to increase the depth limit.");
 }
 
 ComGoogleProtobufNanoInvalidProtocolBufferNanoException *ComGoogleProtobufNanoInvalidProtocolBufferNanoException_sizeLimitExceeded() {
   ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initialize();
-  return [new_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.") autorelease];
+  return create_ComGoogleProtobufNanoInvalidProtocolBufferNanoException_initWithNSString_(@"Protocol message was too large.  May be malicious.  Use CodedInputStream.setSizeLimit() to increase the size limit.");
 }
 
 J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoInvalidProtocolBufferNanoException)
