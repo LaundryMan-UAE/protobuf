@@ -13,6 +13,7 @@ Pod::Spec.new do |s|
   s.source_files = 'javanano/gen/objc/**/*.{h,m}'
   s.public_header_files = 'javanano/gen/objc/**/*.h'
   s.header_mappings_dir = 'javanano/gen/objc'
+  s.compiler_flags = '-Wno-nullability-completeness'
 
   s.xcconfig = { 'HEADER_SEARCH_PATHS' => "\"${PODS_ROOT}/J2ObjC/dist/include\"" }
 end
