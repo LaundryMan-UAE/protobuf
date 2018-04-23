@@ -115,3 +115,4 @@ conformance/protoc_middleman
 javanano/protobuf-javanano.iml
 javanano/.idea
 javanano/.gradle
+/javanano/bin
