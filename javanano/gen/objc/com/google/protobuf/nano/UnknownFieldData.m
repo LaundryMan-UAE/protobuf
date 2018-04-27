@@ -62,6 +62,7 @@
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withByteArray:);
   methods[1].selector = @selector(computeSerializedSize);
   methods[2].selector = @selector(writeToWithComGoogleProtobufNanoCodedOutputByteBufferNano:);

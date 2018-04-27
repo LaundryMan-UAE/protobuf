@@ -308,6 +308,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(createMessageTypedWithInt:withIOSClass:withInt:);
   methods[1].selector = @selector(createMessageTypedWithInt:withIOSClass:withLong:);
   methods[2].selector = @selector(createRepeatedMessageTypedWithInt:withIOSClass:withLong:);
@@ -791,6 +792,7 @@ withComGoogleProtobufNanoCodedOutputByteBufferNano:(ComGoogleProtobufNanoCodedOu
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withIOSClass:withInt:withBoolean:withInt:withInt:);
   methods[1].selector = @selector(readDataWithComGoogleProtobufNanoCodedInputByteBufferNano:);
   methods[2].selector = @selector(readDataIntoWithComGoogleProtobufNanoUnknownFieldData:withJavaUtilList:);

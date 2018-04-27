@@ -543,6 +543,7 @@ __attribute__((unused)) static void ComGoogleProtobufNanoCodedInputByteBufferNan
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(newInstanceWithByteArray:);
   methods[1].selector = @selector(newInstanceWithByteArray:withInt:withInt:);
   methods[2].selector = @selector(readTag);

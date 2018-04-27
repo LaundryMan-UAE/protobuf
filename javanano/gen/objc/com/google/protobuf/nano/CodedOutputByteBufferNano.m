@@ -861,6 +861,7 @@ withComGoogleProtobufNanoMessageNano:(ComGoogleProtobufNanoMessageNano *)value {
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithByteArray:withInt:withInt:);
   methods[1].selector = @selector(initWithJavaNioByteBuffer:);
   methods[2].selector = @selector(newInstanceWithByteArray:);
@@ -1441,6 +1442,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoCodedOutputByteBufferNano)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(initWithInt:withInt:);
   #pragma clang diagnostic pop
   static const J2ObjcFieldInfo fields[] = {

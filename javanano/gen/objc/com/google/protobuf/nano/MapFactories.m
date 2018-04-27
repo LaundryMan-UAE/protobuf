@@ -74,6 +74,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(setMapFactoryWithComGoogleProtobufNanoMapFactories_MapFactory:);
   methods[1].selector = @selector(getMapFactory);
   methods[2].selector = @selector(init);
@@ -127,6 +128,7 @@ J2OBJC_CLASS_TYPE_LITERAL_SOURCE(ComGoogleProtobufNanoMapFactories)
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(forMapWithJavaUtilMap:);
   #pragma clang diagnostic pop
   static const void *ptrTable[] = { "forMap", "LJavaUtilMap;", "<K:Ljava/lang/Object;V:Ljava/lang/Object;>(Ljava/util/Map<TK;TV;>;)Ljava/util/Map<TK;TV;>;", "LComGoogleProtobufNanoMapFactories;" };
@@ -161,6 +163,7 @@ J2OBJC_IGNORE_DESIGNATED_END
   };
   #pragma clang diagnostic push
   #pragma clang diagnostic ignored "-Wobjc-multiple-method-names"
+  #pragma clang diagnostic ignored "-Wundeclared-selector"
   methods[0].selector = @selector(init);
   methods[1].selector = @selector(forMapWithJavaUtilMap:);
   #pragma clang diagnostic pop
