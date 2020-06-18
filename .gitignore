@@ -116,3 +116,5 @@ javanano/protobuf-javanano.iml
 javanano/.idea
 javanano/.gradle
 /javanano/bin
+/javanano/.project
+/javanano/.settings
